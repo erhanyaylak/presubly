@@ -1,0 +1,32 @@
+---
+import type { Locale } from '../../i18n/config';
+import { t, getLocalizedPath } from '../../i18n/utils';
+import LogoMark from './LogoMark.astro';
+import NavAuth from '../islands/NavAuth';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+---
+
+<nav class="nav" id="nav">
+  <div class="nav-in">
+    <a class="logo" href={getLocalizedPath(locale)}>
+      <LogoMark size={34} />
+      <div class="lword">Pre<span>subly</span></div>
+    </a>
+    <div class="nlinks">
+      <a class="nl" href="#how">{t(locale, 'nav.how')}</a>
+      <a class="nl" href="#tools">{t(locale, 'nav.tools')}</a>
+      <a class="nl" href="#standards">{t(locale, 'nav.standards')}</a>
+      <a class="nl" href="#pricing">{t(locale, 'nav.pricing')}</a>
+    </div>
+    <div class="nright">
+      <div class="lang-sw">
+        <a class:list={['lang-btn', { on: locale === 'tr' }]} href="/tr/">TR</a>
+        <a class:list={['lang-btn', { on: locale === 'en' }]} href="/en/">EN</a>
+      </div>
+      <NavAuth lang={locale} client:load />
+    </div>
+    <button class="hmenu" aria-label="Menu"><span></span></button>
+  </div>
+</nav>

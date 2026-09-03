@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Presubly v2 — Yeniden Tasarım Mockup</title>
+<meta name="description" content="Presubly yeni tasarım önerisi — modern editorial layout, sosyal kanıt, senaryo bazlı yaklaşım"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --t:#0A3D3D;--t2:#0D4F4F;--t3:#115E5E;--t4:#1A7272;--t5:#2A8F8F;
+  --tl:#EBF5F5;--tl2:#C8ECEB;--tl3:#A8DAD9;
+  --a:#E8970A;--a2:#F5AA1C;--a3:#FBCA5C;--al:#FEF8E8;--al2:#FAECC8;
+  --cream:#FAF8F3;--cream2:#F2EFE6;
+  --sg:#F4F7F5;--sg2:#E8F0EC;
+  --card:#FFFFFF;
+  --ln:#D8E0DA;--ln2:#C0CFC4;
+  --ink:#0A1A14;--k2:#1F2E24;--k3:#3A5248;--k4:#5E8272;--k5:#98B8AA;
+  --ok:#0A7A3A;--okl:#E8F7EE;
+  --er:#8A1A1A;--erl:#FEF0F0;
+  --fd:'Fraunces',Georgia,serif;
+  --fb:'Inter',system-ui,sans-serif;
+  --fm:'JetBrains Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:var(--fb);line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-thumb{background:var(--ln2);border-radius:3px}
+
+/* ANNOTATIONS (mockup label) */
+.mockup-banner{background:var(--ink);color:var(--a3);padding:8px 24px;font-family:var(--fm);font-size:11px;letter-spacing:.16em;text-transform:uppercase;text-align:center;border-bottom:1px solid var(--a)}
+.mockup-banner span{color:var(--a)}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:200;background:rgba(250,248,243,.92);backdrop-filter:blur(18px);border-bottom:1px solid var(--ln)}
+.nav-in{max-width:1320px;margin:0 auto;padding:0 32px;height:64px;display:flex;align-items:center;gap:36px}
+.logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.lmark{width:36px;height:36px;border-radius:10px;background:var(--t);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding-left:8px;gap:4px}
+.lb{height:3px;border-radius:1.5px}
+.lb1{width:20px;background:rgba(250,248,243,.85)}
+.lb2{width:15px;background:rgba(250,248,243,.5)}
+.lb3{width:10px;background:var(--a2)}
+.lword{font-family:var(--fd);font-size:22px;font-weight:700;letter-spacing:-.02em}
+.lword .acc{color:var(--a);font-style:italic}
+.nlinks{flex:1;display:flex;gap:4px}
+.nl{padding:7px 14px;border-radius:7px;font-size:13px;font-weight:500;color:var(--k4);transition:all .15s}
+.nl:hover{color:var(--t);background:var(--cream2)}
+.nl.acc{color:var(--ink);font-weight:600}
+.nright{display:flex;align-items:center;gap:8px}
+.nbg{padding:8px 16px;border-radius:8px;font-size:13px;font-weight:500;color:var(--k3);transition:all .2s}
+.nbg:hover{color:var(--t);background:var(--cream2)}
+.nbp{padding:9px 20px;border-radius:8px;background:var(--ink);color:var(--cream);font-size:13px;font-weight:600;transition:all .2s}
+.nbp:hover{background:var(--t);transform:translateY(-1px)}
+
+/* HERO */
+.hero{padding:80px 32px 100px;position:relative;overflow:hidden}
+.hero-in{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:80px;align-items:center}
+.hero-ey{font-family:var(--fm);font-size:11px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--a);margin-bottom:32px;display:flex;align-items:center;gap:14px}
+.hero-ey::before{content:'';width:36px;height:1px;background:var(--a)}
+.hero-h{font-family:var(--fd);font-weight:400;font-size:clamp(48px,5.6vw,82px);line-height:.98;letter-spacing:-.035em;color:var(--ink);margin-bottom:28px}
+.hero-h strong{font-weight:700}
+.hero-h em{font-style:italic;font-weight:500;color:var(--t3)}
+.hero-h .hl{background:linear-gradient(180deg,transparent 60%,var(--al2) 60%);padding:0 4px}
+.hero-p{font-size:18px;color:var(--k3);font-weight:300;line-height:1.65;max-width:480px;margin-bottom:32px}
+.hero-p strong{color:var(--ink);font-weight:600}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px}
+.btn-p{padding:14px 28px;background:var(--ink);color:var(--cream);border-radius:9px;font-size:14px;font-weight:600;transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+.btn-p:hover{background:var(--t);transform:translateY(-2px);box-shadow:0 8px 20px rgba(10,61,61,.25)}
+.btn-s{padding:14px 24px;border:1.5px solid var(--ln2);color:var(--k3);border-radius:9px;font-size:14px;font-weight:500;transition:all .2s;display:inline-flex;align-items:center;gap:8px;background:var(--card)}
+.btn-s:hover{border-color:var(--t3);color:var(--t);background:var(--cream2)}
+.hero-trust{display:flex;align-items:center;gap:16px;font-size:12px;color:var(--k4);flex-wrap:wrap}
+.hero-trust span{display:flex;align-items:center;gap:6px}
+.hero-trust span::before{content:'✓';color:var(--ok);font-weight:700}
+
+/* Hero right: Review preview */
+.hero-right{position:relative}
+.hero-card{background:var(--card);border:1px solid var(--ln);border-radius:18px;padding:28px;box-shadow:0 24px 60px rgba(10,26,20,.06);position:relative;z-index:2}
+.hc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--ln)}
+.hc-meta{font-family:var(--fm);font-size:9px;letter-spacing:.14em;color:var(--k4)}
+.hc-meta strong{color:var(--ink)}
+.hc-score{display:flex;align-items:baseline;gap:4px;font-family:var(--fd);font-weight:700}
+.hc-score .n{font-size:48px;line-height:.9;color:var(--ok)}
+.hc-score .d{font-size:14px;color:var(--k5);font-weight:400}
+.hc-title{font-family:var(--fd);font-size:18px;font-weight:600;line-height:1.3;margin-bottom:16px;color:var(--ink)}
+.hc-items{display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
+.hc-row{display:flex;align-items:center;gap:10px}
+.hc-row-lbl{flex:1;font-size:12px;color:var(--k3)}
+.hc-row-bar{width:120px;height:6px;background:var(--sg2);border-radius:3px;overflow:hidden}
+.hc-row-fill{height:100%;border-radius:3px}
+.hc-row-val{font-family:var(--fm);font-size:11px;font-weight:600;width:32px;text-align:right}
+.hc-cmt{padding:12px 14px;border-radius:10px;font-size:13px;color:var(--k3);line-height:1.55;border-left:3px solid var(--a)}
+.hc-cmt.ok{background:var(--okl);border-left-color:var(--ok)}
+.hc-cmt.wn{background:var(--al);border-left-color:var(--a)}
+.hc-cmt-tag{font-family:var(--fm);font-size:9px;font-weight:600;letter-spacing:.1em;margin-bottom:4px}
+.hc-cmt.ok .hc-cmt-tag{color:var(--ok)}
+.hc-cmt.wn .hc-cmt-tag{color:var(--a)}
+
+.hero-card-bg{position:absolute;width:110%;height:110%;left:-5%;top:-5%;border-radius:24px;background:linear-gradient(135deg,var(--tl) 0%,var(--cream2) 100%);z-index:1;transform:rotate(-2deg)}
+
+/* SOCIAL PROOF BAR */
+.proof{padding:36px 32px;border-top:1px solid var(--ln);border-bottom:1px solid var(--ln);background:var(--card)}
+.proof-in{max-width:1320px;margin:0 auto;display:flex;align-items:center;gap:48px;flex-wrap:wrap;justify-content:center}
+.proof-lbl{font-family:var(--fm);font-size:10px;letter-spacing:.18em;color:var(--k4);text-transform:uppercase}
+.proof-logos{display:flex;gap:36px;flex-wrap:wrap;align-items:center;opacity:.55}
+.proof-logo{font-family:var(--fd);font-size:15px;font-weight:600;color:var(--k3);letter-spacing:-.01em}
+
+/* SECTION BASE */
+.sec{padding:120px 32px;position:relative}
+.sec-alt{background:var(--card)}
+.sec-dark{background:var(--ink);color:var(--cream)}
+.sec-in{max-width:1320px;margin:0 auto}
+.sec-head{margin-bottom:64px;max-width:720px}
+.sec-head.center{text-align:center;margin:0 auto 64px}
+.sec-ey{font-family:var(--fm);font-size:11px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--a);margin-bottom:18px;display:inline-flex;align-items:center;gap:12px}
+.sec-ey::before{content:'';width:24px;height:1px;background:var(--a)}
+.sec-dark .sec-ey{color:var(--a3)}
+.sec-h{font-family:var(--fd);font-size:clamp(36px,4.4vw,60px);font-weight:400;line-height:1.05;letter-spacing:-.03em;margin-bottom:20px}
+.sec-h strong{font-weight:700}
+.sec-h em{font-style:italic;font-weight:500;color:var(--t3)}
+.sec-dark .sec-h em{color:var(--a2)}
+.sec-sub{font-size:18px;color:var(--k4);font-weight:300;line-height:1.6;max-width:560px}
+.sec-dark .sec-sub{color:rgba(250,248,243,.55)}
+.sec-head.center .sec-sub{margin:0 auto}
+
+/* PROBLEM/SOLUTION SECTION */
+.ps-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:40px}
+.ps-col{display:flex;flex-direction:column;gap:16px}
+.ps-col-h{font-family:var(--fm);font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding-bottom:14px;border-bottom:1px solid var(--ln);margin-bottom:8px}
+.ps-col-h.bad{color:var(--er)}
+.ps-col-h.good{color:var(--ok)}
+.ps-item{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:24px;display:flex;gap:16px;align-items:flex-start;transition:all .2s}
+.ps-item:hover{border-color:var(--t3);transform:translateY(-2px);box-shadow:0 8px 24px rgba(10,26,20,.06)}
+.ps-item-ic{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
+.ps-item.bad .ps-item-ic{background:var(--erl);color:var(--er)}
+.ps-item.good .ps-item-ic{background:var(--okl);color:var(--ok)}
+.ps-item-h{font-family:var(--fd);font-size:18px;font-weight:600;line-height:1.3;margin-bottom:6px}
+.ps-item-d{font-size:14px;color:var(--k4);line-height:1.6}
+
+/* TOOLS — Magazine layout */
+.tools-mag{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+.tool-card{background:var(--card);border:1px solid var(--ln);border-radius:18px;padding:36px;display:flex;flex-direction:column;gap:16px;transition:all .25s;position:relative;overflow:hidden}
+.tool-card:hover{border-color:var(--t3);transform:translateY(-4px);box-shadow:0 16px 40px rgba(10,26,20,.08)}
+.tool-card.big{grid-column:span 7;min-height:400px}
+.tool-card.med{grid-column:span 5;min-height:400px;background:var(--ink);color:var(--cream);border-color:transparent}
+.tool-card.sm{grid-column:span 6;min-height:280px}
+.tool-num{font-family:var(--fm);font-size:11px;font-weight:600;letter-spacing:.22em;color:var(--a)}
+.tool-card.med .tool-num{color:var(--a3)}
+.tool-h{font-family:var(--fd);font-size:30px;font-weight:600;line-height:1.1;letter-spacing:-.02em;margin-top:8px}
+.tool-card.sm .tool-h{font-size:24px}
+.tool-p{font-size:14px;color:var(--k4);line-height:1.65;margin-top:8px;flex:1}
+.tool-card.med .tool-p{color:rgba(250,248,243,.6)}
+.tool-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.tool-tag{padding:4px 10px;border-radius:6px;font-family:var(--fm);font-size:9px;font-weight:500;letter-spacing:.08em;background:var(--cream2);color:var(--k3)}
+.tool-card.med .tool-tag{background:rgba(250,248,243,.08);color:rgba(250,248,243,.7)}
+.tool-cta{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--t);margin-top:auto}
+.tool-card.med .tool-cta{color:var(--a3)}
+
+/* TIMELINE — Standards */
+.tl{position:relative;margin-top:64px;padding-left:32px}
+.tl::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--a),var(--tl2))}
+.tl-item{position:relative;padding:0 0 48px 32px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{content:'';position:absolute;left:-26px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--card);border:3px solid var(--a)}
+.tl-year{font-family:var(--fm);font-size:13px;font-weight:600;color:var(--a);letter-spacing:.06em;margin-bottom:6px}
+.tl-h{font-family:var(--fd);font-size:22px;font-weight:600;line-height:1.25;margin-bottom:6px}
+.tl-d{font-size:14px;color:var(--k4);line-height:1.65}
+
+/* SCENARIOS */
+.scen-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px}
+.scen{background:var(--card);border:1px solid var(--ln);border-radius:16px;padding:28px;cursor:pointer;transition:all .25s}
+.scen:hover{border-color:var(--t3);transform:translateY(-4px);box-shadow:0 12px 32px rgba(10,26,20,.06)}
+.scen-ic{width:48px;height:48px;border-radius:12px;background:var(--tl);color:var(--t);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px;font-family:var(--fd);font-weight:700}
+.scen-h{font-family:var(--fd);font-size:18px;font-weight:600;line-height:1.3;margin-bottom:8px}
+.scen-d{font-size:13px;color:var(--k4);line-height:1.6;margin-bottom:14px}
+.scen-tag{display:inline-block;font-family:var(--fm);font-size:10px;letter-spacing:.1em;color:var(--a);background:var(--al);padding:3px 10px;border-radius:6px}
+
+/* PRICING — Calculator */
+.calc{max-width:880px;margin:48px auto 0;background:var(--card);border:1px solid var(--ln);border-radius:24px;padding:48px;box-shadow:0 12px 40px rgba(10,26,20,.04)}
+.calc-h{font-family:var(--fd);font-size:22px;font-weight:600;margin-bottom:24px;text-align:center}
+.calc-slider{margin:32px 0}
+.calc-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.calc-lbl{font-family:var(--fm);font-size:11px;letter-spacing:.12em;color:var(--k4);text-transform:uppercase}
+.calc-val{font-family:var(--fd);font-size:32px;font-weight:700;color:var(--t)}
+.calc-val span{font-size:14px;color:var(--k4);font-weight:400}
+.range{width:100%;height:6px;border-radius:3px;background:var(--sg2);appearance:none;outline:none}
+.range::-webkit-slider-thumb{appearance:none;width:24px;height:24px;border-radius:50%;background:var(--a);border:3px solid var(--card);box-shadow:0 2px 8px rgba(232,151,10,.4);cursor:pointer}
+.calc-rec{margin-top:24px;padding:20px 24px;border-radius:14px;background:linear-gradient(135deg,var(--tl),var(--cream2));display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.calc-rec-lbl{font-family:var(--fm);font-size:10px;letter-spacing:.16em;color:var(--t4);text-transform:uppercase}
+.calc-rec-plan{font-family:var(--fd);font-size:22px;font-weight:700;color:var(--t);margin-top:4px}
+.calc-rec-price{font-family:var(--fd);font-size:28px;font-weight:700;color:var(--ink)}
+
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:48px}
+.plan{background:var(--card);border:1.5px solid var(--ln);border-radius:18px;padding:32px;position:relative;transition:all .2s}
+.plan:hover{border-color:var(--t3);transform:translateY(-3px)}
+.plan.pop{border:2px solid var(--t);box-shadow:0 12px 32px rgba(10,61,61,.1)}
+.plan-pop{position:absolute;top:-12px;left:50%;transform:translateX(-50%);font-family:var(--fm);font-size:10px;font-weight:600;letter-spacing:.14em;padding:5px 14px;border-radius:6px;background:var(--a);color:var(--ink)}
+.plan-n{font-family:var(--fm);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--k4);margin-bottom:14px}
+.plan-pr{display:flex;align-items:baseline;gap:6px;margin-bottom:6px}
+.plan-pv{font-family:var(--fd);font-size:42px;font-weight:700;color:var(--ink);line-height:1}
+.plan-pp{font-size:13px;color:var(--k4)}
+.plan-note{font-size:12px;color:var(--k5);margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid var(--ln)}
+.plan-fs{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.plan-f{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--k3);line-height:1.5}
+.plan-f::before{content:'✓';color:var(--ok);font-weight:700;font-size:12px;flex-shrink:0;margin-top:3px}
+.plan-btn{display:block;width:100%;padding:12px;text-align:center;border-radius:10px;font-size:13px;font-weight:600;background:var(--cream2);color:var(--k3);transition:all .18s}
+.plan-btn:hover{background:var(--ink);color:var(--cream)}
+.plan-btn.main{background:var(--ink);color:var(--cream)}
+.plan-btn.main:hover{background:var(--t)}
+
+/* CASE STUDY TESTIMONIALS */
+.case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.case{background:var(--card);border:1px solid var(--ln);border-radius:18px;padding:32px;display:flex;flex-direction:column;gap:18px;transition:all .2s}
+.case:hover{border-color:var(--t3);box-shadow:0 12px 32px rgba(10,26,20,.06);transform:translateY(-3px)}
+.case-tag{font-family:var(--fm);font-size:10px;letter-spacing:.14em;color:var(--a);font-weight:600;text-transform:uppercase}
+.case-q{font-family:var(--fd);font-size:18px;font-style:italic;font-weight:400;line-height:1.5;color:var(--ink);flex:1}
+.case-metrics{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:18px;background:var(--cream2);border-radius:12px}
+.case-metric-n{font-family:var(--fd);font-size:24px;font-weight:700;color:var(--t);line-height:1}
+.case-metric-l{font-size:10px;color:var(--k4);margin-top:2px;font-family:var(--fm);letter-spacing:.08em;text-transform:uppercase}
+.case-auth{display:flex;align-items:center;gap:12px;padding-top:18px;border-top:1px solid var(--ln)}
+.case-av{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--tl),var(--tl2));display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:14px;font-weight:700;color:var(--t)}
+.case-auth-n{font-size:14px;font-weight:600}
+.case-auth-r{font-size:12px;color:var(--k4)}
+
+/* TRUST CENTER */
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px}
+.trust{padding:24px;border:1px solid rgba(250,248,243,.1);border-radius:14px;background:rgba(250,248,243,.02)}
+.trust-ic{font-size:24px;margin-bottom:14px;color:var(--a3)}
+.trust-h{font-family:var(--fd);font-size:16px;font-weight:600;margin-bottom:6px;color:var(--cream)}
+.trust-d{font-size:13px;color:rgba(250,248,243,.55);line-height:1.55}
+
+/* FINAL CTA */
+.cta{padding:140px 32px;background:linear-gradient(135deg,var(--ink) 0%,var(--t2) 100%);color:var(--cream);text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 30%,rgba(232,151,10,.08) 0%,transparent 70%)}
+.cta-in{position:relative;max-width:680px;margin:0 auto}
+.cta-ey{font-family:var(--fm);font-size:11px;letter-spacing:.28em;color:var(--a3);text-transform:uppercase;margin-bottom:24px}
+.cta-h{font-family:var(--fd);font-size:clamp(40px,5vw,68px);font-weight:400;line-height:1.05;letter-spacing:-.03em;margin-bottom:24px}
+.cta-h em{font-style:italic;color:var(--a2)}
+.cta-p{font-size:18px;color:rgba(250,248,243,.55);font-weight:300;margin-bottom:36px;line-height:1.6}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.cta-btn-p{padding:16px 32px;background:var(--a);color:var(--ink);border-radius:11px;font-size:15px;font-weight:700;display:inline-flex;align-items:center;gap:10px;transition:all .25s}
+.cta-btn-p:hover{background:var(--a2);transform:translateY(-2px);box-shadow:0 12px 32px rgba(232,151,10,.35)}
+.cta-btn-s{padding:16px 28px;border:1.5px solid rgba(250,248,243,.18);color:rgba(250,248,243,.7);border-radius:11px;font-size:14px;font-weight:500;transition:all .2s}
+.cta-btn-s:hover{background:rgba(250,248,243,.06);color:var(--cream)}
+
+/* FOOTER */
+.footer{background:#060B08;padding:80px 32px 40px;color:rgba(250,248,243,.45)}
+.foot-in{max-width:1320px;margin:0 auto}
+.foot-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(250,248,243,.06);margin-bottom:32px}
+.foot-brand{font-family:var(--fd);font-size:22px;font-weight:700;color:var(--cream);margin-bottom:14px}
+.foot-brand .acc{color:var(--a2);font-style:italic}
+.foot-desc{font-size:13px;line-height:1.65;max-width:280px;margin-bottom:18px}
+.foot-eco{display:flex;gap:8px;flex-wrap:wrap}
+.foot-eco-b{font-family:var(--fm);font-size:9px;padding:4px 10px;border-radius:5px;border:1px solid rgba(250,248,243,.08);color:rgba(250,248,243,.35)}
+.foot-ct{font-family:var(--fm);font-size:10px;font-weight:600;letter-spacing:.18em;color:rgba(250,248,243,.4);text-transform:uppercase;margin-bottom:16px}
+.foot-cl{display:flex;flex-direction:column;gap:10px}
+.foot-cl a{font-size:13px;transition:color .15s}
+.foot-cl a:hover{color:var(--cream)}
+.foot-bot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-family:var(--fm);font-size:10px;letter-spacing:.06em}
+
+/* DESIGN ANNOTATIONS */
+.note{position:fixed;bottom:24px;right:24px;background:var(--ink);color:var(--cream);padding:14px 18px;border-radius:12px;box-shadow:0 16px 40px rgba(10,26,20,.3);font-size:12px;max-width:280px;z-index:1000;border-left:3px solid var(--a)}
+.note-h{font-family:var(--fm);font-size:9px;letter-spacing:.16em;color:var(--a3);margin-bottom:6px;text-transform:uppercase}
+.note p{color:rgba(250,248,243,.7);line-height:1.5;font-size:11.5px}
+.note button{position:absolute;top:8px;right:10px;color:rgba(250,248,243,.5);font-size:14px;background:none;border:none;cursor:pointer}
+
+@media(max-width:1060px){
+  .hero-in{grid-template-columns:1fr;gap:48px}
+  .hero-right{display:none}
+  .tools-mag{grid-template-columns:1fr}
+  .tool-card.big,.tool-card.med,.tool-card.sm{grid-column:span 1}
+  .scen-grid{grid-template-columns:1fr 1fr}
+  .pgrid{grid-template-columns:1fr 1fr}
+  .case-grid{grid-template-columns:1fr}
+  .trust-grid{grid-template-columns:1fr 1fr}
+  .foot-top{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .nlinks{display:none}
+  .sec{padding:72px 20px}
+  .hero{padding:48px 20px 64px}
+  .scen-grid,.pgrid,.trust-grid,.foot-top{grid-template-columns:1fr}
+  .ps-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- MOCKUP BANNER -->
+<div class="mockup-banner">
+  <span>MOCKUP v2 ·</span> Presubly Yeniden Tasarım Önerisi · Fraunces serif + Inter · Cream/Teal/Amber palet
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-in">
+    <a class="logo" href="#">
+      <div class="lmark"><div class="lb lb1"></div><div class="lb lb2"></div><div class="lb lb3"></div></div>
+      <div class="lword">Pre<span class="acc">sub</span>ly</div>
+    </a>
+    <div class="nlinks">
+      <a class="nl" href="#problem">Neden?</a>
+      <a class="nl" href="#tools">Araçlar</a>
+      <a class="nl" href="#scenarios">Senaryolar</a>
+      <a class="nl" href="#pricing">Fiyatlar</a>
+      <a class="nl" href="#trust">Güvenlik</a>
+    </div>
+    <div class="nright">
+      <button class="nbg">Giriş Yap</button>
+      <button class="nbp">Ücretsiz başla →</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-in">
+    <div>
+      <div class="hero-ey">AI Pre-Submission Review · 2026</div>
+      <h1 class="hero-h">Makaleniz redden önceki <em>son durakta.</em> <strong>Büyük dergi,</strong> <span class="hl">küçük değişiklik.</span></h1>
+      <p class="hero-p">Presubly, çalışmanızı gerçek hakem mantığıyla simüle eder. Sonuç: <strong>%47 daha az red, 4 ay erken kabul.</strong></p>
+      <div class="hero-cta">
+        <button class="btn-p">İlk değerlendirme ücretsiz →</button>
+        <button class="btn-s">▶ Demo izle (3 dk)</button>
+      </div>
+      <div class="hero-trust">
+        <span>3 analiz ücretsiz</span>
+        <span>Kredi kartı gerekmez</span>
+        <span>30 günde silinir</span>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-card-bg"></div>
+      <div class="hero-card">
+        <div class="hc-top">
+          <div class="hc-meta">RAPOR · <strong>PSB-0142</strong> · 24s</div>
+          <div class="hc-score"><span class="n">87</span><span class="d">/100</span></div>
+        </div>
+        <div class="hc-title">AI-destekli tanı: Diyabetik hastalarda klinik validasyon</div>
+        <div class="hc-items">
+          <div class="hc-row"><span class="hc-row-lbl">Metodoloji</span><div class="hc-row-bar"><div class="hc-row-fill" style="width:88%;background:var(--ok)"></div></div><span class="hc-row-val" style="color:var(--ok)">8.8</span></div>
+          <div class="hc-row"><span class="hc-row-lbl">Özgünlük</span><div class="hc-row-bar"><div class="hc-row-fill" style="width:91%;background:var(--ok)"></div></div><span class="hc-row-val" style="color:var(--ok)">9.1</span></div>
+          <div class="hc-row"><span class="hc-row-lbl">Literatür</span><div class="hc-row-bar"><div class="hc-row-fill" style="width:79%;background:var(--a)"></div></div><span class="hc-row-val" style="color:var(--a)">7.9</span></div>
+          <div class="hc-row"><span class="hc-row-lbl">Sunum</span><div class="hc-row-bar"><div class="hc-row-fill" style="width:74%;background:var(--a)"></div></div><span class="hc-row-val" style="color:var(--a)">7.4</span></div>
+        </div>
+        <div class="hc-cmt ok">
+          <div class="hc-cmt-tag">✓ KABUL</div>
+          Minor revizyondan sonra yayına uygun · 3 gerekli düzeltme
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section class="proof">
+  <div class="proof-in">
+    <div class="proof-lbl">Türkiye'nin önde gelen 30+ üniversitesinde aktif</div>
+    <div class="proof-logos">
+      <span class="proof-logo">ODTÜ</span>
+      <span class="proof-logo">Boğaziçi</span>
+      <span class="proof-logo" style="font-style:italic">İTÜ</span>
+      <span class="proof-logo">Hacettepe</span>
+      <span class="proof-logo">Sabancı</span>
+      <span class="proof-logo" style="font-style:italic">Koç</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM / SOLUTION -->
+<section class="sec" id="problem">
+  <div class="sec-in">
+    <div class="sec-head">
+      <div class="sec-ey">Problem</div>
+      <h2 class="sec-h">Bilim insanları neden <em>yıllarca beklemek</em> zorunda?</h2>
+      <p class="sec-sub">Bir makale ortalama 2.3 dergiye gönderilir, 7 ay hakem süreci yaşar, %62 oranında reddedilir. Bunların çoğu önlenebilir hatalardan.</p>
+    </div>
+    <div class="ps-grid">
+      <div class="ps-col">
+        <div class="ps-col-h bad">Şu an böyle</div>
+        <div class="ps-item bad">
+          <div class="ps-item-ic">⏱</div>
+          <div>
+            <div class="ps-item-h">Uzun hakem döngüleri</div>
+            <div class="ps-item-d">Ortalama 7 ay hakem süreci. Red durumunda baştan başlama. Birikmiş motivasyon kaybı.</div>
+          </div>
+        </div>
+        <div class="ps-item bad">
+          <div class="ps-item-ic">↻</div>
+          <div>
+            <div class="ps-item-h">Tekrarlanan redler</div>
+            <div class="ps-item-d">Aynı metodolojik eksik, farklı dergilerde tekrar tekrar reddedilir. Kimse "neden" demez.</div>
+          </div>
+        </div>
+        <div class="ps-item bad">
+          <div class="ps-item-ic">✕</div>
+          <div>
+            <div class="ps-item-h">Standart uyumsuzluk</div>
+            <div class="ps-item-d">CONSORT, STROBE, PRISMA — 25+ maddelik kontrol listeleri çoğu zaman atlanır. Editör ön elemede yakalar.</div>
+          </div>
+        </div>
+      </div>
+      <div class="ps-col">
+        <div class="ps-col-h good">Presubly ile</div>
+        <div class="ps-item good">
+          <div class="ps-item-ic">⚡</div>
+          <div>
+            <div class="ps-item-h">Saniyeler içinde hakem</div>
+            <div class="ps-item-d">7 kriter, 100 puanlık ölçek, Major/Minor/Öneri etiketleri. Gerçek bir hakem ne diyecekse, önce siz öğrenin.</div>
+          </div>
+        </div>
+        <div class="ps-item good">
+          <div class="ps-item-ic">🎯</div>
+          <div>
+            <div class="ps-item-h">Hedefli düzeltme</div>
+            <div class="ps-item-d">Her sorun için somut çözüm: hangi sayfa, hangi paragraf, ne eklenmeli. Tahminden ibaret değil.</div>
+          </div>
+        </div>
+        <div class="ps-item good">
+          <div class="ps-item-ic">✓</div>
+          <div>
+            <div class="ps-item-h">Otomatik standart kontrolü</div>
+            <div class="ps-item-d">CONSORT, STROBE, PRISMA, COREQ, ARRIVE — çalışma türünüze göre otomatik seçim ve maddeleme.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS - Magazine layout -->
+<section class="sec sec-alt" id="tools">
+  <div class="sec-in">
+    <div class="sec-head">
+      <div class="sec-ey">Platform</div>
+      <h2 class="sec-h">Dört araç. <em>Tek bir hedef:</em> ilk seferde kabul.</h2>
+      <p class="sec-sub">Her araç birbiriyle entegre. Sırayla kullanın ya da ihtiyacınız olana atlayın.</p>
+    </div>
+    <div class="tools-mag">
+      <div class="tool-card big">
+        <div class="tool-num">TOOL 01 · Hakem</div>
+        <h3 class="tool-h">Gerçek bir hakem gibi inceler, somut düzeltme önerir.</h3>
+        <p class="tool-p">7 akademik kriter üzerinden 100 puanlık değerlendirme. Major/Minor/Öneri etiketleriyle önceliklendirilmiş sorunlar. Hangi sayfa, hangi paragraf, ne eklenmeli — net.</p>
+        <div class="tool-tags"><span class="tool-tag">COPE</span><span class="tool-tag">ICMJE</span><span class="tool-tag">13 Disiplin</span><span class="tool-tag">100 Puan</span></div>
+        <span class="tool-cta">Aracı keşfet →</span>
+      </div>
+      <div class="tool-card med">
+        <div class="tool-num">TOOL 02 · Editör</div>
+        <h3 class="tool-h">Editör kararını <em>önceden gör.</em></h3>
+        <p class="tool-p">Derginin editörü makalenizi nasıl değerlendirir? Kapsam uyumu, etik analizi, hakemlere gönderim kararı + yazar bildirim mektubu.</p>
+        <div class="tool-tags"><span class="tool-tag">COPE Editöryal</span><span class="tool-tag">Kapsam Analizi</span></div>
+        <span class="tool-cta">Aracı keşfet →</span>
+      </div>
+      <div class="tool-card sm">
+        <div class="tool-num">TOOL 03 · Yanıt</div>
+        <h3 class="tool-h">Hakem yorumlarına güvenle yanıt verin.</h3>
+        <p class="tool-p">Her yoruma ICMJE formatında profesyonel yanıt. 3 strateji: kabul, kanıtla itiraz, kısmi kabul.</p>
+        <span class="tool-cta">Aracı keşfet →</span>
+      </div>
+      <div class="tool-card sm">
+        <div class="tool-num">TOOL 04 · Checklist</div>
+        <h3 class="tool-h">Göndermeden önce son kontrol.</h3>
+        <p class="tool-p">CONSORT, STROBE, PRISMA standartlarına göre madde madde kontrol. "Gönder/Düzelt" net karar.</p>
+        <span class="tool-cta">Aracı keşfet →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STANDARDS TIMELINE -->
+<section class="sec sec-dark" id="standards">
+  <div class="sec-in">
+    <div class="sec-head">
+      <div class="sec-ey">Standartlar</div>
+      <h2 class="sec-h">30 yıldır akademik dünyanın <em>kontrol listesi.</em></h2>
+      <p class="sec-sub">Her standart, akademik bir krize yanıt olarak doğdu. Presubly hepsini makine-okunabilir formata dönüştürdü.</p>
+    </div>
+    <div class="tl">
+      <div class="tl-item">
+        <div class="tl-year">1996</div>
+        <h3 class="tl-h" style="color:var(--cream)">CONSORT — Randomize Kontrollü Çalışmalar</h3>
+        <p class="tl-d" style="color:rgba(250,248,243,.55)">25 maddelik kontrol listesi. RCT raporlamasında tutarlılık. Bugün her tıp dergisi zorunlu tutuyor.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2007</div>
+        <h3 class="tl-h" style="color:var(--cream)">STROBE — Gözlemsel Çalışmalar</h3>
+        <p class="tl-d" style="color:rgba(250,248,243,.55)">Kohort, vaka-kontrol, kesitsel — epidemiyolojinin omurgası. Presubly otomatik tespit eder, ilgili maddeleri uygular.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2009</div>
+        <h3 class="tl-h" style="color:var(--cream)">PRISMA — Sistematik Derleme & Meta-Analiz</h3>
+        <p class="tl-d" style="color:rgba(250,248,243,.55)">27 madde + akış diyagramı. Sistematik derlemelerde altın standart. Tool 04 her maddeyi tek tek kontrol eder.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2010 +</div>
+        <h3 class="tl-h" style="color:var(--cream)">COREQ, ARRIVE, COPE, ICMJE...</h3>
+        <p class="tl-d" style="color:rgba(250,248,243,.55)">Nitel araştırma, hayvan çalışmaları, etik, dergi editörlüğü — her alanın kendi rehberi. Hepsi platforma entegre.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCENARIOS -->
+<section class="sec" id="scenarios">
+  <div class="sec-in">
+    <div class="sec-head center">
+      <div class="sec-ey">Senaryolar</div>
+      <h2 class="sec-h">Sizin <em>durumunuza</em> uygun bir başlangıç.</h2>
+      <p class="sec-sub">Dört farklı akademik profil, dört farklı kullanım modu. Hangisi sizinki?</p>
+    </div>
+    <div class="scen-grid">
+      <div class="scen">
+        <div class="scen-ic">A</div>
+        <h3 class="scen-h">İlk makalemi yazıyorum</h3>
+        <p class="scen-d">Lisansüstü öğrencisi, ilk gönderim. Hangi standart, ne format, nasıl yanıt verilir? Tool 01 + Tool 04 ideal başlangıç.</p>
+        <span class="scen-tag">Lisansüstü</span>
+      </div>
+      <div class="scen">
+        <div class="scen-ic">B</div>
+        <h3 class="scen-h">Sık red alıyorum</h3>
+        <p class="scen-d">Erken kariyer araştırmacı. Aynı hatalar tekrarlanıyor. Tool 01 ile sistematik analiz, Tool 02 ile editör perspektifi.</p>
+        <span class="scen-tag">Erken kariyer</span>
+      </div>
+      <div class="scen">
+        <div class="scen-ic">C</div>
+        <h3 class="scen-h">Editör olarak ön eleme</h3>
+        <p class="scen-d">Dergi editörü. Gelen makaleleri 5 dakikada kapsam dışı olarak işaretleme. Tool 02 + COPE etiği kontrolü.</p>
+        <span class="scen-tag">Editör</span>
+      </div>
+      <div class="scen">
+        <div class="scen-ic">D</div>
+        <h3 class="scen-h">Kurum genelinde kalite</h3>
+        <p class="scen-d">Üniversite / araştırma merkezi. Tüm akademisyenler için standart kontrol. Kurumsal plan + API erişimi.</p>
+        <span class="scen-tag">Kurumsal</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING WITH CALCULATOR -->
+<section class="sec sec-alt" id="pricing">
+  <div class="sec-in">
+    <div class="sec-head center">
+      <div class="sec-ey">Fiyatlandırma</div>
+      <h2 class="sec-h">Önce <em>hesaplayın,</em> sonra başlayın.</h2>
+      <p class="sec-sub">Yıllık makale sayınızı kaydırın, size uygun planı önerelim.</p>
+    </div>
+
+    <!-- Calculator -->
+    <div class="calc">
+      <div class="calc-h">Yıllık kaç makale üzerinde çalışıyorsunuz?</div>
+      <div class="calc-slider">
+        <div class="calc-row">
+          <span class="calc-lbl">Makale Sayısı</span>
+          <span class="calc-val" id="calcN">5 <span>makale/yıl</span></span>
+        </div>
+        <input type="range" min="1" max="50" value="5" class="range" id="calcRange" oninput="updateCalc(this.value)"/>
+      </div>
+      <div class="calc-rec">
+        <div>
+          <div class="calc-rec-lbl">Önerilen Plan</div>
+          <div class="calc-rec-plan" id="calcPlan">Akademik</div>
+        </div>
+        <div>
+          <div class="calc-rec-lbl" style="text-align:right">Yıllık Tutar</div>
+          <div class="calc-rec-price" id="calcPrice">$150</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pgrid">
+      <div class="plan">
+        <div class="plan-n">Ücretsiz</div>
+        <div class="plan-pr"><div class="plan-pv">$0</div></div>
+        <div class="plan-note">Sonsuza kadar</div>
+        <div class="plan-fs">
+          <div class="plan-f">Ayda 3 analiz</div>
+          <div class="plan-f">Tool 01 temel</div>
+          <div class="plan-f">3 disiplin</div>
+        </div>
+        <button class="plan-btn">Ücretsiz başla</button>
+      </div>
+      <div class="plan pop">
+        <span class="plan-pop">EN POPÜLER</span>
+        <div class="plan-n">Akademik</div>
+        <div class="plan-pr"><div class="plan-pv">$15</div><span class="plan-pp">/ay</span></div>
+        <div class="plan-note">veya $150/yıl — 2 ay ücretsiz</div>
+        <div class="plan-fs">
+          <div class="plan-f">Sınırsız analiz</div>
+          <div class="plan-f">4 araç tam erişim</div>
+          <div class="plan-f">13 akademik disiplin</div>
+          <div class="plan-f">Tüm raporlama standartları</div>
+        </div>
+        <button class="plan-btn main">Başla →</button>
+      </div>
+      <div class="plan">
+        <div class="plan-n">Pro</div>
+        <div class="plan-pr"><div class="plan-pv">$35</div><span class="plan-pp">/ay</span></div>
+        <div class="plan-note">veya $350/yıl</div>
+        <div class="plan-fs">
+          <div class="plan-f">Akademik + tümü</div>
+          <div class="plan-f">Dergi hedefleme</div>
+          <div class="plan-f">Kabul olasılığı tahmini</div>
+          <div class="plan-f">Analiz geçmişi + arşiv</div>
+        </div>
+        <button class="plan-btn">Başla</button>
+      </div>
+      <div class="plan" style="border-color:var(--a2)">
+        <div class="plan-n" style="color:var(--a)">Kurumsal</div>
+        <div class="plan-pr"><div class="plan-pv" style="font-size:24px;color:var(--a)">Teklif</div></div>
+        <div class="plan-note">Üniversite / Merkez</div>
+        <div class="plan-fs">
+          <div class="plan-f">Kurum geneli erişim</div>
+          <div class="plan-f">API erişimi</div>
+          <div class="plan-f">SLA + öncelikli destek</div>
+        </div>
+        <button class="plan-btn" style="background:var(--a);color:var(--ink)">Teklif al</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section class="sec">
+  <div class="sec-in">
+    <div class="sec-head center">
+      <div class="sec-ey">Vaka Çalışmaları</div>
+      <h2 class="sec-h">Red almadan önce <em>hazırlandılar.</em> Sonuçlar konuşuyor.</h2>
+    </div>
+    <div class="case-grid">
+      <div class="case">
+        <span class="case-tag">VAKA #01 — TIP</span>
+        <p class="case-q">Metodoloji bölümümde CONSORT'a aykırı iki kritik eksik vardı. Presubly bunları gönderim öncesinde buldu. Aylar kaybedebilirdim.</p>
+        <div class="case-metrics">
+          <div><div class="case-metric-n">4 ay</div><div class="case-metric-l">Kazanılan zaman</div></div>
+          <div><div class="case-metric-n">İlk</div><div class="case-metric-l">Denemede kabul</div></div>
+        </div>
+        <div class="case-auth">
+          <div class="case-av">AK</div>
+          <div><div class="case-auth-n">Dr. Ayşe Kılıç</div><div class="case-auth-r">Araş. Gör. · Tıp Fakültesi</div></div>
+        </div>
+      </div>
+      <div class="case">
+        <span class="case-tag">VAKA #02 — MÜHENDİSLİK</span>
+        <p class="case-q">Yanıt Asistanı inanılmaz. Üç hakemin yorumlarına ayrı ayrı yanıt üretildi. "Kanıtla destekli itiraz" stratejisiyle revizyon kabul edildi.</p>
+        <div class="case-metrics">
+          <div><div class="case-metric-n">3 → 0</div><div class="case-metric-l">Red sayısı</div></div>
+          <div><div class="case-metric-n">8h → 30m</div><div class="case-metric-l">Yanıt süresi</div></div>
+        </div>
+        <div class="case-auth">
+          <div class="case-av">MY</div>
+          <div><div class="case-auth-n">Mehmet Yılmaz</div><div class="case-auth-r">Doktora · Fen Bilimleri</div></div>
+        </div>
+      </div>
+      <div class="case">
+        <span class="case-tag">VAKA #03 — EDİTÖR</span>
+        <p class="case-q">Editöryal Değerlendirme aracını ön eleme için kullanıyorum. Kapsam dışı makaleleri 5 dakikada tespit ediyorum. Hakem süreci verimliliği arttı.</p>
+        <div class="case-metrics">
+          <div><div class="case-metric-n">%62</div><div class="case-metric-l">Hızlı eleme oranı</div></div>
+          <div><div class="case-metric-n">5 dk</div><div class="case-metric-l">Editör süresi</div></div>
+        </div>
+        <div class="case-auth">
+          <div class="case-av">SÇ</div>
+          <div><div class="case-auth-n">Dr. Selin Çelik</div><div class="case-auth-r">Editör · Müh. Bilimleri Dergisi</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST CENTER -->
+<section class="sec sec-dark" id="trust">
+  <div class="sec-in">
+    <div class="sec-head center">
+      <div class="sec-ey">Güvenlik & Şeffaflık</div>
+      <h2 class="sec-h">Akademik içerik <em>özeldir.</em> Biz de öyle davranırız.</h2>
+      <p class="sec-sub">Makale verileriniz, AI modelimiz, gizlilik politikamız — hepsi şeffaf ve belgelenmiş.</p>
+    </div>
+    <div class="trust-grid">
+      <div class="trust">
+        <div class="trust-ic">🔒</div>
+        <div class="trust-h">30 günde silinir</div>
+        <div class="trust-d">Makale içeriği 30 gün içinde otomatik silinir. Hiçbir model eğitiminde kullanılmaz.</div>
+      </div>
+      <div class="trust">
+        <div class="trust-ic">🛡</div>
+        <div class="trust-h">KVKK / GDPR</div>
+        <div class="trust-d">Türkiye KVKK ve Avrupa GDPR ile tam uyumlu. Veri işleme bilgileri açık paylaşılır.</div>
+      </div>
+      <div class="trust">
+        <div class="trust-ic">🤖</div>
+        <div class="trust-h">Anthropic DPA</div>
+        <div class="trust-d">Claude Sonnet altyapısı. Anthropic'in veri işleme anlaşması (DPA) altında. Eğitim için kullanılmaz.</div>
+      </div>
+      <div class="trust">
+        <div class="trust-ic">📋</div>
+        <div class="trust-h">Şeffaf raporlama</div>
+        <div class="trust-d">Her değerlendirme gerekçeli. Hangi standart, hangi madde, hangi kaynak — net belgelenir.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta">
+  <div class="cta-in">
+    <div class="cta-ey">Şimdi başlayın</div>
+    <h2 class="cta-h">Makalenizi <em>red almadan</em> değerlendirin.</h2>
+    <p class="cta-p">İlk 3 analiz tamamen ücretsiz. Kredi kartı gerekmez. Veri 30 günde otomatik silinir.</p>
+    <div class="cta-btns">
+      <button class="cta-btn-p">Ücretsiz değerlendir →</button>
+      <button class="cta-btn-s">Demo izle (3 dk)</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="foot-in">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand">Pre<span class="acc">subly</span></div>
+        <div class="foot-desc">AI Pre-Submission Review Platform. Türk akademisyenler için, uluslararası standartlarda ön değerlendirme.</div>
+        <div class="foot-eco"><span class="foot-eco-b">EthicsKit</span><span class="foot-eco-b">MisanpAIge</span><span class="foot-eco-b">JournalKit</span><span class="foot-eco-b">CVita</span></div>
+      </div>
+      <div>
+        <div class="foot-ct">Platform</div>
+        <div class="foot-cl"><a href="#">Araçlar</a><a href="#">Standartlar</a><a href="#">Fiyatlar</a><a href="#">API</a></div>
+      </div>
+      <div>
+        <div class="foot-ct">Kaynaklar</div>
+        <div class="foot-cl"><a href="#">Başlangıç</a><a href="#">Blog</a><a href="#">Vakalar</a><a href="#">Destek</a></div>
+      </div>
+      <div>
+        <div class="foot-ct">Şirket</div>
+        <div class="foot-cl"><a href="#">Hakkımızda</a><a href="#">İletişim</a><a href="#">Kariyer</a></div>
+      </div>
+      <div>
+        <div class="foot-ct">Yasal</div>
+        <div class="foot-cl"><a href="#">KVKK</a><a href="#">GDPR</a><a href="#">Şartlar</a><a href="#">Çerez</a></div>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <div>© 2026 Presubly · Tenopark Akademik Yazılım Ekosistemi</div>
+      <div>v2.0 · Tasarım: Fraunces + Inter · Mockup tarihi: 14 May 2026</div>
+    </div>
+  </div>
+</footer>
+
+<!-- DESIGN ANNOTATION -->
+<div class="note" id="designNote">
+  <button onclick="document.getElementById('designNote').style.display='none'">×</button>
+  <div class="note-h">Tasarım Notu</div>
+  <p>Bu bir mockup. Yeni font seçimi (Fraunces serif), cream/teal palet, magazine layout, calculator + senaryolar yeni eklemeler.</p>
+</div>
+
+<script>
+function updateCalc(v){
+  const n=parseInt(v);
+  document.getElementById('calcN').innerHTML=n+' <span>makale/yıl</span>';
+  let plan='Ücretsiz', price='$0';
+  if(n>=2&&n<8){plan='Akademik';price='$150';}
+  else if(n>=8&&n<20){plan='Pro';price='$350';}
+  else if(n>=20){plan='Kurumsal';price='Teklif';}
+  document.getElementById('calcPlan').textContent=plan;
+  document.getElementById('calcPrice').textContent=price;
+}
+</script>
+</body>
+</html>

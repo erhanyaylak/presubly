@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/astro/Nav.astro';
+import Hero from '../../components/astro/Hero.astro';
+import StatsBand from '../../components/astro/StatsBand.astro';
+import HowItWorks from '../../components/astro/HowItWorks.astro';
+import Standards from '../../components/astro/Standards.astro';
+import Pricing from '../../components/astro/Pricing.astro';
+import Testimonials from '../../components/astro/Testimonials.astro';
+import CTA from '../../components/astro/CTA.astro';
+import Footer from '../../components/astro/Footer.astro';
+import ScrollReveal from '../../components/islands/ScrollReveal';
+import AuthModal from '../../components/islands/AuthModal';
+import ToolApp from '../../components/islands/ToolApp';
+import '../../styles/components.css';
+
+const locale = 'tr' as const;
+---
+
+<BaseLayout
+  title="Presubly — AI Pre-Submission Review Platform"
+  description="Makalenizi dergiye göndermeden önce yapay zeka ile değerlendirin. Bilimsel hakem incelemesi, editöryal değerlendirme, yanıt asistanı ve submission checklist."
+  locale={locale}
+>
+  <Nav locale={locale} />
+  <Hero locale={locale} />
+  <StatsBand locale={locale} />
+  <HowItWorks locale={locale} />
+  <Standards locale={locale} />
+  <Pricing locale={locale} />
+  <Testimonials locale={locale} />
+  <CTA locale={locale} />
+  <Footer locale={locale} />
+
+  <!-- Islands -->
+  <ScrollReveal client:load />
+  <AuthModal lang={locale} client:idle />
+  <ToolApp lang={locale} client:only="preact" />
+</BaseLayout>

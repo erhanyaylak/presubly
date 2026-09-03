@@ -1,0 +1,23 @@
+name = "presubly"
+compatibility_date = "2024-11-01"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = "dist"
+
+# Data + auth live in Supabase (Postgres). No D1 binding.
+# Public values (safe to commit — anon key ships in the browser anyway):
+[vars]
+SUPABASE_URL = "https://ufdtfspvlapazaszbgpr.supabase.co"
+SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmZHRmc3B2bGFwYXphc3piZ3ByIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYyNDU2NTYsImV4cCI6MjA5MTgyMTY1Nn0.w7Je5mnGv90db46XdRd8QCRe5HHAbH4Oy7l1dpglBLA"
+# Tüm AI çağrıları Claude Sonnet ile yapılır (sabit).
+AI_MODEL = "claude-sonnet-5"
+# Ücretsiz Workers AI (Llama) yedeği KAPALI — açmak için "1" yap.
+WORKERS_AI_FALLBACK = "0"
+
+# Cloudflare Workers AI binding (yalnızca WORKERS_AI_FALLBACK=1 iken kullanılır).
+[ai]
+binding = "AI"
+
+# Secrets — set via `wrangler pages secret put` (prod) or .dev.vars (local):
+#   SUPABASE_SERVICE_ROLE_KEY   service_role key (billing; bypasses RLS) — SECRET
+#   ANTHROPIC_API_KEY           sk-ant-...                                — SECRET
+#   AI_MODEL                    (optional) default "claude-sonnet-5"

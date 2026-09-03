@@ -1,0 +1,133 @@
+══════════════════════════════════════════════════════
+  PRESUBLY — BILIMSEL HAKEM INCELEMESI RAPORU
+══════════════════════════════════════════════════════
+
+Rapor No    : PSB-2025-0142
+Tarih       : 2025-03-15
+Disiplin    : Biyomedikal
+Makale      : "Diyabetik Hastalarda Yapay Zeka Destekli Tani:
+               Klinik Validasyon Calismasi"
+
+══════════════════════════════════════════════════════
+  TOPLAM PUAN: 78/100
+  KARAR: Minor Revizyondan Sonra Kabul
+══════════════════════════════════════════════════════
+
+KRITER BAZLI DEGERLENDIRME
+──────────────────────────────────────────────────────
+
+1. OZGUNLUK                                    13/15
+   ✓ Arastirma sorusu literaturde belirgin bir bosluğu
+     hedefliyor.
+   ✓ AI destekli tani yaklasimi mevcut calismalardan
+     metodolojik olarak ayrisiyor.
+   ⚠ [Minor] Benzer calismalarla fark yeterince
+     vurgulanmamis (Discussion, paragraf 2).
+
+2. METODOLOJI                                  14/20
+   ✓ Arastirma tasarimi saglam; RKC kriterleri
+     karsilanmis.
+   ✗ [Major] Istatistiksel guc analizi raporda yok.
+     Hangi guc hedefiyle orneklem buyuklugu belirlendi?
+     Revizyon olmadan kabul mumkun degil.
+   ⚠ [Minor] Kor randomizasyon yetersiz tanimlanmis.
+     Allocation concealment yontemi Methods'ta
+     belirtilmeli (CONSORT Madde 9).
+   ⚠ [Minor] AI model egitim/test veri seti orani
+     belirtilmemis.
+
+3. LITERATUR TARAMASI                          11/15
+   ✓ Genel literatur kapsami yeterli.
+   ⚠ [Minor] 2022-2024 arasi guncel referanslar
+     yetersiz — son 2 yilin calismalarindan en az
+     5-7 ek referans eklenmeli.
+   ℹ [Oneri] Smith et al. (2024) ve Chen et al. (2023)
+     calismalarinin eklenmesi oneriliyor.
+
+4. SUNUM VE ACIКLIK                            12/15
+   ✓ Makale genel yapisi mantikli ve akici.
+   ⚠ [Minor] Tablo 3'te istatistiksel anlamlilik
+     degerleri (p-value) eksik.
+   ℹ [Oneri] Tablo 3'te odds ratio ve %95 guven
+     araligi eklenmesi bulgulari guclendirir.
+
+5. ETIK VE UYUMLULUK                            9/10
+   ✓ Etik kurul onayi mevcut (Ref: 2024/ETK-142).
+   ✓ Hasta onam sureci tanimlanmis.
+   ℹ [Oneri] COPE yazar katkisi beyaninin detayli
+     formatta eklenmesi oneriliyor.
+
+6. SONUCLAR VE TARTISMA                        11/15
+   ✓ Sonuclar hipotezle tutarli.
+   ⚠ [Minor] Calismanin sinirliliklar bolumu yetersiz.
+     AI modelinin limitasyonlari tartisiliyor ancak
+     klinik uygulama sinirlamalari eksik.
+   ✗ [Major] Effect size hesaplanmamis. Cohen's d
+     veya benzeri etki buyuklugu olcusu eklenmeli.
+
+7. ISTATISTIKSEL ANALIZ                         8/10
+   ✓ Kullanilan istatistiksel testler uygun.
+   ⚠ [Minor] Coklu karsilastirma duzeltmesi
+     (Bonferroni veya FDR) uygulanmis mi belirtilmemis.
+
+══════════════════════════════════════════════════════
+  MAJOR SORUNLAR (Revizyon Oncesi Cozulmeli)
+──────────────────────────────────────────────────────
+
+[MAJOR-1] Istatistiksel guc analizi raporda yok.
+  → Konum: Methods, Istatistiksel Analiz bolumu
+  → Aksiyon: Post-hoc veya a priori guc analizi
+    eklenmeli. G*Power veya benzeri arac kullanilabilir.
+
+[MAJOR-2] Effect size hesaplanmamis.
+  → Konum: Results, Tablo 4
+  → Aksiyon: Cohen's d, odds ratio veya risk ratio
+    hesaplanip raporlanmali.
+
+[MAJOR-3] Randomizasyon proseduru yetersiz tanimlanmis.
+  → Konum: Methods, paragraf 3
+  → Aksiyon: CONSORT Madde 8-10 gereksinimlerine gore
+    randomizasyon, allocation concealment ve blinding
+    detayli tanimlanmali.
+
+══════════════════════════════════════════════════════
+  MINOR SORUNLAR
+──────────────────────────────────────────────────────
+
+[MINOR-1] 2022-2024 referanslari yetersiz.
+[MINOR-2] Benzer calismalarla fark yeterince vurgulanmamis.
+[MINOR-3] AI model egitim/test orani belirtilmemis.
+[MINOR-4] Tablo 3'te p-value eksik.
+[MINOR-5] Sinirliliklar bolumu yetersiz.
+[MINOR-6] Coklu karsilastirma duzeltmesi belirtilmemis.
+
+══════════════════════════════════════════════════════
+  ONERILER
+──────────────────────────────────────────────────────
+
+[ONERI-1] Tablo 3'te odds ratio ve %95 GA eklenmesi.
+[ONERI-2] Smith et al. (2024) ve Chen et al. (2023)
+          referanslarinin eklenmesi.
+[ONERI-3] COPE yazar katkisi beyaninin detayli formatta
+          eklenmesi.
+
+══════════════════════════════════════════════════════
+  OZET
+──────────────────────────────────────────────────────
+
+Makale, diyabetik hastalarda AI destekli tani
+konusunda onemli bir katkida bulunmaktadir. Arastirma
+tasarimi genel olarak saglam ancak metodoloji
+bolumunde kritik eksikler mevcuttur. 3 major sorun
+(guc analizi, effect size, randomizasyon detayi) ve
+6 minor sorun tespit edilmistir. Major sorunlarin
+giderilmesi durumunda makale yayina uygun
+bulunacaktir.
+
+Karar: MINOR REVIZYONDAN SONRA KABUL
+
+══════════════════════════════════════════════════════
+  Bu rapor Presubly AI tarafindan olusturulmustur.
+  Makale verisi 30 gun icerisinde otomatik silinir.
+  © 2025 Presubly · Tenopark Akademik Yazilim Ekosistemi
+══════════════════════════════════════════════════════

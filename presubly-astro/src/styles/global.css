@@ -1,0 +1,28 @@
+@import './tokens.css';
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0 }
+html { scroll-behavior: smooth }
+body { background: var(--sg); color: var(--ink); font-family: var(--fb); line-height: 1.65; overflow-x: hidden; -webkit-font-smoothing: antialiased }
+a { text-decoration: none; color: inherit }
+button { font-family: var(--fb); cursor: pointer; border: none; background: none }
+::-webkit-scrollbar { width: 5px }
+::-webkit-scrollbar-thumb { background: var(--ln2); border-radius: 3px }
+
+/* Animations */
+@keyframes fUp { from { opacity: 0; transform: translateY(24px) } to { opacity: 1; transform: translateY(0) } }
+@keyframes fLeft { from { opacity: 0; transform: translateX(-24px) } to { opacity: 1; transform: translateX(0) } }
+@keyframes fRight { from { opacity: 0; transform: translateX(24px) } to { opacity: 1; transform: translateX(0) } }
+@keyframes floatY { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-10px) } }
+@keyframes blink { 0%, 49% { opacity: 1 } 50%, 100% { opacity: 0 } }
+@keyframes pulse { 0%, 100% { opacity: .8 } 50% { opacity: .3 } }
+@keyframes meshDrift { 0% { transform: scale(1) translate(0, 0) } 50% { transform: scale(1.08) translate(-2%, 1.5%) } 100% { transform: scale(1) translate(0, 0) } }
+@keyframes dotFloat { 0% { transform: translate(0, 0) scale(1) } 50% { transform: translate(12px, -18px) scale(1.2) } 100% { transform: translate(0, 0) scale(1) } }
+@keyframes panelIn { from { opacity: 0; transform: translateY(12px) } to { opacity: 1; transform: translateY(0) } }
+
+/* Reveal */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.22, 1, .36, 1), transform .7s cubic-bezier(.22, 1, .36, 1) }
+.reveal.in { opacity: 1; transform: translateY(0) }
+.reveal-l { opacity: 0; transform: translateX(-28px); transition: opacity .7s cubic-bezier(.22, 1, .36, 1), transform .7s cubic-bezier(.22, 1, .36, 1) }
+.reveal-l.in { opacity: 1; transform: translateX(0) }
+.reveal-s { opacity: 0; transform: scale(.92); transition: opacity .6s cubic-bezier(.22, 1, .36, 1), transform .6s cubic-bezier(.22, 1, .36, 1) }
+.reveal-s.in { opacity: 1; transform: scale(1) }

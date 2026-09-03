@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Presubly — Brand Story</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --t:#0A3D3D;--t3:#115E5E;--t4:#1A7272;--t5:#2A8F8F;
+  --tl:#EBF5F5;
+  --a:#E8970A;--a2:#F5AA1C;
+  --sg:#F4F7F5;--sg2:#E8F0EC;
+  --card:#FFFFFF;
+  --ln:#D0DDD6;--ln2:#BDD0C4;
+  --ink:#0A1A14;--k2:#1F2E24;--k3:#3A5248;--k4:#5E8272;--k5:#98B8AA;
+  --fd:'Playfair Display',Georgia,serif;
+  --fb:'DM Sans',system-ui,sans-serif;
+  --fm:'DM Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--sg);color:var(--ink);font-family:var(--fb);line-height:1.75;-webkit-font-smoothing:antialiased}
+
+.page{max-width:780px;margin:0 auto;padding:80px 40px 120px}
+.hdr{text-align:center;margin-bottom:72px}
+.hdr-ey{font-family:var(--fm);font-size:9px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--t4);margin-bottom:16px}
+.hdr-logo{font-family:var(--fd);font-size:48px;font-weight:700;letter-spacing:-.03em;margin-bottom:8px}
+.hdr-logo .acc{color:var(--a)}
+.hdr-sub{font-size:16px;color:var(--k4);font-weight:400}
+.hdr-rule{width:64px;height:2px;background:linear-gradient(90deg,var(--t),var(--a));margin:32px auto 0;border-radius:1px}
+
+.bs{margin-bottom:56px}
+.bs-ey{font-family:var(--fm);font-size:9px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--t4);margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.bs-ey::after{content:'';flex:1;height:1px;background:var(--ln)}
+.bs-h{font-family:var(--fd);font-size:28px;font-weight:700;line-height:1.15;letter-spacing:-.02em;margin-bottom:16px}
+.bs-h em{font-style:italic;color:var(--t3)}
+.bs-p{font-size:15px;color:var(--k3);line-height:1.85;margin-bottom:14px}
+.bs-p:last-child{margin-bottom:0}
+.bs-p strong{color:var(--ink);font-weight:600}
+
+.quote{background:var(--card);border-left:3px solid var(--a);padding:24px 28px;border-radius:0 12px 12px 0;margin:28px 0;box-shadow:0 2px 12px rgba(10,61,61,.06)}
+.quote p{font-family:var(--fd);font-size:18px;font-style:italic;color:var(--t);line-height:1.55}
+
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:32px 0}
+.stat{background:var(--card);border:1px solid var(--ln);border-radius:12px;padding:20px;text-align:center}
+.stat-n{font-family:var(--fd);font-size:32px;font-weight:700;color:var(--t);margin-bottom:4px}
+.stat-l{font-size:12px;color:var(--k4)}
+
+.bs-ul{list-style:none;padding:0;margin:16px 0}
+.bs-ul li{padding:8px 0 8px 24px;position:relative;font-size:14px;color:var(--k3);border-bottom:1px solid var(--ln)}
+.bs-ul li:last-child{border:none}
+.bs-ul li::before{content:'';position:absolute;left:0;top:16px;width:8px;height:8px;border-radius:50%;background:var(--tl);border:2px solid var(--t4)}
+
+.tools{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0}
+.tool{background:var(--card);border:1px solid var(--ln);border-radius:12px;padding:20px}
+.tool-num{font-family:var(--fm);font-size:9px;color:var(--t4);letter-spacing:.12em;margin-bottom:6px}
+.tool-name{font-family:var(--fd);font-size:17px;font-weight:700;margin-bottom:6px}
+.tool-desc{font-size:12px;color:var(--k4);line-height:1.65}
+
+.tl{margin:24px 0}
+.tl-item{display:grid;grid-template-columns:80px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--ln)}
+.tl-item:last-child{border:none}
+.tl-date{font-family:var(--fm);font-size:11px;color:var(--t4);font-weight:500;padding-top:3px}
+.tl-txt{font-size:14px;color:var(--k3)}
+.tl-txt strong{color:var(--ink)}
+
+.foot{text-align:center;padding-top:48px;border-top:1px solid var(--ln);margin-top:72px}
+.foot-logo{font-family:var(--fd);font-size:22px;font-weight:700;margin-bottom:8px}
+.foot-logo .acc{color:var(--a)}
+.foot-sub{font-size:12px;color:var(--k5)}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="hdr">
+  <div class="hdr-ey">Brand Story</div>
+  <div class="hdr-logo">Pre<span class="acc">sub</span>ly</div>
+  <div class="hdr-sub">AI Pre-Submission Review Platform</div>
+  <div class="hdr-rule"></div>
+</div>
+
+<!-- PROBLEM -->
+<div class="bs">
+  <div class="bs-ey">01 The Problem</div>
+  <div class="bs-h">Millions of manuscripts get <em>rejected</em> every year.</div>
+  <div class="bs-p">Turkey produces over 70,000 academic articles annually. Yet the rejection rate at international journals exceeds 60%. Most rejections stem not from a lack of scientific merit, but from methodological gaps, formatting errors, and non-compliance with reporting standards.</div>
+  <div class="bs-p">When a researcher submits a manuscript, they wait weeks or months for the outcome. When rejection arrives, the same preventable mistakes repeat at the next journal. This cycle erodes motivation and slows scientific progress.</div>
+
+  <div class="quote"><p>"My manuscript had two critical CONSORT violations. If the journal reviewer had flagged them first, I would have lost months."</p></div>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-n">70K+</div><div class="stat-l">Annual article output (Turkey)</div></div>
+    <div class="stat"><div class="stat-n">60%+</div><div class="stat-l">International journal rejection rate</div></div>
+    <div class="stat"><div class="stat-n">4+</div><div class="stat-l">Average submit-reject cycle (months)</div></div>
+  </div>
+</div>
+
+<!-- VISION -->
+<div class="bs">
+  <div class="bs-ey">02 Our Vision</div>
+  <div class="bs-h">Review before <em>rejection.</em></div>
+  <div class="bs-p">Presubly reverses the manuscript submission process. Before the paper reaches the journal, AI evaluates it like a real peer reviewer. The goal is simple: <strong>eliminate preventable rejections.</strong></div>
+  <div class="bs-p">We believe every researcher deserves a fair chance at evaluation. But fair evaluation starts with prepared submission. Presubly provides the technological foundation for that preparation.</div>
+</div>
+
+<!-- WHAT WE DO -->
+<div class="bs">
+  <div class="bs-ey">03 What We Do</div>
+  <div class="bs-h">Four tools, <em>full preparation.</em></div>
+  <div class="bs-p">Presubly offers four integrated tools covering every stage of the pre-submission process:</div>
+
+  <div class="tools">
+    <div class="tool">
+      <div class="tool-num">TOOL 01</div>
+      <div class="tool-name">Scientific Peer Review</div>
+      <div class="tool-desc">7 academic criteria, 100-point scale. Issues prioritized with Major/Minor/Suggestion labels and Accept/Reject prediction.</div>
+    </div>
+    <div class="tool">
+      <div class="tool-num">TOOL 02</div>
+      <div class="tool-name">Editorial Assessment</div>
+      <div class="tool-desc">Scope fit, methodology, originality, and ethics analysis from the editor's perspective. Decision notification letter draft.</div>
+    </div>
+    <div class="tool">
+      <div class="tool-num">TOOL 03</div>
+      <div class="tool-name">Response Assistant</div>
+      <div class="tool-desc">Upload reviewer and editor comments — standards-compliant responses generated for each. Accept, rebut, or partially accept strategies.</div>
+    </div>
+    <div class="tool">
+      <div class="tool-num">TOOL 04</div>
+      <div class="tool-name">Submission Checklist</div>
+      <div class="tool-desc">Automatic checks against CONSORT, STROBE, PRISMA and more. Color-coded results with clear "Submit now / Fix first" decision.</div>
+    </div>
+  </div>
+</div>
+
+<!-- STANDARDS -->
+<div class="bs">
+  <div class="bs-ey">04 Our Standards</div>
+  <div class="bs-h">Every assessment at <em>global standards.</em></div>
+  <div class="bs-p">Presubly converts international academic publishing standards into machine-readable format and automatically applies them in every analysis:</div>
+  <ul class="bs-ul">
+    <li><strong>COPE</strong> — Publication ethics, author contributions, data integrity, review process fairness</li>
+    <li><strong>ICMJE</strong> — Author eligibility, conflicts of interest, ethics for medicine and health sciences</li>
+    <li><strong>CONSORT</strong> — 25-item checklist for randomized controlled trials</li>
+    <li><strong>STROBE</strong> — Standard for observational epidemiological studies</li>
+    <li><strong>PRISMA</strong> — Systematic review and meta-analysis standard (27 items)</li>
+    <li><strong>COREQ & ARRIVE</strong> — Qualitative research and animal study standards</li>
+  </ul>
+</div>
+
+<!-- TARGET AUDIENCE -->
+<div class="bs">
+  <div class="bs-ey">05 Target Audience</div>
+  <div class="bs-h">Who did we <em>build this for?</em></div>
+  <ul class="bs-ul">
+    <li><strong>Research assistants and PhD candidates</strong> — Early-career researchers submitting their first manuscripts who need guidance</li>
+    <li><strong>Experienced academics</strong> — Researchers seeking to increase manuscript efficiency with pre-submission quality checks</li>
+    <li><strong>Journal editors</strong> — Editors using editorial assessment tools for pre-screening incoming manuscripts</li>
+    <li><strong>Universities and research centers</strong> — Institutions aiming to improve academic quality across their organization</li>
+  </ul>
+</div>
+
+<!-- BRAND VALUES -->
+<div class="bs">
+  <div class="bs-ey">06 Brand Values</div>
+  <div class="bs-h">What do we <em>believe in?</em></div>
+  <ul class="bs-ul">
+    <li><strong>Transparency</strong> — Every assessment is justified, every score explained. No black boxes.</li>
+    <li><strong>Academic Rigor</strong> — Scientific, not sensational. Correct terminology, current standards.</li>
+    <li><strong>Privacy</strong> — Manuscript data auto-deleted within 30 days. GDPR compliant.</li>
+    <li><strong>Accessibility</strong> — 3 free analyses. Affordable plans for every researcher.</li>
+    <li><strong>Continuous Improvement</strong> — System updates as standards evolve. User feedback is integrated.</li>
+  </ul>
+</div>
+
+<!-- NAME ORIGIN -->
+<div class="bs">
+  <div class="bs-ey">07 Name & Identity</div>
+  <div class="bs-h">Why <em>"Presubly"?</em></div>
+  <div class="bs-p"><strong>Pre</strong> (before) + <strong>Sub</strong>mission (sending) + <strong>ly</strong> (adverb suffix) = Presubly. The name carries the meaning of "before submission" and summarizes the platform's core value proposition in a single word.</div>
+  <div class="bs-p">In the logo, the <strong>"sub"</strong> portion is highlighted in amber — a direct reference to the submission concept. The teal primary color represents academic seriousness, while amber accents convey energy and action.</div>
+  <div class="bs-p">Presubly is part of the <strong>Tenopark Academic Software Ecosystem</strong>. Together with MisanpAIge (typesetting & citations), EthicsKit (ethics), JournalKit (journal management), and CVita (academic CV), it offers an integrated solution covering the entire academic publishing workflow.</div>
+</div>
+
+<!-- ECOSYSTEM -->
+<div class="bs">
+  <div class="bs-ey">08 Ecosystem</div>
+  <div class="bs-h">Academic Software <em>Ecosystem</em></div>
+  <div class="bs-p">Presubly is not a standalone product — it's part of a holistic ecosystem:</div>
+  <div class="tools">
+    <div class="tool">
+      <div class="tool-num">MISANPAIGE</div>
+      <div class="tool-name">Layout & Citation Management</div>
+      <div class="tool-desc">AI-powered academic typesetting, citation manager, cover letter and title page generator.</div>
+    </div>
+    <div class="tool">
+      <div class="tool-num">PRESUBLY</div>
+      <div class="tool-name">Pre-Submission Review</div>
+      <div class="tool-desc">Peer review, editorial assessment, response assistant, submission checklist.</div>
+    </div>
+    <div class="tool">
+      <div class="tool-num">ETHICSKIT</div>
+      <div class="tool-name">Ethics & Compliance</div>
+      <div class="tool-desc">Research ethics, COPE compliance, plagiarism detection.</div>
+    </div>
+    <div class="tool">
+      <div class="tool-num">JOURNALKIT</div>
+      <div class="tool-name">Journal Management System</div>
+      <div class="tool-desc">Journal workflow, reviewer assignment, manuscript tracking system.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ROADMAP -->
+<div class="bs">
+  <div class="bs-ey">09 Roadmap</div>
+  <div class="bs-h">Where are we <em>headed?</em></div>
+  <div class="tl">
+    <div class="tl-item"><div class="tl-date">2025 Q1</div><div class="tl-txt"><strong>MVP Launch</strong> — Scientific Peer Review tool, 3 disciplines, basic reporting</div></div>
+    <div class="tl-item"><div class="tl-date">2025 Q2</div><div class="tl-txt"><strong>Full 4 Tools</strong> — Editorial Assessment, Response Assistant, Submission Checklist</div></div>
+    <div class="tl-item"><div class="tl-date">2025 Q3</div><div class="tl-txt"><strong>13 Disciplines</strong> — Medicine, engineering, education, law, social sciences and more</div></div>
+    <div class="tl-item"><div class="tl-date">2025 Q4</div><div class="tl-txt"><strong>Enterprise Plan</strong> — University and research center integration, API access</div></div>
+    <div class="tl-item"><div class="tl-date">2026</div><div class="tl-txt"><strong>Ecosystem Integration</strong> — Full integration with MisanpAIge, EthicsKit, JournalKit</div></div>
+  </div>
+</div>
+
+<div class="foot">
+  <div class="foot-logo">Pre<span class="acc">sub</span>ly</div>
+  <div class="foot-sub">AI Pre-Submission Review Platform &middot; Tenopark Academic Software Ecosystem &middot; 2025</div>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,132 @@
+══════════════════════════════════════════════════════
+  PRESUBLY — SUBMISSION CHECKLIST RAPORU
+══════════════════════════════════════════════════════
+
+Rapor No    : PSB-2025-0142-CL
+Tarih       : 2025-03-15
+Standart    : CONSORT 2010
+Calisma Turu: Randomize Kontrollu Calisma (RCT)
+Makale      : "Diyabetik Hastalarda Yapay Zeka Destekli Tani"
+
+══════════════════════════════════════════════════════
+  SONUC: ONCE DUZELT
+  Gecti: 18/25 | Uyari: 4/25 | Basarisiz: 3/25
+══════════════════════════════════════════════════════
+
+CHECKLIST MADDELERI
+──────────────────────────────────────────────────────
+
+BASLIK VE OZET
+  ✓ [M.1a] Baslik randomize calisma olarak tanimlaniyor
+  ✓ [M.1b] Yapilandirilmis ozet mevcut
+
+GIRIS
+  ✓ [M.2a] Bilimsel arka plan ve gerekce verilmis
+  ✓ [M.2b] Spesifik amac veya hipotez belirtilmis
+
+YONTEMLER
+  ✓ [M.3a] Calisma tasarimi tanimlanmis (paralel, RCT)
+  ✓ [M.3b] Yontemlerde onemli degisiklik yok
+  ✓ [M.4a] Katilimci uygunluk kriterleri belirtilmis
+  ✓ [M.4b] Verilerin toplandigi ortam tanimlanmis
+  ✓ [M.5] Mudahale detayli tanimlanmis
+
+  ✓ [M.6a] Birincil ve ikincil sonuc olcumleri
+           tanimlanmis
+  ✓ [M.6b] Sonuc olcumlerinde degisiklik yok
+
+  ⚠ [M.7a] Orneklem buyuklugu nasil belirlendi
+     NOT: Guc analizi eksik. Post-hoc veya a priori
+     guc analizi eklenmeli. — MINOR
+
+  ✓ [M.8a] Randomizasyon sekans olusturma yontemi
+           belirtilmis
+  ✓ [M.8b] Randomizasyon turu (blok, tabakalandirilmis)
+           tanimlanmis
+
+  ✗ [M.9] ALLOCATION CONCEALMENT mekanizmasi
+     NOT: Allocation concealment yontemi tanimlanmamis.
+     CONSORT Madde 9 gereksinimine gore SNOSE veya
+     merkezi randomizasyon gibi yontem belirtilmeli.
+     — MAJOR, ZORUNLU
+
+  ⚠ [M.10] KORLAMA (BLINDING)
+     NOT: Katilimci korlamasi belirtilmis ancak sonuc
+     degerlendirici korlamasi belirsiz. — MINOR
+
+  ✓ [M.11a] Istatistiksel yontemler tanimlanmis
+  ⚠ [M.11b] Alt grup analizleri ve coklu karsilastirma
+     NOT: Coklu karsilastirma duzeltmesi (Bonferroni/FDR)
+     uygulanip uygulanmadigi belirtilmemis. — MINOR
+
+  ✗ [M.12] ISTATISTIKSEL GUC ANALIZI
+     NOT: Guc analizi hesaplama yontemi belirtilmemis.
+     — MAJOR, ZORUNLU
+
+SONUCLAR
+  ✗ [M.13a] CONSORT AKIS DIYAGRAMI
+     NOT: Katilimci akis diyagrami (flow diagram)
+     makaleye dahil edilmemis. Randomize edilen,
+     mudahale alan, kayip olan ve analiz edilen
+     katilimci sayilari gorsel olarak sunulmali.
+     — MAJOR, ZORUNLU
+
+  ✓ [M.13b] Kayip ve dislanma nedenleri belirtilmis
+  ✓ [M.14a] Katilimci alim tarihleri verilmis
+  ✓ [M.15] Temel demografik ve klinik ozellikler
+           tablo ile sunulmus
+
+  ⚠ [M.16] Her grup icin sonuc sayisi ve etki
+           buyuklugu tahmini
+     NOT: Effect size (Cohen's d veya odds ratio)
+     raporlanmamis. — MINOR
+
+  ✓ [M.17a] Tum onemli zararlar veya yan etkiler
+
+TARTISMA
+  ✓ [M.18] Sonuclarin yorumu ve sinirliliklar
+  ✓ [M.19] Genellenebilirlik tartismasi
+  ✓ [M.20] Genel yorum ve bulgu tutarliligi
+
+DIGER
+  ✓ [M.21] Calisma kaydi (ClinicalTrials.gov)
+  ✓ [M.22] Tam protokol erisimi
+  ✓ [M.23] Finansman kaynagi
+
+══════════════════════════════════════════════════════
+  ONCELIKLI DUZELTME LISTESI
+──────────────────────────────────────────────────────
+
+KRITIK (MAJOR — Duzeltilmeden gonderilmemeli):
+
+  1. [M.9]  Allocation concealment mekanizmasi ekle
+  2. [M.12] Guc analizi hesaplama yontemi belirt
+  3. [M.13a] CONSORT akis diyagrami ekle
+
+UYARI (MINOR — Duzeltilmesi onerilir):
+
+  4. [M.7a]  Orneklem buyuklugu gerekcesi guclendir
+  5. [M.10]  Sonuc degerlendirici korlamasi acikla
+  6. [M.11b] Coklu karsilastirma duzeltmesi belirt
+  7. [M.16]  Effect size raporla
+
+══════════════════════════════════════════════════════
+  UYUMLULUK OZETI
+──────────────────────────────────────────────────────
+
+Makale CONSORT 2010 standartlarinin %72'sini
+karsilamaktadir. 3 major (zorunlu) eksik mevcuttur:
+allocation concealment, guc analizi ve akis diyagrami.
+Bu eksikler giderilmeden makale gonderilmemelidir.
+
+Minor eksiklerin duzeltilmesi hakem surecinde olasi
+ek revizyon taleplerini azaltacaktir.
+
+Sonuc: ONCE DUZELT — 3 major eksik giderilmeli.
+
+══════════════════════════════════════════════════════
+  Bu rapor Presubly AI tarafindan olusturulmustur.
+  Standart referans: Schulz KF, Altman DG, Moher D.
+  CONSORT 2010 Statement. BMJ. 2010;340:c332.
+  © 2025 Presubly · Tenopark Akademik Yazilim Ekosistemi
+══════════════════════════════════════════════════════

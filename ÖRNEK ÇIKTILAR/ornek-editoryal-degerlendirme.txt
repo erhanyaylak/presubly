@@ -1,0 +1,100 @@
+══════════════════════════════════════════════════════
+  PRESUBLY — EDITORYAL DEGERLENDIRME RAPORU
+══════════════════════════════════════════════════════
+
+Rapor No    : PSB-2025-0142-ED
+Tarih       : 2025-03-15
+Hedef Dergi : Journal of Clinical AI & Medicine
+Makale      : "Diyabetik Hastalarda Yapay Zeka Destekli Tani:
+               Klinik Validasyon Calismasi"
+
+══════════════════════════════════════════════════════
+  KAPSAM UYUMU: UYUMLU
+  KARAR: HAKEMLERE GONDERILMESI ONERILIYOR
+══════════════════════════════════════════════════════
+
+KAPSAM ANALIZI
+──────────────────────────────────────────────────────
+
+✓ Konu Uyumu: Makale, klinik yapay zeka ve translasyonel
+  tip arastirmalari ile uyumludur. Derginin "AI in
+  Clinical Practice" ozel bolumune uygundur.
+
+✓ Metodoloji: Randomize kontrollu calisma tasarimi
+  derginin beklentilerini temel duzeyde karsilamaktadir.
+
+⚠ Yenilik: Yenilik iddiasi guclu ancak mevcut
+  calismalarla fark yeterince vurgulanmamistir.
+  Introduction bolumunde gap analysis guclendirilmeli.
+
+✓ Hedef Kitle: Klinik arastirmacilar, AI gelistiriciler
+  ve endokrinologlar — derginin okuyucu profiline uygun.
+
+ETIK KONTROL (COPE STANDARTLARI)
+──────────────────────────────────────────────────────
+
+✓ Etik kurul onayi              — MEVCUT (2024/ETK-142)
+✓ Hasta onam sureci             — TANIMLANMIS
+✓ Cikar catismasi beyani        — MEVCUT
+✓ Finansman kaynagi             — BELIRTILMIS
+⚠ Yazar katkisi (CRediT)       — GENEL FORMAT, detay eklenmeli
+✓ Veri paylasim beyani          — MEVCUT
+✓ Klinik calisma kaydi          — ClinicalTrials.gov NCT04XXXXXX
+
+EDITORYAL KARAR
+──────────────────────────────────────────────────────
+
+Karar: HAKEMLERE GONDERILMESI ONERILIYOR
+
+Gerekce:
+Makale, derginin kapsam ve kalite beklentilerini genel
+olarak karsilamaktadir. Metodoloji temel duzeyde yeterli
+olmakla birlikte, bazi eksiklikler (guc analizi, effect
+size) hakem surecinde degerlendirilmelidir. Yenilik
+iddiasi guclu olup konunun zamanliligi yuksektir.
+
+Onerilen hakem profili:
+  - Biyoistatistik uzmani (metodoloji degerlendirmesi)
+  - Klinik AI arastirmacisi (konu uzmanligi)
+  - Endokrinoloji uzmani (klinik uygulanabilirlik)
+
+══════════════════════════════════════════════════════
+  YAZAR BILDIRIM MEKTUBU TASLAGI
+──────────────────────────────────────────────────────
+
+Dear Dr. [Yazar Adi],
+
+Re: Manuscript ID PSB-2025-0142
+"AI-assisted diagnosis in diabetic patients: A clinical
+validation study"
+
+Thank you for submitting your manuscript to the Journal
+of Clinical AI & Medicine. We have completed our initial
+editorial assessment.
+
+I am pleased to inform you that your manuscript has been
+selected for peer review. The topic is timely and aligns
+with our journal's scope in translational AI research.
+
+Please note the following points identified during
+editorial screening:
+
+1. The CRediT author contribution statement should be
+   provided in detailed format.
+2. We recommend strengthening the gap analysis in the
+   Introduction section to better differentiate your
+   work from existing studies.
+
+You can expect to receive reviewer feedback within
+6-8 weeks. Please ensure your contact information is
+up to date in our submission system.
+
+Sincerely,
+[Editor Adi]
+Section Editor
+Journal of Clinical AI & Medicine
+
+══════════════════════════════════════════════════════
+  Bu rapor Presubly AI tarafindan olusturulmustur.
+  © 2025 Presubly · Tenopark Akademik Yazilim Ekosistemi
+══════════════════════════════════════════════════════

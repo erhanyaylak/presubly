@@ -1,0 +1,35 @@
+---
+import type { Locale } from '../../i18n/config';
+import { t } from '../../i18n/utils';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+
+const steps = [
+  { num: '01', hKey: 'how.s1h', dKey: 'how.s1d', delay: '' },
+  { num: '02', hKey: 'how.s2h', dKey: 'how.s2d', delay: '.12s' },
+  { num: '03', hKey: 'how.s3h', dKey: 'how.s3d', delay: '.24s' },
+];
+---
+
+<section class="sec" id="how">
+  <div class="sec-in">
+    <div class="reveal" style="text-align:center">
+      <div class="ey" style="justify-content:center">{t(locale, 'how.ey')}</div>
+      <h2 class="sttl" style="text-align:center" set:html={t(locale, 'how.h')} />
+      <p class="ssub" style="margin:0 auto;text-align:center">{t(locale, 'how.sub')}</p>
+    </div>
+    <div class="steps">
+      {steps.map((s, i) => (
+        <>
+          {i > 0 && <div class="step-line"></div>}
+          <div class="step reveal" style={s.delay ? `transition-delay:${s.delay}` : ''}>
+            <div class="step-num">{s.num}</div>
+            <div class="step-h">{t(locale, s.hKey)}</div>
+            <div class="step-d">{t(locale, s.dKey)}</div>
+          </div>
+        </>
+      ))}
+    </div>
+  </div>
+</section>

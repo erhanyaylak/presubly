@@ -1,0 +1,27 @@
+{
+  "name": "presubly-astro",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "generate-types": "wrangler types"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^13.1.10",
+    "@astrojs/preact": "^5.1.1",
+    "@nanostores/preact": "^1.1.0",
+    "astro": "^6.1.7",
+    "nanostores": "^1.2.0",
+    "preact": "^10.29.1",
+    "wrangler": "^4.83.0"
+  },
+  "overrides": {
+    "vite": "^7"
+  }
+}

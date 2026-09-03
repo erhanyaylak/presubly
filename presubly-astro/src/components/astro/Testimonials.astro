@@ -1,0 +1,37 @@
+---
+import type { Locale } from '../../i18n/config';
+import { t } from '../../i18n/utils';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+
+const reviews = [
+  { av: 'AK', qKey: 'tm.q1', nKey: 'tm.n1', rKey: 'tm.r1', delay: '' },
+  { av: 'MY', qKey: 'tm.q2', nKey: 'tm.n2', rKey: 'tm.r2', delay: '.1s' },
+  { av: 'SÇ', qKey: 'tm.q3', nKey: 'tm.n3', rKey: 'tm.r3', delay: '.2s' },
+];
+---
+
+<section class="sec alt" id="testimonials">
+  <div class="sec-in">
+    <div class="reveal" style="text-align:center">
+      <div class="ey" style="justify-content:center">{t(locale, 'tm.ey')}</div>
+      <h2 class="sttl" style="text-align:center" set:html={t(locale, 'tm.h')} />
+    </div>
+    <div class="tgrid">
+      {reviews.map(r => (
+        <div class="tc reveal" style={r.delay ? `transition-delay:${r.delay}` : ''}>
+          <div class="tcstars">★★★★★</div>
+          <div class="tcq">{t(locale, r.qKey)}</div>
+          <div class="tcauth">
+            <div class="tcav">{r.av}</div>
+            <div>
+              <div class="tcname">{t(locale, r.nKey)}</div>
+              <div class="tcrole">{t(locale, r.rKey)}</div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

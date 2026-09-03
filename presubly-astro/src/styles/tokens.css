@@ -1,0 +1,62 @@
+/* Presubly Design Tokens */
+:root {
+  /* Teal primary */
+  --t: #0A3D3D;
+  --t2: #0D4F4F;
+  --t3: #115E5E;
+  --t4: #1A7272;
+  --t5: #2A8F8F;
+  --tl: #EBF5F5;
+  --tl2: #C8ECEB;
+
+  /* Amber accent */
+  --a: #E8970A;
+  --a2: #F5AA1C;
+  --a3: #FBCA5C;
+  --al: #FEF8E8;
+  --al2: #FAECC8;
+
+  /* Sage backgrounds */
+  --sg: #F4F7F5;
+  --sg2: #E8F0EC;
+  --sg3: #D8E8E0;
+
+  /* Card */
+  --card: #FFFFFF;
+
+  /* Borders */
+  --ln: #D0DDD6;
+  --ln2: #BDD0C4;
+
+  /* Ink */
+  --ink: #0A1A14;
+  --k2: #1F2E24;
+  --k3: #3A5248;
+  --k4: #5E8272;
+  --k5: #98B8AA;
+
+  /* Status */
+  --ok: #0A7A3A;
+  --okl: #E8F7EE;
+  --okb: rgba(10, 122, 58, .18);
+  --wn: #8A5A00;
+  --wnl: #FEF5E4;
+  --wnb: rgba(138, 90, 0, .18);
+  --er: #8A1A1A;
+  --erl: #FEF0F0;
+  --erb: rgba(138, 26, 26, .18);
+
+  /* Typography */
+  --fd: 'Playfair Display', Georgia, serif;
+  --fb: 'DM Sans', system-ui, sans-serif;
+  --fm: 'DM Mono', monospace;
+
+  /* Shadows */
+  --s1: 0 1px 3px rgba(10, 61, 61, .05), 0 6px 20px rgba(10, 61, 61, .07);
+  --s2: 0 4px 12px rgba(10, 61, 61, .06), 0 20px 56px rgba(10, 61, 61, .1);
+  --s3: 0 8px 32px rgba(10, 61, 61, .1), 0 40px 80px rgba(10, 61, 61, .16);
+
+  /* Glass */
+  --glass: rgba(255, 255, 255, .05);
+  --glass-b: rgba(255, 255, 255, .08);
+}

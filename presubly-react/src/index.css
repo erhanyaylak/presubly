@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+/* ===== Presubly Design Tokens (legacy — used by any remaining .pp-/.adm-/.tv- CSS) ===== */
+:root {
+  --t: #0A3D3D; --t2: #0D4F4F; --t3: #115E5E; --t4: #1A7272; --t5: #2A8F8F; --tl: #EBF5F5; --tl2: #C8ECEB;
+  --a: #E8970A; --a2: #F5AA1C; --a3: #FBCA5C; --al: #FEF8E8; --al2: #FAECC8;
+  --sg: #F4F7F5; --sg2: #E8F0EC; --sg3: #D8E8E0; --card: #FFFFFF; --ln: #D0DDD6; --ln2: #BDD0C4;
+  --ink: #0A1A14; --k2: #1F2E24; --k3: #3A5248; --k4: #5E8272; --k5: #98B8AA;
+  --ok: #0A7A3A; --okl: #E8F7EE; --okb: rgba(10,122,58,.18);
+  --wn: #8A5A00; --wnl: #FEF5E4; --wnb: rgba(138,90,0,.18);
+  --er: #8A1A1A; --erl: #FEF0F0; --erb: rgba(138,26,26,.18);
+  --fd: 'Space Grotesk', system-ui, sans-serif;
+  --fb: 'Inter', system-ui, sans-serif;
+  --fm: 'DM Mono', ui-monospace, monospace;
+  --s1: 0 1px 3px rgba(10,61,61,.05), 0 6px 20px rgba(10,61,61,.07);
+  --s2: 0 4px 12px rgba(10,61,61,.06), 0 20px 56px rgba(10,61,61,.1);
+  --s3: 0 8px 32px rgba(10,61,61,.1), 0 40px 80px rgba(10,61,61,.16);
+  --glass: rgba(255,255,255,.05); --glass-b: rgba(255,255,255,.08);
+}
+
+@theme {
+  /* legacy palette (kept for compatibility) */
+  --color-teal-1: #0A3D3D; --color-teal-2: #0D4F4F; --color-teal-3: #115E5E;
+  --color-teal-4: #1A7272; --color-teal-5: #2A8F8F; --color-teal-light: #EBF5F5; --color-teal-light-2: #C8ECEB;
+  --color-amber-1: #E8970A; --color-amber-2: #F5AA1C; --color-amber-3: #FBCA5C; --color-amber-light: #FEF8E8;
+  --color-sage: #F4F7F5; --color-sage-2: #E8F0EC; --color-sage-3: #D8E8E0;
+  --color-line: #D0DDD6; --color-line-2: #BDD0C4;
+
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'DM Mono', ui-monospace, monospace;
+
+  /* ── Semantic dashboard/landing tokens (teal+amber brand) — swapped in dark mode ──
+     Background is a clean, near-neutral off-white so the teal+amber brand pops. */
+  --color-app-bg: #F7F8F9;
+  --color-app-card: #FFFFFF;
+  --color-app-border: #E5EAE8;
+  --color-bg2: #F0F3F3;
+  --color-bg3: #E6ECEA;
+
+  --color-ink: #0A1A14;
+  --color-ink-muted: #3A5248;
+  --color-ink-subtle: #5E8272;
+
+  --color-brand: #0E5050;
+  --color-brand-dark: #093A3A;
+  --color-brand-light: #1A7272;
+
+  --color-gold-accent: #B5740A;
+  --color-gold-light: #FEF6E6;
+
+  --color-red-brand: #9A1F1F;
+  --color-ok: #0A7A3A;
+  --color-warn: #8A5A00;
+
+  /* Soft shadows (Papernity-style elevated cards) */
+  --shadow-card: 0 1px 2px rgba(10, 61, 61, 0.04), 0 10px 28px -14px rgba(10, 61, 61, 0.22);
+  --shadow-card-lg: 0 2px 4px rgba(10, 61, 61, 0.05), 0 24px 56px -22px rgba(10, 61, 61, 0.28);
+
+  /* Radix accordion animations */
+  --animate-accordion-down: accordion-down 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-accordion-up: accordion-up 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes accordion-down { from { height: 0; opacity: 0; } to { height: var(--radix-accordion-content-height); opacity: 1; } }
+@keyframes accordion-up { from { height: var(--radix-accordion-content-height); opacity: 1; } to { height: 0; opacity: 0; } }
+
+/* ── Dark mode: swap semantic token values at runtime ── */
+[data-theme="dark"] {
+  --color-app-bg: #071F1D;
+  --color-app-card: #0C2C29;
+  --color-app-border: #1E423C;
+  --color-bg2: #0F302C;
+  --color-bg3: #143A35;
+  --color-ink: #EAF4F0;
+  --color-ink-muted: #AFCAC2;
+  --color-ink-subtle: #87ABA0;
+  --color-brand: #38A6A6;
+  --color-brand-dark: #2A8F8F;
+  --color-brand-light: #5DC0C0;
+  --color-gold-accent: #FBCA5C;
+  --color-gold-light: #2E2614;
+  --color-red-brand: #F08585;
+  --color-ok: #4ADE80;
+  --color-warn: #FBBF24;
+}
+
+/* Reset & base — MUST be @layer base so Tailwind utilities (px-*, bg-*, …) win the cascade. */
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  section[id] { scroll-margin-top: 5rem; }
+  body {
+    background: var(--color-app-bg);
+    color: var(--color-ink);
+    font-family: var(--fb);
+    line-height: 1.65;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { text-decoration: none; color: inherit; }
+  button { font-family: var(--fb); cursor: pointer; border: none; background: none; }
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-thumb { background: var(--ln2); border-radius: 3px; }
+
+/* ===== Animations ===== */
+@keyframes fUp { from { opacity: 0; transform: translateY(24px) } to { opacity: 1; transform: translateY(0) } }
+@keyframes floatY { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-10px) } }
+@keyframes blink { 0%, 49% { opacity: 1 } 50%, 100% { opacity: 0 } }
+@keyframes pulse { 0%, 100% { opacity: .8 } 50% { opacity: .3 } }
+@keyframes dotFloat { 0% { transform: translate(0,0) scale(1) } 50% { transform: translate(12px,-18px) scale(1.2) } 100% { transform: translate(0,0) scale(1) } }
+@keyframes panelIn { from { opacity: 0; transform: translateY(12px) } to { opacity: 1; transform: translateY(0) } }
+
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1) }
+.reveal.in { opacity: 1; transform: translateY(0) }
+
+/* ===== Dashboard helpers ===== */
+.custom-scrollbar::-webkit-scrollbar { width: 7px; height: 7px; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: var(--color-app-border); border-radius: 4px; }
+.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: var(--color-ink-subtle); }
+.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+
+[data-reduce-motion="true"] *,
+[data-reduce-motion="true"] *::before,
+[data-reduce-motion="true"] *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}

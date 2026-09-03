@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Presubly — Brand Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+/* ══ TOKENS ════════════════════════════════════════════════ */
+:root{
+  --t:  #0A3D3D; --t2: #0D4F4F; --t3: #115E5E; --t4: #1A7272; --t5: #2A8F8F;
+  --tl: #EBF5F5; --tl2:#C8ECEB; --tl3:#9FDCDC;
+  --a:  #E8970A; --a2: #F5AA1C; --a3: #FBCA5C; --al: #FEF8E8; --al2:#FAECC8;
+  --sg: #F2F7F5; --sg2:#E8F0EC; --sg3:#DCE9E3;
+  --ln: #C8DAD2; --ln2:#B0C4B8; --ln3:#98AEA0;
+  --ink:#0A1A14; --k2: #1A2E24; --k3: #3A5248; --k4: #6A8A7C; --k5: #A4BEB4;
+  --ok: #0A7A3A; --okl:#E8F7EE;
+  --wn: #8A5A00; --wnl:#FEF5E4;
+  --er: #8A1A1A; --erl:#FEF0F0;
+  --fd:'Playfair Display',Georgia,serif;
+  --fb:'DM Sans',system-ui,sans-serif;
+  --fm:'DM Mono',monospace;
+  --sh1:0 1px 3px rgba(10,61,61,.05),0 3px 12px rgba(10,61,61,.08);
+  --sh2:0 2px 8px rgba(10,61,61,.07),0 12px 36px rgba(10,61,61,.12);
+  --sh3:0 8px 32px rgba(10,61,61,.14),0 24px 64px rgba(10,61,61,.18);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--sg);color:var(--ink);font-family:var(--fb);line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font-family:var(--fb);cursor:pointer;border:none;background:none}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-thumb{background:var(--ln2);border-radius:2px}
+
+/* ══ ANIMATIONS ══════════════════════════════════════════════ */
+@keyframes barReveal{from{width:0}to{width:var(--w)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ══ NAV ════════════════════════════════════════════════════ */
+.nav{
+  position:sticky;top:0;z-index:200;
+  background:rgba(242,247,245,.96);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--ln);
+  height:54px;display:flex;align-items:center;
+}
+.nav-in{
+  max-width:1200px;margin:0 auto;padding:0 44px;
+  display:flex;align-items:center;justify-content:space-between;width:100%;
+}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nmark{
+  width:32px;height:32px;border-radius:8px;
+  background:var(--t);
+  display:flex;flex-direction:column;justify-content:center;
+  align-items:flex-start;padding:8px 7px;gap:4px;
+}
+.nb1{width:18px;height:3px;border-radius:1.5px;background:rgba(242,247,245,.88)}
+.nb2{width:14px;height:3px;border-radius:1.5px;background:rgba(242,247,245,.5)}
+.nb3{width:9px; height:3px;border-radius:1.5px;background:var(--a)}
+.nword{font-family:var(--fd);font-size:16px;font-weight:700;color:var(--ink);letter-spacing:-.02em}
+.nword em{font-style:italic;color:var(--a)}
+.nav-links{display:flex;gap:2px}
+.nl{padding:5px 12px;border-radius:6px;font-size:12px;font-weight:500;color:var(--k4);transition:all .15s}
+.nl:hover,.nl.on{color:var(--ink);background:var(--sg2)}
+.nav-tag{font-family:var(--fm);font-size:9px;letter-spacing:.2em;color:var(--k5)}
+
+/* ══ HERO ════════════════════════════════════════════════════ */
+.hero{
+  background:var(--t);
+  min-height:82vh;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 72px 80px;
+  position:relative;overflow:hidden;
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);
+  background-size:52px 52px;
+}
+.hero-stripe{position:absolute;top:0;left:0;right:0;height:3px;background:var(--a)}
+.hero-margin{position:absolute;left:48px;top:0;bottom:0;width:1px;background:rgba(232,151,10,.18)}
+.hero-in{
+  position:relative;z-index:1;
+  max-width:1200px;margin:0 auto;width:100%;
+}
+
+/* Giant logo display */
+.hero-mark{
+  display:flex;flex-direction:column;gap:18px;
+  align-items:flex-start;margin-bottom:36px;
+  animation:fadeUp .5s .08s ease both;
+}
+.hm-bar{
+  border-radius:7px;
+  height:clamp(24px,3.2vw,44px);
+  display:block;
+}
+.hm-b1{width:clamp(200px,28vw,400px);background:rgba(242,247,245,.88)}
+.hm-b2{width:clamp(156px,22vw,310px);background:rgba(242,247,245,.5)}
+.hm-b3{width:clamp(100px,14vw,200px);background:var(--a)}
+
+.hero-word{
+  font-family:var(--fd);
+  font-size:clamp(56px,9vw,128px);
+  font-weight:900;line-height:.88;letter-spacing:-.05em;
+  color:rgba(242,247,245,.92);
+  margin-bottom:20px;
+  animation:fadeUp .5s .16s ease both;
+}
+.hero-word em{font-style:italic;color:var(--a3)}
+
+.hero-meta{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:32px;flex-wrap:wrap;
+}
+.hero-sub{
+  font-family:var(--fd);font-style:italic;
+  font-size:clamp(15px,2vw,22px);
+  color:rgba(242,247,245,.3);
+  line-height:1.5;max-width:460px;
+  animation:fadeUp .5s .24s ease both;
+}
+.hero-facts{
+  display:flex;gap:24px;flex-wrap:wrap;
+  animation:fadeUp .5s .32s ease both;
+}
+.hf{
+  display:flex;flex-direction:column;gap:3px;
+  border-left:2px solid rgba(232,151,10,.3);
+  padding-left:14px;
+}
+.hf-n{font-family:var(--fd);font-size:22px;font-weight:700;color:var(--a3);line-height:1}
+.hf-l{font-size:11px;color:rgba(242,247,245,.28);font-family:var(--fm);letter-spacing:.06em}
+
+/* ══ SECTION ════════════════════════════════════════════════ */
+.sec{padding:88px 44px}
+.sec.alt{background:var(--sg2)}
+.sec.dk {background:var(--t)}
+.sec-in{max-width:1200px;margin:0 auto}
+.ey{
+  font-family:var(--fm);font-size:9px;font-weight:500;
+  letter-spacing:.28em;text-transform:uppercase;
+  color:var(--t4);margin-bottom:10px;
+  display:flex;align-items:center;gap:10px;
+}
+.ey::after{content:'';width:32px;height:1px;background:var(--tl2)}
+.sec.dk .ey{color:rgba(232,151,10,.45)}
+.sec.dk .ey::after{background:rgba(232,151,10,.18)}
+.sttl{
+  font-family:var(--fd);
+  font-size:clamp(28px,4vw,48px);
+  font-weight:700;line-height:1.04;letter-spacing:-.03em;
+  color:var(--ink);margin-bottom:12px;
+}
+.sttl em{font-style:italic;color:var(--a)}
+.sec.dk .sttl{color:rgba(242,247,245,.9)}
+.sec.dk .sttl em{color:var(--a3)}
+.ssub{font-size:15px;color:var(--k4);line-height:1.75;max-width:520px}
+.sec.dk .ssub{color:rgba(242,247,245,.3)}
+.divider{height:1px;background:var(--ln);margin:40px 0}
+.sec.dk .divider{background:rgba(255,255,255,.07)}
+
+/* ══ LOGO VARIANTS ══════════════════════════════════════════ */
+.lv-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:0;border:1px solid var(--ln);border-radius:14px;
+  overflow:hidden;box-shadow:var(--sh1);
+  margin-top:52px;
+}
+.lv{
+  padding:52px 36px;
+  display:flex;flex-direction:column;align-items:center;gap:20px;
+}
+.lv-lt{background:var(--sg2);border-right:1px solid var(--ln)}
+.lv-pa{background:var(--sg3);border-right:1px solid var(--ln2)}
+.lv-dk{background:var(--t)}
+.lv-label{font-family:var(--fm);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--k5)}
+.lv-dk .lv-label{color:rgba(242,247,245,.22)}
+
+/* The mark at various sizes */
+.mk{
+  background:var(--t);
+  display:flex;flex-direction:column;justify-content:center;
+  align-items:flex-start;border-radius:22%;
+  flex-shrink:0;
+}
+.mk.inv{background:rgba(242,247,245,.1);border:1px solid rgba(242,247,245,.15)}
+.mk .b1{background:rgba(242,247,245,.88);border-radius:40%}
+.mk .b2{background:rgba(242,247,245,.5);border-radius:40%}
+.mk .b3{background:var(--a);border-radius:40%}
+.mk.inv .b1{background:rgba(242,247,245,.65)}
+.mk.inv .b2{background:rgba(242,247,245,.35)}
+.mk.inv .b3{background:var(--a);opacity:.9}
+
+/* word + tagline */
+.wm{font-family:var(--fd);font-size:19px;font-weight:700;color:var(--ink);letter-spacing:-.02em}
+.wm em{font-style:italic;color:var(--a)}
+.lv-dk .wm{color:rgba(242,247,245,.88)}
+.wm-tag{font-family:var(--fm);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--k5);margin-top:-8px}
+.lv-dk .wm-tag{color:rgba(242,247,245,.2)}
+
+/* size scale */
+.scale-row{
+  display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap;
+  padding:26px 36px;background:var(--sg);border:1px solid var(--ln);
+  border-radius:12px;margin-top:16px;
+}
+.sc-item{display:flex;flex-direction:column;align-items:center;gap:8px}
+.sc-label{font-family:var(--fm);font-size:9px;color:var(--k5);text-align:center}
+.sc-sep{height:48px;width:1px;background:var(--ln);align-self:center}
+.scale-note{
+  display:flex;flex-direction:column;gap:5px;
+  margin-left:auto;padding-left:24px;border-left:1px solid var(--ln);
+}
+.sn-row{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--k3)}
+.sn-dot{width:5px;height:5px;border-radius:50%;background:var(--a);flex-shrink:0}
+
+/* Lockup row */
+.lockup-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:14px;margin-top:14px;
+}
+.lu{
+  padding:28px 30px;border-radius:12px;
+  display:flex;align-items:center;gap:12px;
+  border:1px solid var(--ln);
+}
+.lu.lt{background:var(--sg)}
+.lu.pa{background:var(--sg3)}
+.lu.dk{background:var(--t);border-color:var(--t2)}
+.lu.wh{background:#fff}
+.lu-wm{font-family:var(--fd);font-size:20px;font-weight:700;letter-spacing:-.02em;color:var(--ink)}
+.lu-wm em{font-style:italic;color:var(--a)}
+.lu.dk .lu-wm{color:rgba(242,247,245,.88)}
+.lu-sub{font-family:var(--fm);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--k4);margin-top:2px}
+.lu.dk .lu-sub{color:rgba(242,247,245,.22)}
+
+/* Yasak kullanım */
+.ng-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:14px}
+.ng{text-align:center}
+.ng-box{
+  height:60px;background:var(--sg2);border:1px solid var(--ln);border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:7px;position:relative;overflow:hidden;
+}
+.ng-over{
+  position:absolute;inset:0;background:rgba(254,240,240,.88);border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;color:#8A1A1A;
+}
+.ng-lbl{font-size:10px;color:#8A1A1A;font-weight:600}
+
+/* ══ COLORS ════════════════════════════════════════════════ */
+.pal-hero{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:0;border:1px solid var(--ln);border-radius:14px;
+  overflow:hidden;box-shadow:var(--sh1);margin-top:52px;
+}
+.pc{cursor:pointer;transition:filter .15s}
+.pc:hover .pc-sw{filter:brightness(.92)}
+.pc:not(:last-child){border-right:1px solid rgba(255,255,255,.1)}
+.pc-sw{height:120px;position:relative;transition:filter .15s}
+.pc-chip{
+  position:absolute;bottom:8px;right:8px;
+  font-family:var(--fm);font-size:9px;font-weight:600;
+  padding:2px 8px;border-radius:3px;
+  background:rgba(0,0,0,.28);color:#fff;
+  opacity:0;transition:opacity .15s;
+}
+.pc:hover .pc-chip{opacity:1}
+.pc-inf{padding:13px 16px;background:var(--sg);border-top:1px solid var(--ln)}
+.pc-nm{font-size:12px;font-weight:700;color:var(--ink);margin-bottom:1px}
+.pc-hx{font-family:var(--fm);font-size:10px;color:var(--k4)}
+.pc-rl{font-size:10px;color:var(--k5);margin-top:1px}
+
+/* Sub palette */
+.pal-sub{
+  display:grid;grid-template-columns:repeat(7,1fr);
+  gap:0;border:1px solid var(--ln);border-radius:10px;
+  overflow:hidden;margin-top:12px;
+}
+.pcs{cursor:pointer}
+.pcs:not(:last-child){border-right:1px solid var(--ln)}
+.pcs-sw{height:44px}
+.pcs-inf{padding:8px 12px;background:var(--sg);border-top:1px solid var(--ln)}
+.pcs-nm{font-size:10px;font-weight:700;color:var(--ink)}
+.pcs-hx{font-family:var(--fm);font-size:9px;color:var(--k4)}
+
+/* Color usage demos */
+.cu-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.cu{border-radius:10px;padding:20px;border:1px solid var(--ln)}
+.cu-lbl{font-family:var(--fm);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--k5);margin-bottom:12px}
+.cu-items{display:flex;flex-direction:column;gap:7px}
+.cui{border-radius:7px;padding:9px 13px;font-size:12px}
+
+/* ══ TYPOGRAPHY ════════════════════════════════════════════ */
+.type-hero{
+  background:var(--t);border-radius:16px;padding:52px;
+  margin-top:52px;box-shadow:var(--sh3);position:relative;overflow:hidden;
+}
+.type-hero::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--a);
+}
+.th-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.th-lbl{font-family:var(--fm);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(232,151,10,.4);margin-bottom:12px}
+
+.type-scale{
+  background:var(--sg);border:1px solid var(--ln);border-radius:12px;
+  overflow:hidden;margin-top:14px;
+}
+.ts-head{
+  padding:10px 20px;background:var(--sg2);border-bottom:1px solid var(--ln);
+  display:flex;justify-content:space-between;align-items:center;
+}
+.ts-hl{font-family:var(--fm);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--k5)}
+.tr{display:grid;grid-template-columns:160px 1fr;gap:20px;align-items:center;padding:18px 20px;border-bottom:1px solid var(--ln)}
+.tr:last-child{border:none}
+.tr-meta{font-family:var(--fm);font-size:9px;color:var(--k5);line-height:2}
+.tr-meta strong{display:block;font-family:var(--fb);font-size:10px;font-weight:700;color:var(--k3);margin-bottom:2px}
+
+/* Font specimen cards */
+.font-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:14px}
+.fc-card{border:1px solid var(--ln);border-radius:11px;overflow:hidden}
+.fc-top{padding:24px;border-bottom:1px solid var(--ln)}
+.fc-bot{padding:14px 16px;background:var(--sg2)}
+.fc-nm{font-size:12px;font-weight:700;color:var(--ink);margin-bottom:1px}
+.fc-ds{font-size:11px;color:var(--k4)}
+.fc-us{font-size:10px;color:var(--k5)}
+
+/* ══ COMPONENTS ════════════════════════════════════════════ */
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:52px}
+.cbox{border-radius:12px;padding:24px;border:1px solid var(--ln)}
+.cbox.dk{background:var(--t2);border-color:var(--t3)}
+.cb-lbl{font-family:var(--fm);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--k5);margin-bottom:16px}
+.cb-lbl.dk{color:rgba(242,247,245,.2)}
+
+/* Buttons */
+.btn-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px}
+.btn{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:9px 20px;border-radius:7px;
+  font-family:var(--fb);font-size:13px;font-weight:600;
+  cursor:pointer;border:none;transition:all .15s;letter-spacing:.01em;
+}
+.btn-prim{background:var(--t);color:var(--sg)}
+.btn-prim:hover{background:var(--t2);transform:translateY(-1px);box-shadow:0 4px 14px rgba(10,61,61,.25)}
+.btn-amb{background:var(--a);color:var(--t)}
+.btn-amb:hover{background:var(--a2);transform:translateY(-1px);box-shadow:0 4px 14px rgba(232,151,10,.3)}
+.btn-out{background:transparent;border:1.5px solid var(--ln2);color:var(--k3)}
+.btn-out:hover{border-color:var(--k3);color:var(--ink)}
+.btn-gh{background:transparent;border:1.5px solid rgba(242,247,245,.18);color:rgba(242,247,245,.65)}
+.btn-gh:hover{background:rgba(242,247,245,.06)}
+.btn.sm{padding:6px 13px;font-size:12px}
+.btn.lg{padding:13px 28px;font-size:15px}
+
+/* Badges */
+.bdg-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.bdg{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:5px;font-size:10px;font-weight:600;letter-spacing:.02em}
+.bdg-t{background:var(--tl);border:1px solid var(--tl2);color:var(--t3)}
+.bdg-a{background:var(--al);border:1px solid var(--al2);color:var(--wn)}
+.bdg-ok{background:var(--okl);border:1px solid rgba(10,122,58,.2);color:var(--ok)}
+.bdg-er{background:var(--erl);border:1px solid rgba(138,26,26,.2);color:var(--er)}
+.bdg-ink{background:var(--sg2);border:1px solid var(--ln);color:var(--k3)}
+.bdg-pill{border-radius:100px}
+.bdg-dot{width:5px;height:5px;border-radius:50%;background:currentColor}
+
+/* Score card */
+.score-card{background:var(--sg);border:1px solid var(--ln);border-radius:11px;padding:18px}
+.sc-id{font-family:var(--fm);font-size:9px;color:var(--a);letter-spacing:.1em;margin-bottom:3px}
+.sc-t{font-size:12px;font-weight:700;color:var(--ink);margin-bottom:12px}
+.sc-big{font-family:var(--fd);font-size:44px;font-weight:700;color:var(--ink);line-height:1}
+.sc-max{font-size:12px;color:var(--k4)}
+.bars{display:flex;flex-direction:column;gap:7px;margin-top:12px}
+.brow{display:flex;align-items:center;gap:8px}
+.bl{width:100px;font-size:11px;color:var(--k3);flex-shrink:0;font-weight:500}
+.bw{flex:1;height:4px;background:var(--ln);border-radius:2px;overflow:hidden}
+.bf{height:100%;border-radius:2px}
+.bv{width:24px;text-align:right;font-size:11px;font-weight:700}
+
+/* Comment boxes */
+.cb-item{display:flex;gap:8px;padding:9px 11px;border-radius:8px;margin-bottom:6px}
+.cb-item:last-child{margin:0}
+.cb-ok {background:var(--okl);border:1px solid rgba(10,122,58,.18)}
+.cb-wn {background:var(--wnl);border:1px solid rgba(138,90,0,.18)}
+.cb-er {background:var(--erl);border:1px solid rgba(138,26,26,.18)}
+.cb-in {background:var(--sg2);border:1px solid var(--ln)}
+.cb-ic{font-size:11px;flex-shrink:0;margin-top:1px}
+.cb-lv{font-family:var(--fm);font-size:8px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px}
+.cb-ok .cb-lv{color:var(--ok)}.cb-wn .cb-lv{color:var(--wn)}.cb-er .cb-lv{color:var(--er)}.cb-in .cb-lv{color:var(--k4)}
+.cb-tx{font-size:11.5px;color:var(--k3);line-height:1.6}
+
+/* Inputs */
+.inp{
+  width:100%;padding:9px 13px;border-radius:7px;
+  border:1.5px solid var(--ln);background:var(--sg);color:var(--ink);
+  font-family:var(--fb);font-size:13px;outline:none;
+  transition:all .15s;margin-bottom:7px;
+}
+.inp:focus{border-color:var(--t4);box-shadow:0 0 0 3px rgba(10,61,61,.07)}
+.inp::placeholder{color:var(--k5)}
+
+/* ══ TAGLINES ════════════════════════════════════════════════ */
+.tg-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:0;border:1px solid rgba(255,255,255,.07);border-radius:14px;
+  overflow:hidden;margin-top:52px;box-shadow:var(--sh3);
+}
+.tgc{padding:28px 32px;border-right:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);transition:background .2s}
+.tgc:nth-child(even){border-right:none}
+.tgc:nth-last-child(-n+2){border-bottom:none}
+.tgc:hover{background:rgba(232,151,10,.04)}
+.tgc.feat{background:rgba(232,151,10,.1);border-color:rgba(232,151,10,.15)}
+.tgc-star{display:inline-block;font-family:var(--fm);font-size:8px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:2px 8px;border-radius:3px;background:rgba(251,202,92,.2);color:var(--a3);margin-bottom:10px}
+.tgc-q{font-family:var(--fd);font-size:19px;font-style:italic;color:rgba(242,247,245,.85);line-height:1.35;margin-bottom:7px}
+.tgc:not(.feat) .tgc-q{color:rgba(242,247,245,.65)}
+.tgc-d{font-size:11px;color:rgba(242,247,245,.28);line-height:1.65}
+.tgc-ch{font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(242,247,245,.2);margin-top:12px}
+
+.voice-compare{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid rgba(255,255,255,.07);border-radius:12px;overflow:hidden;margin-top:52px}
+.vc-col:first-child{border-right:1px solid rgba(255,255,255,.07)}
+.vc-head{padding:11px 18px;border-bottom:1px solid rgba(255,255,255,.07);font-size:12px;font-weight:700;display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.03)}
+.vc-head.do{color:rgba(10,122,58,.8)}.vc-head.dn{color:rgba(138,26,26,.7)}
+.vi{display:flex;gap:9px;font-size:12px;color:rgba(242,247,245,.45);line-height:1.7;padding:11px 18px;border-bottom:1px solid rgba(255,255,255,.05)}
+.vi:last-child{border:none}
+.vi span.do{color:rgba(10,122,58,.7)}.vi span.dn{color:rgba(138,26,26,.6)}
+
+/* ══ USAGE EXAMPLES ════════════════════════════════════════ */
+.use-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:52px}
+.uc{border-radius:12px;overflow:hidden;border:1px solid var(--ln);box-shadow:var(--sh1)}
+.uc-h{padding:8px 14px;background:var(--sg2);border-bottom:1px solid var(--ln);font-family:var(--fm);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--k5)}
+.uc-b{padding:20px}
+
+/* Spacing + radius tokens */
+.sp-row{display:flex;gap:12px;align-items:flex-end;padding:20px;background:var(--sg);border:1px solid var(--ln);border-radius:10px;flex-wrap:wrap}
+.sp-item{display:flex;flex-direction:column;align-items:center;gap:5px}
+.sp-box{background:var(--t);opacity:.35;border-radius:2px}
+.sp-lbl{font-family:var(--fm);font-size:9px;color:var(--k5);text-align:center}
+.rad-row{display:flex;gap:16px;flex-wrap:wrap;margin-top:20px}
+.rad-b{background:var(--t);opacity:.32}
+
+/* ══ TICKER ════════════════════════════════════════════════ */
+.ticker{
+  background:var(--t2);border-top:1px solid rgba(255,255,255,.05);
+  border-bottom:1px solid rgba(255,255,255,.05);
+  padding:14px 0;overflow:hidden;white-space:nowrap;
+}
+.ticker-in{display:inline-flex;gap:48px;animation:ticker 18s linear infinite}
+.ti{font-family:var(--fd);font-style:italic;font-size:15px;color:rgba(242,247,245,.28);flex-shrink:0}
+.ti em{font-style:normal;color:rgba(232,151,10,.5);font-family:var(--fm);font-size:11px;letter-spacing:.1em}
+
+/* ══ FOOTER ════════════════════════════════════════════════ */
+.footer{background:var(--ink);padding:44px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.fb-logo{display:flex;align-items:center;gap:9px}
+.fbm{width:28px;height:28px;border-radius:7px;background:var(--t);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:7px 6px;gap:3.5px}
+.fbm .b1{width:15px;height:2.5px;border-radius:1.5px;background:rgba(242,247,245,.88)}
+.fbm .b2{width:12px;height:2.5px;border-radius:1.5px;background:rgba(242,247,245,.5)}
+.fbm .b3{width:7px; height:2.5px;border-radius:1.5px;background:var(--a)}
+.fb-name{font-family:var(--fd);font-size:17px;font-weight:700;color:rgba(242,247,245,.78)}
+.fb-name em{font-style:italic;color:var(--a3)}
+.fb-tag{font-family:var(--fm);font-size:9px;letter-spacing:.14em;color:rgba(242,247,245,.18)}
+.fb-swatches{display:flex;gap:7px}
+.fbs{font-family:var(--fm);font-size:9px;padding:3px 10px;border-radius:4px;border:1px solid rgba(232,151,10,.15);color:rgba(232,151,10,.38);cursor:pointer;transition:all .15s}
+.fbs:hover{border-color:var(--a2);color:var(--a2)}
+
+/* Toast */
+.toast-c{position:fixed;bottom:20px;right:20px;z-index:999;display:flex;flex-direction:column;gap:5px;pointer-events:none}
+.tst{background:var(--t);color:var(--sg);border-radius:8px;padding:9px 16px;font-size:11px;font-weight:500;transform:translateX(110%);transition:transform .28s cubic-bezier(.22,.61,.36,1);min-width:180px;pointer-events:auto;box-shadow:var(--sh2);display:flex;align-items:center;gap:7px}
+.tst.show{transform:none}
+.tst-dot{width:5px;height:5px;border-radius:50%;background:var(--a);flex-shrink:0}
+
+/* Responsive */
+@media(max-width:960px){
+  .hero{padding:0 32px 60px}
+  .lv-grid,.comp-grid,.tg-grid,.voice-compare,.th-grid,.use-grid{grid-template-columns:1fr}
+  .lv-lt,.lv-pa{border-right:none;border-bottom:1px solid var(--ln)}
+  .pal-hero{grid-template-columns:1fr 1fr}
+  .font-cards,.lockup-grid{grid-template-columns:1fr 1fr}
+  .ng-grid{grid-template-columns:1fr 1fr}
+  .footer{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:600px){
+  .sec{padding:72px 20px}
+  .hero{padding:0 20px 48px}
+  .nav-links{display:none}
+  .pal-hero{grid-template-columns:1fr}
+  .font-cards{grid-template-columns:1fr}
+  .lockup-grid,.use-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-in">
+    <div class="nav-logo">
+      <div class="nmark"><div class="nb1"></div><div class="nb2"></div><div class="nb3"></div></div>
+      <div class="nword">Pre<em>subly</em></div>
+    </div>
+    <div class="nav-links">
+      <a class="nl on" href="#logo">01 Logo</a>
+      <a class="nl" href="#colors">02 Renkler</a>
+      <a class="nl" href="#type">03 Tipografi</a>
+      <a class="nl" href="#comp">04 Bileşenler</a>
+      <a class="nl" href="#voice">05 Ses & Ton</a>
+      <a class="nl" href="#usage">06 Kullanım</a>
+    </div>
+    <div class="nav-tag">Brand Kit · v1.0 · 2025</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-stripe"></div>
+  <div class="hero-margin"></div>
+  <div class="hero-in">
+    <!-- Giant three-bar mark -->
+    <div class="hero-mark">
+      <div class="hm-bar hm-b1"></div>
+      <div class="hm-bar hm-b2"></div>
+      <div class="hm-bar hm-b3"></div>
+    </div>
+    <div class="hero-word">Pre<em>subly</em></div>
+    <div class="hero-meta">
+      <div class="hero-sub">AI Pre-Submission Review Platform.<br>Brand Identity Guidelines.</div>
+      <div class="hero-facts">
+        <div class="hf"><div class="hf-n">3</div><div class="hf-l">RENK</div></div>
+        <div class="hf"><div class="hf-n">2</div><div class="hf-l">YAZTIPI</div></div>
+        <div class="hf"><div class="hf-n">4</div><div class="hf-l">ARAÇ</div></div>
+        <div class="hf"><div class="hf-n">v1</div><div class="hf-l">SÜRÜM</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-in" id="ticker">
+    <span class="ti">Rejection-proof your paper <em>·</em></span>
+    <span class="ti">Göndermeden önce hazır ol <em>·</em></span>
+    <span class="ti">Review before you submit <em>·</em></span>
+    <span class="ti">Your AI reviewer. Before theirs. <em>·</em></span>
+    <span class="ti">Submit smarter, not harder <em>·</em></span>
+    <span class="ti">From draft to submission-ready <em>·</em></span>
+    <span class="ti">Rejection-proof your paper <em>·</em></span>
+    <span class="ti">Göndermeden önce hazır ol <em>·</em></span>
+    <span class="ti">Review before you submit <em>·</em></span>
+    <span class="ti">Your AI reviewer. Before theirs. <em>·</em></span>
+    <span class="ti">Submit smarter, not harder <em>·</em></span>
+    <span class="ti">From draft to submission-ready <em>·</em></span>
+  </div>
+</div>
+
+<!-- ══ 01 LOGO ══════════════════════════════════════════════════ -->
+<section class="sec" id="logo">
+  <div class="sec-in">
+    <div class="ey">01 — Logo Sistemi</div>
+    <h2 class="sttl">Üç Çizgi <em>Mark</em></h2>
+    <p class="ssub">Azalan genişlikte üç yatay çubuk: makale satırları, inceleme süreci, karar anı. Son çubuk amber — kritik bulgu, değişim noktası. Teal yuvarlak kare zemin üzerinde, soldan hizalı.</p>
+
+    <!-- Variants -->
+    <div class="lv-grid">
+      <div class="lv lv-lt">
+        <div class="lv-label">Açık / Sage Zemin</div>
+        <div class="mk" style="width:72px;height:72px;padding:18px 16px;gap:10px">
+          <div class="b1" style="width:40px;height:7px"></div>
+          <div class="b2" style="width:32px;height:7px"></div>
+          <div class="b3" style="width:21px;height:7px"></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:9px">
+          <div class="mk" style="width:36px;height:36px;padding:9px 8px;gap:4.5px">
+            <div class="b1" style="width:19px;height:3.5px"></div>
+            <div class="b2" style="width:15px;height:3.5px"></div>
+            <div class="b3" style="width:10px;height:3.5px"></div>
+          </div>
+          <div class="wm">Pre<em>subly</em></div>
+        </div>
+        <div class="wm-tag">AI Pre-Submission Review</div>
+      </div>
+      <div class="lv lv-pa">
+        <div class="lv-label">Koyu Sage</div>
+        <div class="mk" style="width:72px;height:72px;padding:18px 16px;gap:10px">
+          <div class="b1" style="width:40px;height:7px"></div>
+          <div class="b2" style="width:32px;height:7px"></div>
+          <div class="b3" style="width:21px;height:7px"></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:9px">
+          <div class="mk" style="width:36px;height:36px;padding:9px 8px;gap:4.5px">
+            <div class="b1" style="width:19px;height:3.5px"></div>
+            <div class="b2" style="width:15px;height:3.5px"></div>
+            <div class="b3" style="width:10px;height:3.5px"></div>
+          </div>
+          <div class="wm">Pre<em>subly</em></div>
+        </div>
+        <div class="wm-tag">AI Pre-Submission Review</div>
+      </div>
+      <div class="lv lv-dk">
+        <div class="lv-label">Koyu / Teal Zemin</div>
+        <div class="mk inv" style="width:72px;height:72px;padding:18px 16px;gap:10px">
+          <div class="b1" style="width:40px;height:7px"></div>
+          <div class="b2" style="width:32px;height:7px"></div>
+          <div class="b3" style="width:21px;height:7px"></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:9px">
+          <div class="mk inv" style="width:36px;height:36px;padding:9px 8px;gap:4.5px">
+            <div class="b1" style="width:19px;height:3.5px"></div>
+            <div class="b2" style="width:15px;height:3.5px"></div>
+            <div class="b3" style="width:10px;height:3.5px"></div>
+          </div>
+          <div class="wm" style="color:rgba(242,247,245,.85)">Pre<em>subly</em></div>
+        </div>
+        <div class="wm-tag">AI Pre-Submission Review</div>
+      </div>
+    </div>
+
+    <!-- Scale -->
+    <div class="scale-row" style="margin-top:14px">
+      <div class="sc-item">
+        <div class="mk" style="width:72px;height:72px;padding:18px 16px;gap:10px"><div class="b1" style="width:40px;height:7px"></div><div class="b2" style="width:32px;height:7px"></div><div class="b3" style="width:21px;height:7px"></div></div>
+        <div class="sc-label">72px<br>Hero</div>
+      </div>
+      <div class="sc-sep"></div>
+      <div class="sc-item">
+        <div class="mk" style="width:48px;height:48px;padding:12px 11px;gap:7px"><div class="b1" style="width:26px;height:5px"></div><div class="b2" style="width:21px;height:5px"></div><div class="b3" style="width:14px;height:5px"></div></div>
+        <div class="sc-label">48px<br>Kart</div>
+      </div>
+      <div class="sc-sep"></div>
+      <div class="sc-item">
+        <div class="mk" style="width:36px;height:36px;padding:9px 8px;gap:4.5px"><div class="b1" style="width:19px;height:3.5px"></div><div class="b2" style="width:15px;height:3.5px"></div><div class="b3" style="width:10px;height:3.5px"></div></div>
+        <div class="sc-label">36px<br>Navbar</div>
+      </div>
+      <div class="sc-sep"></div>
+      <div class="sc-item">
+        <div class="mk" style="width:28px;height:28px;padding:7px 7px;gap:3.5px"><div class="b1" style="width:14px;height:2.5px"></div><div class="b2" style="width:11px;height:2.5px"></div><div class="b3" style="width:7px;height:2.5px"></div></div>
+        <div class="sc-label">28px<br>App</div>
+      </div>
+      <div class="sc-sep"></div>
+      <div class="sc-item">
+        <div class="mk" style="width:20px;height:20px;padding:5px;gap:2.5px"><div class="b1" style="width:10px;height:2px"></div><div class="b2" style="width:8px;height:2px"></div><div class="b3" style="width:5px;height:2px"></div></div>
+        <div class="sc-label">20px<br>Küçük</div>
+      </div>
+      <div class="sc-sep"></div>
+      <div class="sc-item">
+        <div class="mk" style="width:16px;height:16px;padding:4px;gap:2px"><div class="b1" style="width:8px;height:1.5px"></div><div class="b2" style="width:6px;height:1.5px"></div><div class="b3" style="width:4px;height:1.5px"></div></div>
+        <div class="sc-label">16px<br>Favicon</div>
+      </div>
+      <div class="scale-note">
+        <div class="sn-row"><div class="sn-dot"></div>Minimum boyut: 16px</div>
+        <div class="sn-row"><div class="sn-dot"></div>Clear space: mark yüksekliği × 0.5</div>
+        <div class="sn-row"><div class="sn-dot"></div>Çubuk oranları: 100% · 80% · 53%</div>
+        <div class="sn-row"><div class="sn-dot"></div>Çubuk arası boşluk: yükseklik × 0.28</div>
+      </div>
+    </div>
+
+    <!-- Lockups -->
+    <div class="ey" style="margin-top:44px">Lockup Varyantları</div>
+    <div class="lockup-grid">
+      <div class="lu lt">
+        <div class="mk" style="width:36px;height:36px;padding:9px 8px;gap:4.5px"><div class="b1" style="width:19px;height:3.5px"></div><div class="b2" style="width:15px;height:3.5px"></div><div class="b3" style="width:10px;height:3.5px"></div></div>
+        <div><div class="lu-wm">Pre<em>subly</em></div><div class="lu-sub">AI Pre-Submission Review</div></div>
+      </div>
+      <div class="lu wh">
+        <div class="mk" style="width:36px;height:36px;padding:9px 8px;gap:4.5px"><div class="b1" style="width:19px;height:3.5px"></div><div class="b2" style="width:15px;height:3.5px"></div><div class="b3" style="width:10px;height:3.5px"></div></div>
+        <div><div class="lu-wm">Pre<em>subly</em></div><div class="lu-sub">AI Pre-Submission Review</div></div>
+      </div>
+      <div class="lu dk">
+        <div class="mk inv" style="width:36px;height:36px;padding:9px 8px;gap:4.5px"><div class="b1" style="width:19px;height:3.5px"></div><div class="b2" style="width:15px;height:3.5px"></div><div class="b3" style="width:10px;height:3.5px"></div></div>
+        <div><div class="lu-wm">Pre<em>subly</em></div><div class="lu-sub">AI Pre-Submission Review</div></div>
+      </div>
+      <div class="lu" style="background:var(--t);border-color:var(--t3)">
+        <!-- Mark only variant -->
+        <div class="mk inv" style="width:48px;height:48px;padding:12px 11px;gap:7px"><div class="b1" style="width:26px;height:5px"></div><div class="b2" style="width:21px;height:5px"></div><div class="b3" style="width:14px;height:5px"></div></div>
+        <div>
+          <div style="font-family:var(--fm);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(242,247,245,.28)">Mark Only</div>
+          <div style="font-size:12px;color:rgba(242,247,245,.45);margin-top:3px">Yeterli alan olmadığında wordmark olmadan kullanılır</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- No-go -->
+    <div class="ey" style="margin-top:44px">Yasak Kullanımlar</div>
+    <div class="ng-grid">
+      <div class="ng">
+        <div class="ng-box">
+          <div class="mk" style="width:32px;height:32px;padding:8px 7px;gap:4px;background:linear-gradient(135deg,#6366f1,#ec4899)"><div class="b1" style="width:17px;height:3px"></div><div class="b2" style="width:13px;height:3px"></div><div class="b3" style="width:8px;height:3px"></div></div>
+          <div class="ng-over">⊘</div>
+        </div>
+        <div class="ng-lbl">Marka dışı zemin rengi</div>
+      </div>
+      <div class="ng">
+        <div class="ng-box">
+          <div style="transform:rotate(45deg)">
+            <div class="mk" style="width:28px;height:28px;padding:7px 6px;gap:3.5px"><div class="b1" style="width:14px;height:2.5px"></div><div class="b2" style="width:11px;height:2.5px"></div><div class="b3" style="width:7px;height:2.5px"></div></div>
+          </div>
+          <div class="ng-over">⊘</div>
+        </div>
+        <div class="ng-lbl">Döndürme / Eğme</div>
+      </div>
+      <div class="ng">
+        <div class="ng-box">
+          <div style="transform:scaleX(-1)">
+            <div class="mk" style="width:28px;height:28px;padding:7px 6px;gap:3.5px"><div class="b1" style="width:14px;height:2.5px"></div><div class="b2" style="width:11px;height:2.5px"></div><div class="b3" style="width:7px;height:2.5px"></div></div>
+          </div>
+          <div class="ng-over">⊘</div>
+        </div>
+        <div class="ng-lbl">Yatay / Dikey çevirme</div>
+      </div>
+      <div class="ng">
+        <div class="ng-box">
+          <div class="mk" style="width:28px;height:28px;padding:7px 6px;gap:3.5px;background:#888"><div class="b1" style="width:14px;height:2.5px;background:rgba(255,255,255,.5)"></div><div class="b2" style="width:11px;height:2.5px;background:rgba(255,255,255,.5)"></div><div class="b3" style="width:7px;height:2.5px;background:rgba(255,255,255,.5)"></div></div>
+          <div class="ng-over">⊘</div>
+        </div>
+        <div class="ng-lbl">Renk değiştirme</div>
+      </div>
+      <div class="ng">
+        <div class="ng-box">
+          <div class="mk" style="width:28px;height:28px;padding:7px 6px;gap:3.5px"><div class="b1" style="width:14px;height:2.5px"></div><div class="b3" style="width:14px;height:2.5px"></div><div class="b3" style="width:14px;height:2.5px"></div></div>
+          <div class="ng-over">⊘</div>
+        </div>
+        <div class="ng-lbl">Eşit genişlikte çubuklar</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 02 COLORS ══════════════════════════════════════════════════ -->
+<section class="sec alt" id="colors">
+  <div class="sec-in">
+    <div class="ey">02 — Renk Sistemi</div>
+    <h2 class="sttl">Brand <em>Colors</em></h2>
+    <p class="ssub">Deep Teal → akademik otorite ve güven. Warm Amber → kritik bulgu, karar anı, enerji. Sage White → bilimin yaşandığı kağıt yüzeyi. Tıklayarak hex kopyalayın.</p>
+
+    <div class="pal-hero">
+      <div class="pc" onclick="cp('#0A3D3D')">
+        <div class="pc-sw" style="background:#0A3D3D"><div class="pc-chip">⎘ Kopyala</div></div>
+        <div class="pc-inf"><div class="pc-nm">Deep Teal</div><div class="pc-hx">#0A3D3D</div><div class="pc-rl">Primary · Hero · Mark</div></div>
+      </div>
+      <div class="pc" onclick="cp('#E8970A')">
+        <div class="pc-sw" style="background:#E8970A"><div class="pc-chip">⎘ Kopyala</div></div>
+        <div class="pc-inf"><div class="pc-nm">Warm Amber</div><div class="pc-hx">#E8970A</div><div class="pc-rl">Accent · CTA · Son Çubuk</div></div>
+      </div>
+      <div class="pc" onclick="cp('#F2F7F5')">
+        <div class="pc-sw" style="background:#F2F7F5;border-bottom:1px solid var(--ln)"><div class="pc-chip" style="background:rgba(10,61,61,.12);color:var(--k3)">⎘ Kopyala</div></div>
+        <div class="pc-inf"><div class="pc-nm">Sage White</div><div class="pc-hx">#F2F7F5</div><div class="pc-rl">Background · Page</div></div>
+      </div>
+      <div class="pc" onclick="cp('#0D4F4F')">
+        <div class="pc-sw" style="background:#0D4F4F"><div class="pc-chip">⎘ Kopyala</div></div>
+        <div class="pc-inf"><div class="pc-nm">Teal 2</div><div class="pc-hx">#0D4F4F</div><div class="pc-rl">Dark BG · Footer</div></div>
+      </div>
+      <div class="pc" onclick="cp('#E8F0EC')">
+        <div class="pc-sw" style="background:#E8F0EC;border-bottom:1px solid var(--ln)"><div class="pc-chip" style="background:rgba(10,61,61,.1);color:var(--k3)">⎘ Kopyala</div></div>
+        <div class="pc-inf"><div class="pc-nm">Sage 2</div><div class="pc-hx">#E8F0EC</div><div class="pc-rl">Alt Section · Card</div></div>
+      </div>
+    </div>
+
+    <div class="pal-sub">
+      <div class="pcs" onclick="cp('#115E5E')"><div class="pcs-sw" style="background:#115E5E"></div><div class="pcs-inf"><div class="pcs-nm">Teal 3</div><div class="pcs-hx">#115E5E</div></div></div>
+      <div class="pcs" onclick="cp('#1A7272')"><div class="pcs-sw" style="background:#1A7272"></div><div class="pcs-inf"><div class="pcs-nm">Teal 4</div><div class="pcs-hx">#1A7272</div></div></div>
+      <div class="pcs" onclick="cp('#F5AA1C')"><div class="pcs-sw" style="background:#F5AA1C"></div><div class="pcs-inf"><div class="pcs-nm">Amber 2</div><div class="pcs-hx">#F5AA1C</div></div></div>
+      <div class="pcs" onclick="cp('#FBCA5C')"><div class="pcs-sw" style="background:#FBCA5C"></div><div class="pcs-inf"><div class="pcs-nm">Amber 3</div><div class="pcs-hx">#FBCA5C</div></div></div>
+      <div class="pcs" onclick="cp('#0A7A3A')"><div class="pcs-sw" style="background:#0A7A3A"></div><div class="pcs-inf"><div class="pcs-nm">Success</div><div class="pcs-hx">#0A7A3A</div></div></div>
+      <div class="pcs" onclick="cp('#8A5A00')"><div class="pcs-sw" style="background:#8A5A00"></div><div class="pcs-inf"><div class="pcs-nm">Warning</div><div class="pcs-hx">#8A5A00</div></div></div>
+      <div class="pcs" onclick="cp('#C8DAD2')"><div class="pcs-sw" style="background:#C8DAD2;border-bottom:1px solid var(--ln)"></div><div class="pcs-inf"><div class="pcs-nm">Border</div><div class="pcs-hx">#C8DAD2</div></div></div>
+    </div>
+
+    <div class="cu-grid" style="margin-top:14px">
+      <div class="cu">
+        <div class="cu-lbl">Açık zemin kombinasyonları</div>
+        <div class="cu-items">
+          <div class="cui" style="background:#0A3D3D;color:#F2F7F5;font-size:13px;font-weight:700">Primary — Deep Teal + Sage ✓</div>
+          <div class="cui" style="background:#E8970A;color:#0A3D3D;font-size:13px;font-weight:700">CTA — Warm Amber + Teal ✓</div>
+          <div class="cui" style="background:transparent;border:1.5px solid #C8DAD2;color:#3A5248;font-size:13px">Ghost — Sage Border ✓</div>
+          <div class="cui" style="background:#EBF5F5;border:1px solid #C8ECEB;color:#115E5E;font-size:13px">Tint — Teal Light ✓</div>
+        </div>
+      </div>
+      <div class="cu" style="background:#0A3D3D;border-color:#0D4F4F">
+        <div class="cu-lbl" style="color:rgba(232,151,10,.45)">Koyu zemin kombinasyonları</div>
+        <div class="cu-items">
+          <div class="cui" style="background:#E8970A;color:#0A3D3D;font-size:13px;font-weight:700">CTA — Amber ✓</div>
+          <div class="cui" style="background:transparent;border:1.5px solid rgba(242,247,245,.18);color:rgba(242,247,245,.7);font-size:13px">Ghost — Light Border ✓</div>
+          <div class="cui" style="background:rgba(232,151,10,.1);border:1px solid rgba(232,151,10,.2);color:rgba(251,202,92,.8);font-size:13px">Subtle — Amber Tint ✓</div>
+          <div class="cui" style="background:rgba(242,247,245,.05);border:1px solid rgba(242,247,245,.08);color:rgba(242,247,245,.4);font-size:13px">Surface Card ✓</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 03 TYPOGRAPHY ══════════════════════════════════════════════ -->
+<section class="sec" id="type">
+  <div class="sec-in">
+    <div class="ey">03 — Tipografi</div>
+    <h2 class="sttl">İki font, <em>bir karakter.</em></h2>
+    <p class="ssub">Playfair Display → akademik prestij, dergi başlığı geçmişi, güçlü serif kontrast. DM Sans → okunabilirlik, nefes alan metin, yüksek x-yüksekliği. DM Mono → veriler, etiketler, skorlar.</p>
+
+    <div class="type-hero">
+      <div class="th-grid">
+        <div>
+          <div class="th-lbl">Display — Playfair Display 900</div>
+          <div style="font-family:var(--fd);font-size:80px;font-weight:900;line-height:.88;letter-spacing:-.04em;color:rgba(242,247,245,.9);margin-bottom:12px">Pre<em style="color:rgba(251,202,92,.85)">subly</em></div>
+          <div style="font-family:var(--fd);font-size:22px;font-style:italic;color:rgba(242,247,245,.3);line-height:1.4">Rejection-proof your paper<br>before submitting.</div>
+        </div>
+        <div>
+          <div class="th-lbl" style="margin-bottom:10px">Body — DM Sans 400</div>
+          <div style="font-family:var(--fb);font-size:14px;line-height:1.82;color:rgba(242,247,245,.42);margin-bottom:16px">Presubly evaluates your manuscript through AI-powered peer and editorial review before you submit to any journal. Independent, instant, and honest feedback in minutes.</div>
+          <div class="th-lbl" style="margin-bottom:7px">Mono — DM Mono 500</div>
+          <div style="font-family:var(--fm);font-size:10px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:rgba(232,151,10,.5)">SCORE · 87/100 · PSB-2025-0142</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="font-cards" style="margin-top:14px">
+      <div class="fc-card">
+        <div class="fc-top">
+          <div style="font-family:var(--fd);font-size:40px;font-weight:700;line-height:.9;letter-spacing:-.03em;color:var(--ink)">Aa</div>
+          <div style="font-family:var(--fd);font-size:13px;font-style:italic;color:var(--k4);margin-top:8px">ABCDEFGHIJKLM<br>NOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz</div>
+        </div>
+        <div class="fc-bot"><div class="fc-nm">Playfair Display</div><div class="fc-ds">400 · 600 · 700 · 900 · Italic</div><div class="fc-us" style="margin-top:3px">H1, H2, H3, logo wordmark, tagline</div></div>
+      </div>
+      <div class="fc-card">
+        <div class="fc-top">
+          <div style="font-family:var(--fb);font-size:40px;font-weight:700;line-height:.9;letter-spacing:-.02em;color:var(--ink)">Aa</div>
+          <div style="font-family:var(--fb);font-size:13px;color:var(--k4);margin-top:8px">ABCDEFGHIJKLM<br>NOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz</div>
+        </div>
+        <div class="fc-bot"><div class="fc-nm">DM Sans</div><div class="fc-ds">300 · 400 · 500 · 600 · 700</div><div class="fc-us" style="margin-top:3px">Body, UI, navigasyon, butonlar</div></div>
+      </div>
+      <div class="fc-card">
+        <div class="fc-top">
+          <div style="font-family:var(--fm);font-size:40px;font-weight:500;line-height:.9;color:var(--ink)">Aa</div>
+          <div style="font-family:var(--fm);font-size:12px;color:var(--k4);margin-top:8px">0123456789<br>ABCDEFGHIJKLM<br>abcdefghijklmno</div>
+        </div>
+        <div class="fc-bot"><div class="fc-nm">DM Mono</div><div class="fc-ds">400 · 500</div><div class="fc-us" style="margin-top:3px">Eyebrow, skor, etiket, makale ID</div></div>
+      </div>
+    </div>
+
+    <div class="type-scale" style="margin-top:14px">
+      <div class="ts-head"><span class="ts-hl">Tipografi Ölçeği</span><span class="ts-hl" style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--k4)">6 seviye · tüm cihazlarda tutarlı</span></div>
+      <div class="tr"><div class="tr-meta"><strong>Display/H1</strong>Playfair · 900<br>80px · LS −0.04</div><div style="font-family:var(--fd);font-size:80px;font-weight:900;letter-spacing:-.04em;line-height:.9;color:var(--ink)">Pre<em style="color:var(--a)">sub</em></div></div>
+      <div class="tr"><div class="tr-meta"><strong>H2 / Bölüm</strong>Playfair · 700<br>44px · LS −0.025</div><div style="font-family:var(--fd);font-size:44px;font-weight:700;letter-spacing:-.025em;line-height:1.05;color:var(--ink)">Review before you <em style="color:var(--a)">submit</em></div></div>
+      <div class="tr"><div class="tr-meta"><strong>H3 / Kart başlığı</strong>DM Sans · 700<br>18px · LS −0.01</div><div style="font-family:var(--fb);font-size:18px;font-weight:700;letter-spacing:-.01em;color:var(--ink)">Bilimsel Hakem İncelemesi</div></div>
+      <div class="tr"><div class="tr-meta"><strong>Body</strong>DM Sans · 400<br>15px · LH 1.75</div><div style="font-family:var(--fb);font-size:15px;line-height:1.75;color:var(--k4);max-width:500px">Makalenizi uluslararası dergilere göndermeden önce yapay zeka destekli kapsamlı ön-gönderim değerlendirmesinden geçirin. Hızlı, bağımsız ve dürüst geri bildirim.</div></div>
+      <div class="tr"><div class="tr-meta"><strong>Eyebrow</strong>DM Mono · 500<br>9px · LS +0.28 · UC</div><div style="font-family:var(--fm);font-size:9px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--a2)">Araç 01 · Bilimsel Hakem · 100 Puan</div></div>
+      <div class="tr"><div class="tr-meta"><strong>Data / Code</strong>DM Mono · 400<br>12px</div><div style="font-family:var(--fm);font-size:12px;background:var(--sg2);padding:9px 13px;border-radius:7px;border:1px solid var(--ln);color:var(--k3)">PSB-2025-0142 · manuscript_v4.pdf · 9,840 words</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 04 COMPONENTS ══════════════════════════════════════════════ -->
+<section class="sec alt" id="comp">
+  <div class="sec-in">
+    <div class="ey">04 — UI Bileşenleri</div>
+    <h2 class="sttl">Component <em>Library</em></h2>
+
+    <div class="comp-grid">
+      <!-- Buttons light -->
+      <div class="cbox">
+        <div class="cb-lbl">Butonlar — Açık Zemin</div>
+        <div class="btn-row"><button class="btn btn-prim lg">Değerlendirmeyi Başlat</button><button class="btn btn-prim">Yükle</button><button class="btn btn-prim sm">Kaydet</button></div>
+        <div class="btn-row"><button class="btn btn-amb">Ücretsiz Başla →</button><button class="btn btn-out">Demo İzle</button><button class="btn btn-out sm">İptal</button></div>
+      </div>
+      <!-- Buttons dark -->
+      <div class="cbox dk">
+        <div class="cb-lbl dk">Butonlar — Koyu Zemin</div>
+        <div class="btn-row"><button class="btn btn-amb lg">Ücretsiz Başla →</button><button class="btn btn-amb">Değerlendir</button></div>
+        <div class="btn-row"><button class="btn btn-gh">Giriş Yap</button><button class="btn btn-gh sm">Daha Fazla</button></div>
+      </div>
+    </div>
+
+    <div class="comp-grid" style="margin-top:14px">
+      <!-- Badges -->
+      <div class="cbox">
+        <div class="cb-lbl">Badge & Etiket Sistemi</div>
+        <div class="bdg-row">
+          <span class="bdg bdg-t">Pre-Submission</span>
+          <span class="bdg bdg-t bdg-pill">AI Review</span>
+          <span class="bdg bdg-a">Skor: 87</span>
+          <span class="bdg bdg-a bdg-pill">COPE</span>
+        </div>
+        <div class="bdg-row">
+          <span class="bdg bdg-ok"><span class="bdg-dot"></span>Göndermeye Hazır</span>
+          <span class="bdg bdg-a"><span class="bdg-dot"></span>Revizyon Gerekli</span>
+          <span class="bdg bdg-er"><span class="bdg-dot"></span>Kritik Eksik</span>
+        </div>
+        <div class="bdg-row">
+          <span class="bdg bdg-ink">ICMJE</span>
+          <span class="bdg bdg-ink">CONSORT</span>
+          <span class="bdg bdg-ink">STROBE</span>
+          <span class="bdg bdg-ink">PRISMA</span>
+          <span class="bdg bdg-ink">COREQ</span>
+        </div>
+      </div>
+      <!-- Inputs -->
+      <div class="cbox">
+        <div class="cb-lbl">Form Elemanları</div>
+        <input type="text" class="inp" placeholder="Makale başlığı..." value="Diyabetik hastalarda YZ destekli tanı..."/>
+        <input type="text" class="inp" placeholder="Hedef dergi (örn. Nature Medicine)..."/>
+        <input type="text" class="inp" style="border-color:var(--er);box-shadow:0 0 0 3px rgba(138,26,26,.08)" value="Hatalı alan"/>
+        <div style="font-size:11px;color:var(--er);margin-top:-3px">Lütfen bir araştırma alanı seçin.</div>
+      </div>
+    </div>
+
+    <!-- Score + Comments -->
+    <div class="comp-grid" style="margin-top:14px">
+      <div class="cbox">
+        <div class="cb-lbl">Skor Kartı</div>
+        <div class="score-card">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px">
+            <div><div class="sc-id">PSB-2025-0142 · TIPTA YZ</div><div class="sc-t">Bilimsel Hakem Değerlendirmesi</div></div>
+            <div style="text-align:right"><div class="sc-big">87</div><div class="sc-max">/ 100</div></div>
+          </div>
+          <div class="bars">
+            <div class="brow"><div class="bl">Özgünlük</div><div class="bw"><div class="bf" style="width:91%;background:#0A7A3A"></div></div><div class="bv" style="color:#0A7A3A">9.1</div></div>
+            <div class="brow"><div class="bl">Metodoloji</div><div class="bw"><div class="bf" style="width:88%;background:#0A7A3A"></div></div><div class="bv" style="color:#0A7A3A">8.8</div></div>
+            <div class="brow"><div class="bl">Literatür</div><div class="bw"><div class="bf" style="width:79%;background:#E8970A"></div></div><div class="bv" style="color:#E8970A">7.9</div></div>
+            <div class="brow"><div class="bl">Sunum</div><div class="bw"><div class="bf" style="width:74%;background:#8A5A00"></div></div><div class="bv" style="color:#8A5A00">7.4</div></div>
+            <div class="brow"><div class="bl">Etik</div><div class="bw"><div class="bf" style="width:96%;background:#0A7A3A"></div></div><div class="bv" style="color:#0A7A3A">9.6</div></div>
+          </div>
+          <div style="margin-top:10px;padding:8px 10px;border-radius:7px;background:var(--al);border:1px solid rgba(232,151,10,.2)">
+            <div style="font-family:var(--fm);font-size:8px;font-weight:600;color:var(--wn);letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px">Karar</div>
+            <div style="font-size:12px;color:var(--wn)">Minör Revizyondan Sonra Kabul</div>
+          </div>
+        </div>
+      </div>
+      <div class="cbox">
+        <div class="cb-lbl">Yorum Kutuları</div>
+        <div class="cb-item cb-ok"><div class="cb-ic" style="color:var(--ok)">✓</div><div><div class="cb-lv">Hazır</div><div class="cb-tx">Araştırma tasarımı sağlam. Güç analizi ile desteklenmiş örneklem yeterli.</div></div></div>
+        <div class="cb-item cb-wn"><div class="cb-ic" style="color:var(--wn)">⚠</div><div><div class="cb-lv">Dikkat</div><div class="cb-tx">2022–2024 referansları yetersiz. Son AlphaFold2 literatürü bu alanda kritik.</div></div></div>
+        <div class="cb-item cb-er"><div class="cb-ic" style="color:var(--er)">✗</div><div><div class="cb-lv">Kritik</div><div class="cb-tx">Kör randomizasyon prosedürü tanımlanmamış. Majör revizyon gerekiyor.</div></div></div>
+        <div class="cb-item cb-in"><div class="cb-ic" style="color:var(--k4)">ℹ</div><div><div class="cb-lv">Öneri</div><div class="cb-tx">Tablo 3'te odd ratio ve %95 güven aralığı bulguları güçlendirirdi.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 05 SES & TON ══════════════════════════════════════════════ -->
+<section class="sec dk" id="voice">
+  <div class="sec-in">
+    <div class="ey">05 — Ses & Ton</div>
+    <h2 class="sttl">Brand <em>Voice</em></h2>
+    <p class="ssub">Presubly net, aksiyoncu ve araştırmacının tarafındadır. Gerçek bir hakem gibi dürüst ama yapıcı. Jargon yok. Belirsizlik yok.</p>
+
+    <div class="tg-grid">
+      <div class="tgc feat"><div class="tgc-star">★ Ana Tagline</div><div class="tgc-q">"Rejection-proof your paper."</div><div class="tgc-d">Araştırmacının temel korkusuna dokunur. Kısa, güçlü, akılda kalıcı. Tüm kanallarda kullanılır.</div><div class="tgc-ch">Ana Tagline · Tüm Kanallar</div></div>
+      <div class="tgc"><div class="tgc-q">"Review before you submit."</div><div class="tgc-d">Direkt çağrı. Ne yapacağını söyler. Landing page hero için ideal.</div><div class="tgc-ch">Landing Page · Hero</div></div>
+      <div class="tgc"><div class="tgc-q">"Your AI reviewer. Before theirs."</div><div class="tgc-d">Güçlü karşıtlık. Dergi hakeminden önce AI hakeminizi çalıştırın.</div><div class="tgc-ch">Kampanya · Awareness</div></div>
+      <div class="tgc"><div class="tgc-q">"Submit smarter, not harder."</div><div class="tgc-d">Boşa harcanan zamanı hedefler. Sosyal medya ve ücretli reklamlarda güçlü.</div><div class="tgc-ch">Social · Paid Ads</div></div>
+      <div class="tgc"><div class="tgc-q">"From draft to submission-ready."</div><div class="tgc-d">Taslaktan hazır makaleye yolculuk. Kurumsal sunumlarda anlatı.</div><div class="tgc-ch">Kurumsal · Sales</div></div>
+      <div class="tgc feat" style="background:rgba(242,247,245,.04)"><div class="tgc-star">TR Tagline</div><div class="tgc-q">"Göndermeden önce hazır ol."</div><div class="tgc-d">Türkçe ana tagline. Yerel pazar, OMÜ pilot ve TR kanallar için.</div><div class="tgc-ch">Türkçe Kanal · Yerel</div></div>
+    </div>
+
+    <div class="voice-compare">
+      <div class="vc-col">
+        <div class="vc-head do"><span>✓</span> Bunu söyleyin</div>
+        <div class="vi"><span class="do">✓</span>&nbsp;"Your methodology is solid. Strengthen the blinding procedure to improve acceptance odds."</div>
+        <div class="vi"><span class="do">✓</span>&nbsp;"3 journals match your manuscript at 85%+ compatibility."</div>
+        <div class="vi"><span class="do">✓</span>&nbsp;"2022–2024 references underrepresented. Add 8–10 key sources."</div>
+        <div class="vi"><span class="do">✓</span>&nbsp;"Evaluation complete. Score: 87/100."</div>
+        <div class="vi"><span class="do">✓</span>&nbsp;"Göndermeden önce 3 kritik eksik tespit edildi."</div>
+      </div>
+      <div class="vc-col">
+        <div class="vc-head dn"><span>✗</span> Bunu söylemeyin</div>
+        <div class="vi"><span class="dn">✗</span>&nbsp;"Congratulations! Amazing manuscript!" <span style="color:rgba(242,247,245,.25);font-size:11px">(boş övgü)</span></div>
+        <div class="vi"><span class="dn">✗</span>&nbsp;"As an AI language model, I have analyzed..." <span style="color:rgba(242,247,245,.25);font-size:11px">(robotik)</span></div>
+        <div class="vi"><span class="dn">✗</span>&nbsp;"Leverage our synergistic AI ecosystem." <span style="color:rgba(242,247,245,.25);font-size:11px">(jargon)</span></div>
+        <div class="vi"><span class="dn">✗</span>&nbsp;"It seems your paper might potentially have..." <span style="color:rgba(242,247,245,.25);font-size:11px">(kararsız)</span></div>
+        <div class="vi"><span class="dn">✗</span>&nbsp;"We're thrilled to inform you that..." <span style="color:rgba(242,247,245,.25);font-size:11px">(aşırı enerji)</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 06 KULLANIM ══════════════════════════════════════════════ -->
+<section class="sec" id="usage">
+  <div class="sec-in">
+    <div class="ey">06 — Kullanım & Sistem</div>
+    <h2 class="sttl">In <em>Context</em></h2>
+
+    <div class="use-grid">
+      <div class="uc">
+        <div class="uc-h">E-posta İmzası</div>
+        <div class="uc-b">
+          <div style="border-bottom:2px solid var(--a);padding-bottom:12px;margin-bottom:12px;display:inline-block">
+            <div style="display:flex;align-items:center;gap:8px">
+              <div class="mk" style="width:28px;height:28px;padding:7px 6px;gap:3.5px"><div class="b1" style="width:15px;height:2.5px"></div><div class="b2" style="width:12px;height:2.5px"></div><div class="b3" style="width:7px;height:2.5px"></div></div>
+              <div style="font-family:var(--fd);font-size:16px;font-weight:700;color:var(--ink)">Pre<em style="color:var(--a)">subly</em></div>
+            </div>
+          </div>
+          <div style="font-size:12px;color:var(--k3);line-height:1.8">
+            <strong style="color:var(--ink)">Presubly Team</strong><br>
+            AI Pre-Submission Review Platform<br>
+            <span style="color:var(--a);font-size:11px">presubly.com</span> · <span style="color:var(--k4);font-size:11px">hello@presubly.com</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="uc">
+        <div class="uc-h">Kartvizit — Ön</div>
+        <div class="uc-b" style="background:var(--t);min-height:120px;position:relative;overflow:hidden">
+          <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(232,151,10,.04) 1px,transparent 1px);background-size:20px 20px"></div>
+          <div style="position:relative;z-index:1;display:flex;flex-direction:column;gap:14px;padding:4px 0">
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div class="mk inv" style="width:40px;height:40px;padding:10px 9px;gap:5.5px"><div class="b1" style="width:22px;height:4px"></div><div class="b2" style="width:17px;height:4px"></div><div class="b3" style="width:11px;height:4px"></div></div>
+              <div style="font-family:var(--fd);font-size:20px;font-weight:700;color:rgba(242,247,245,.88);letter-spacing:-.02em">Pre<em style="color:var(--a2)">subly</em></div>
+            </div>
+            <div style="font-family:var(--fm);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(242,247,245,.25)">AI Pre-Submission Review</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="uc">
+        <div class="uc-h">Sosyal Profil</div>
+        <div class="uc-b" style="background:var(--sg2)">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+            <div class="mk" style="width:52px;height:52px;padding:13px 12px;gap:7px;border-radius:14px"><div class="b1" style="width:28px;height:5.5px"></div><div class="b2" style="width:22px;height:5.5px"></div><div class="b3" style="width:14px;height:5.5px"></div></div>
+            <div>
+              <div style="font-family:var(--fd);font-size:17px;font-weight:700;color:var(--ink)">Pre<em style="color:var(--a)">subly</em></div>
+              <div style="font-size:12px;color:var(--k4)">@presubly</div>
+            </div>
+          </div>
+          <div style="font-family:var(--fd);font-style:italic;font-size:14px;color:var(--k3);line-height:1.55">"Rejection-proof your paper before submitting."</div>
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:9px">
+            <span class="bdg bdg-t bdg-pill">#AcademicWriting</span>
+            <span class="bdg bdg-a bdg-pill">#PeerReview</span>
+            <span class="bdg bdg-ink bdg-pill">#Presubly</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spacing -->
+    <div class="divider" style="margin-top:52px"></div>
+    <div style="font-family:var(--fm);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--k5);margin-bottom:14px">Spacing Sistemi — 4pt Grid</div>
+    <div class="sp-row">
+      <div class="sp-item"><div class="sp-box" style="width:4px;height:4px"></div><div class="sp-lbl">4</div></div>
+      <div class="sp-item"><div class="sp-box" style="width:8px;height:8px"></div><div class="sp-lbl">8</div></div>
+      <div class="sp-item"><div class="sp-box" style="width:12px;height:12px"></div><div class="sp-lbl">12</div></div>
+      <div class="sp-item"><div class="sp-box" style="width:16px;height:16px"></div><div class="sp-lbl">16</div></div>
+      <div class="sp-item"><div class="sp-box" style="width:20px;height:20px"></div><div class="sp-lbl">20</div></div>
+      <div class="sp-item"><div class="sp-box" style="width:24px;height:24px"></div><div class="sp-lbl">24</div></div>
+      <div class="sp-item"><div class="sp-box" style="width:32px;height:32px"></div><div class="sp-lbl">32</div></div>
+      <div class="sp-item"><div class="sp-box" style="width:48px;height:48px"></div><div class="sp-lbl">48</div></div>
+      <div class="sp-item"><div class="sp-box" style="width:64px;height:64px"></div><div class="sp-lbl">64</div></div>
+    </div>
+
+    <div class="rad-row">
+      <div class="sp-item"><div class="rad-b" style="width:40px;height:40px;border-radius:4px"></div><div class="sp-lbl">4px<br><span style="color:var(--k4)">Badge</span></div></div>
+      <div class="sp-item"><div class="rad-b" style="width:40px;height:40px;border-radius:7px"></div><div class="sp-lbl">7px<br><span style="color:var(--k4)">Button</span></div></div>
+      <div class="sp-item"><div class="rad-b" style="width:40px;height:40px;border-radius:9px"></div><div class="sp-lbl">9px<br><span style="color:var(--k4)">Mark</span></div></div>
+      <div class="sp-item"><div class="rad-b" style="width:40px;height:40px;border-radius:11px"></div><div class="sp-lbl">11px<br><span style="color:var(--k4)">Card</span></div></div>
+      <div class="sp-item"><div class="rad-b" style="width:40px;height:40px;border-radius:14px"></div><div class="sp-lbl">14px<br><span style="color:var(--k4)">Section</span></div></div>
+      <div class="sp-item"><div class="rad-b" style="width:40px;height:40px;border-radius:100px"></div><div class="sp-lbl">100px<br><span style="color:var(--k4)">Pill</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="fb-logo">
+    <div class="fbm"><div class="b1"></div><div class="b2"></div><div class="b3"></div></div>
+    <div>
+      <div class="fb-name">Pre<em>subly</em></div>
+      <div class="fb-tag">BRAND KIT · v1.0 · 2025 · GİZLİ</div>
+    </div>
+  </div>
+  <div class="fb-swatches">
+    <span class="fbs" onclick="cp('#0A3D3D')">#0A3D3D</span>
+    <span class="fbs" onclick="cp('#E8970A')">#E8970A</span>
+    <span class="fbs" onclick="cp('#F2F7F5')">#F2F7F5</span>
+    <span class="fbs" onclick="cp('#0D4F4F')">#0D4F4F</span>
+    <span class="fbs" onclick="cp('#FBCA5C')">#FBCA5C</span>
+  </div>
+</footer>
+
+<div class="toast-c" id="tc"></div>
+
+<script>
+function cp(v){
+  navigator.clipboard?.writeText(v).catch(()=>{});
+  const c=document.getElementById('tc');
+  const el=document.createElement('div');
+  el.className='tst';
+  el.innerHTML=`<div class="tst-dot"></div><span>Kopyalandı: <strong style="font-family:'DM Mono',monospace">${v}</strong></span>`;
+  c.appendChild(el);
+  requestAnimationFrame(()=>requestAnimationFrame(()=>el.classList.add('show')));
+  setTimeout(()=>{el.classList.remove('show');setTimeout(()=>el.remove(),300)},2200);
+}
+
+// Active nav on scroll
+const secs=document.querySelectorAll('section[id]');
+const nls=document.querySelectorAll('.nav-links .nl');
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) nls.forEach(n=>n.classList.toggle('on',n.getAttribute('href')==='#'+e.target.id));
+  });
+},{rootMargin:'-40% 0px -55% 0px'});
+secs.forEach(s=>io.observe(s));
+</script>
+</body>
+</html>

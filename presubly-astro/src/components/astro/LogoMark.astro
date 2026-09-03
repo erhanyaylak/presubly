@@ -1,0 +1,47 @@
+---
+interface Props {
+  size?: number;
+  inverted?: boolean;
+}
+const { size = 34, inverted = false } = Astro.props;
+const pad = Math.round(size * 0.265);
+const gap = Math.round(size * 0.132);
+const bh = Math.round(size * 0.103);
+const br = Math.round(bh * 0.57);
+const w1 = Math.round(size * 0.56);
+const w2 = Math.round(size * 0.44);
+const w3 = Math.round(size * 0.29);
+const radius = Math.round(size * 0.235);
+---
+
+<div
+  class:list={['lmark', { inv: inverted }]}
+  style={`width:${size}px;height:${size}px;padding:${pad}px ${pad - 1}px;gap:${gap}px;border-radius:${radius}px`}
+>
+  <div class="b1" style={`width:${w1}px;height:${bh}px;border-radius:${br}px`}></div>
+  <div class="b2" style={`width:${w2}px;height:${bh}px;border-radius:${br}px`}></div>
+  <div class="b3" style={`width:${w3}px;height:${bh}px;border-radius:${br}px`}></div>
+</div>
+
+<style>
+  .lmark {
+    background: var(--t);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(10, 61, 61, .2);
+  }
+  .lmark.inv {
+    background: rgba(242, 247, 245, .1);
+    border: 1px solid rgba(242, 247, 245, .15);
+    box-shadow: none;
+  }
+  .b1 { background: rgba(242, 247, 245, .88) }
+  .b2 { background: rgba(242, 247, 245, .5) }
+  .b3 { background: var(--a) }
+  .inv .b1 { background: rgba(242, 247, 245, .65) }
+  .inv .b2 { background: rgba(242, 247, 245, .35) }
+  .inv .b3 { background: var(--a); opacity: .9 }
+</style>

@@ -1,0 +1,59 @@
+---
+import type { Locale } from '../../i18n/config';
+import { t } from '../../i18n/utils';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+---
+
+<footer class="footer">
+  <div class="fin">
+    <div class="ftop">
+      <div>
+        <div class="fbn">Pre<span>subly</span></div>
+        <div class="fbd">{t(locale, 'ft.desc')}</div>
+        <div class="feco">
+          <span class="feb">EthicsKit</span>
+          <span class="feb">MisanpAIge</span>
+          <span class="feb">JournalKit</span>
+          <span class="feb">CVita</span>
+        </div>
+      </div>
+      <div>
+        <div class="fct">{t(locale, 'ft.c1')}</div>
+        <div class="fcl">
+          <a class="fll" href="#">{t(locale, 'ft.c1a')}</a>
+          <a class="fll" href="#">{t(locale, 'ft.c1b')}</a>
+          <a class="fll" href="#">{t(locale, 'ft.c1c')}</a>
+          <a class="fll" href="#">API</a>
+        </div>
+      </div>
+      <div>
+        <div class="fct">{t(locale, 'ft.c2')}</div>
+        <div class="fcl">
+          <a class="fll" href="#">{t(locale, 'ft.c2a')}</a>
+          <a class="fll" href="#">{t(locale, 'ft.c2b')}</a>
+          <a class="fll" href={locale === 'tr' ? '/tr/marka-hikayesi' : '/en/brand-story'}>{locale === 'tr' ? 'Marka Hikayesi' : 'Brand Story'}</a>
+          <a class="fll" href="#">{t(locale, 'ft.c2c')}</a>
+        </div>
+      </div>
+      <div>
+        <div class="fct">{t(locale, 'ft.c3')}</div>
+        <div class="fcl">
+          <a class="fll" href="#">{t(locale, 'ft.c3a')}</a>
+          <a class="fll" href="#">{t(locale, 'ft.c3b')}</a>
+          <a class="fll" href="#">{t(locale, 'ft.c3c')}</a>
+          <a class="fll" href="#">{t(locale, 'ft.c3d')}</a>
+        </div>
+      </div>
+    </div>
+    <div class="fbot">
+      <div class="fcopy" set:html={t(locale, 'ft.copy')} />
+      <div class="feco">
+        <span class="feb">{t(locale, 'ft.b1')}</span>
+        <span class="feb">{t(locale, 'ft.b2')}</span>
+        <span class="feb">Anthropic DPA</span>
+      </div>
+    </div>
+  </div>
+</footer>

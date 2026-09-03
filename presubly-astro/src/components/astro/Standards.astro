@@ -1,0 +1,36 @@
+---
+import type { Locale } from '../../i18n/config';
+import { t } from '../../i18n/utils';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+
+const cards = [
+  { ab: 'COPE', nm: 'Committee on Publication Ethics', dKey: 'std.c1d', dotKey: 'std.c1dot', delay: '' },
+  { ab: 'ICMJE', nm: 'International Committee of Medical Journal Editors', dKey: 'std.c2d', dotKey: 'std.c2dot', delay: '.08s' },
+  { ab: 'CONSORT', nm: 'Consolidated Standards of Reporting Trials', dKey: 'std.c3d', dotKey: 'std.c3dot', delay: '.16s' },
+  { ab: 'STROBE', nm: 'Strengthening the Reporting of Observational Studies', dKey: 'std.c4d', dotKey: 'std.c4dot', delay: '.24s' },
+  { ab: 'PRISMA', nm: 'Preferred Reporting Items for Systematic Reviews', dKey: 'std.c5d', dotKey: 'std.c5dot', delay: '.32s' },
+  { ab: 'COREQ / ARRIVE', nmKey: 'std.c6n', dKey: 'std.c6d', dotKey: 'std.c6dot', delay: '.4s' },
+];
+---
+
+<section class="sec dk" id="standards">
+  <div class="sec-in">
+    <div class="reveal">
+      <div class="ey">{t(locale, 'std.ey')}</div>
+      <h2 class="sttl" set:html={t(locale, 'std.h')} />
+      <p class="ssub">{t(locale, 'std.sub')}</p>
+    </div>
+    <div class="std-grid">
+      {cards.map(c => (
+        <div class="std-card reveal" style={c.delay ? `transition-delay:${c.delay}` : ''}>
+          <div class="std-ab">{c.ab}</div>
+          <div class="std-nm">{c.nmKey ? t(locale, c.nmKey) : c.nm}</div>
+          <div class="std-ds">{t(locale, c.dKey)}</div>
+          <div class="std-dot">{t(locale, c.dotKey)}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

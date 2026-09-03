@@ -1,0 +1,62 @@
+---
+import type { Locale } from '../../i18n/config';
+import { t } from '../../i18n/utils';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+---
+
+<section class="hero">
+  <div class="hmesh"></div>
+  <div class="hgrid"></div>
+  <div class="hdot" style="width:120px;height:120px;left:8%;top:18%;animation:dotFloat 7s ease-in-out infinite"></div>
+  <div class="hdot" style="width:80px;height:80px;right:12%;top:65%;animation:dotFloat 9s 1s ease-in-out infinite"></div>
+  <div class="hdot" style="width:60px;height:60px;left:42%;bottom:12%;animation:dotFloat 8s 2s ease-in-out infinite;background:rgba(42,143,143,.08)"></div>
+  <div class="hstripe"></div>
+  <div class="hin">
+    <div class="hleft">
+      <div class="hey">Presubly &middot; AI Pre-Submission Review</div>
+      <h1 class="hh" set:html={t(locale, 'hero.h1')} />
+      <p class="hp">{t(locale, 'hero.p')}</p>
+      <div class="hbtns">
+        <button class="hb1" id="heroCta">{t(locale, 'hero.btn1')}</button>
+        <button class="hb2">{t(locale, 'hero.btn2')}</button>
+      </div>
+      <div class="hnote">
+        <span>{t(locale, 'hero.n1')}</span>
+        <span>{t(locale, 'hero.n2')}</span>
+        <span>{t(locale, 'hero.n3')}</span>
+      </div>
+    </div>
+    <div class="hright">
+      <div class="rmock">
+        <div class="rtop">
+          <div class="rdots"><div class="rd" style="background:#FF6058"></div><div class="rd" style="background:#FFBD2E"></div><div class="rd" style="background:#27C93F"></div></div>
+          <div class="rtitle">{t(locale, 'mock.title')}</div>
+        </div>
+        <div class="rbody">
+          <div class="rhead">
+            <div>
+              <div class="rid">{t(locale, 'mock.id')}</div>
+              <div class="rtit">{t(locale, 'mock.paper')}</div>
+            </div>
+            <div><div class="rscore">87</div><div class="rsmax">/100</div></div>
+          </div>
+          <div class="rbars">
+            <div class="rbar-row"><div class="rbl">{t(locale, 'mock.b1')}</div><div class="rbw"><div class="rbf" id="rb1" style="background:#2A8F8F"></div></div><div class="rbv" style="color:#2A8F8F">9.1</div></div>
+            <div class="rbar-row"><div class="rbl">{t(locale, 'mock.b2')}</div><div class="rbw"><div class="rbf" id="rb2" style="background:#2A8F8F"></div></div><div class="rbv" style="color:#2A8F8F">8.8</div></div>
+            <div class="rbar-row"><div class="rbl">{t(locale, 'mock.b3')}</div><div class="rbw"><div class="rbf" id="rb3" style="background:#E8970A"></div></div><div class="rbv" style="color:#E8970A">7.9</div></div>
+            <div class="rbar-row"><div class="rbl">{t(locale, 'mock.b4')}</div><div class="rbw"><div class="rbf" id="rb4" style="background:#C4820A"></div></div><div class="rbv" style="color:#C4820A">7.4</div></div>
+            <div class="rbar-row"><div class="rbl">{t(locale, 'mock.b5')}</div><div class="rbw"><div class="rbf" id="rb5" style="background:#0A7A3A"></div></div><div class="rbv" style="color:#0A7A3A">9.6</div></div>
+          </div>
+          <div class="rcmts">
+            <div class="rcmt ok"><div class="rcmt-ic" style="color:#5FD68A">✓</div><div class="rcmt-tx ok">{t(locale, 'mock.c1')}</div></div>
+            <div class="rcmt wn"><div class="rcmt-ic" style="color:#E8B04A">⚠</div><div class="rcmt-tx wn">{t(locale, 'mock.c2')}</div></div>
+            <div class="rcmt er"><div class="rcmt-ic" style="color:#F09595">✗</div><div class="rcmt-tx er">{t(locale, 'mock.c3')}</div></div>
+          </div>
+          <div class="rdecision"><div class="rdi"></div><div><div class="rdt">{t(locale, 'mock.dec')}</div><div class="rdsub">{t(locale, 'mock.decsub')}</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

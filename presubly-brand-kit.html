@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Presubly — Brand Identity Guidelines</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400;1,8..60,600;1,8..60,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --t:#0A3D3D;--t2:#0D4F4F;--t3:#115E5E;--t4:#1A7272;--t5:#2A8F8F;
+  --tl:#EBF5F5;--tl2:#C8ECEB;
+  --a:#E8970A;--a2:#F5AA1C;--a3:#FBCA5C;--al:#FEF8E8;--al2:#FAECC8;
+  --sg:#F4F7F5;--sg2:#E8F0EC;--sg3:#D8E8E0;
+  --card:#FFFFFF;
+  --ln:#D0DDD6;--ln2:#BDD0C4;
+  --ink:#0A1A14;--k2:#1F2E24;--k3:#3A5248;--k4:#5E8272;--k5:#98B8AA;
+  --ok:#0A7A3A;--okl:#E8F7EE;--okb:rgba(10,122,58,.18);
+  --wn:#8A5A00;--wnl:#FEF5E4;--wnb:rgba(138,90,0,.18);
+  --er:#8A1A1A;--erl:#FEF0F0;--erb:rgba(138,26,26,.18);
+  --fd:'Source Serif 4','Source Serif Pro',Georgia,serif;
+  --fb:'Source Serif 4','Source Serif Pro',Georgia,serif;
+  --fm:'Source Serif 4','Source Serif Pro',Georgia,serif;
+  --s1:0 1px 3px rgba(10,61,61,.05),0 6px 20px rgba(10,61,61,.07);
+  --s2:0 4px 12px rgba(10,61,61,.06),0 20px 56px rgba(10,61,61,.1);
+}
+html{scroll-behavior:smooth}
+body{background:var(--sg);color:var(--ink);font-family:var(--fb);font-size:15px;line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:200;background:rgba(244,247,245,.96);backdrop-filter:blur(18px);border-bottom:1px solid var(--ln)}
+.nav-in{max-width:1360px;margin:0 auto;padding:0 56px;height:54px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--fd);font-size:17px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+.nav-logo .acc{color:var(--a)}
+.nav-links{display:flex;gap:1px}
+.nl{padding:6px 12px;border-radius:6px;font-size:11px;font-weight:600;color:var(--k4);border:none;background:transparent;cursor:pointer;transition:all .15s;text-decoration:none}
+.nl:hover{color:var(--ink);background:var(--sg2)}
+.nl.on{color:var(--t);background:var(--tl)}
+.nav-tag{font-family:var(--fm);font-size:9px;letter-spacing:.12em;padding:4px 11px;border-radius:100px;border:1px solid var(--ln2);color:var(--k5);background:var(--sg2)}
+
+/* HERO */
+.hero{background:var(--t);min-height:90vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 56px 68px;position:relative;overflow:hidden}
+.hero-tex{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(255,255,255,.02) 79px,rgba(255,255,255,.02) 80px),repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(255,255,255,.02) 79px,rgba(255,255,255,.02) 80px)}
+.hero-rule{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--a) 0%,var(--a2) 50%,transparent 100%)}
+.hero-ring{position:absolute;width:900px;height:900px;top:-350px;right:-200px;border-radius:50%;border:1px solid rgba(42,143,143,.08);box-shadow:0 0 0 80px rgba(42,143,143,.03),0 0 0 200px rgba(42,143,143,.015);pointer-events:none}
+.hero-in{position:relative;z-index:1;max-width:1360px;margin:0 auto;width:100%}
+.hero-ey{font-family:var(--fm);font-size:9px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:rgba(232,151,10,.6);margin-bottom:18px;display:flex;align-items:center;gap:12px;opacity:0;animation:up .5s ease forwards}
+.hero-ey::before{content:'';width:32px;height:1px;background:rgba(232,151,10,.4)}
+.hero-wm{font-family:var(--fd);font-size:clamp(72px,10vw,156px);font-weight:700;line-height:.88;letter-spacing:-.03em;color:var(--sg);margin-bottom:20px;opacity:0;animation:up .5s .07s ease forwards}
+.hero-wm .acc{color:var(--a2);font-style:italic}
+.hero-tag{font-size:clamp(14px,1.8vw,20px);color:rgba(235,245,245,.35);font-weight:300;margin-bottom:52px;opacity:0;animation:up .5s .13s ease forwards;letter-spacing:.04em}
+.hero-stats{display:flex;gap:0;border:1px solid rgba(42,143,143,.12);border-radius:10px;overflow:hidden;width:fit-content;background:rgba(42,143,143,.05);opacity:0;animation:up .5s .19s ease forwards}
+.hs{padding:16px 26px;border-right:1px solid rgba(42,143,143,.1)}
+.hs:last-child{border:none}
+.hs-n{font-family:var(--fd);font-size:26px;font-weight:700;color:var(--a2);line-height:1;margin-bottom:3px}
+.hs-l{font-size:10px;color:rgba(235,245,245,.3);letter-spacing:.07em}
+@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* SECTIONS */
+.sec{padding:80px 56px;border-bottom:1px solid var(--ln)}
+.sec-in{max-width:1360px;margin:0 auto}
+.sec-alt{background:var(--sg2)}
+.sh{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end;margin-bottom:52px}
+.sh.full{grid-template-columns:1fr;gap:0;margin-bottom:44px}
+.sec-no{font-family:var(--fm);font-size:9px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--t4);margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.sec-no::after{content:'';width:24px;height:1px;background:rgba(10,61,61,.18)}
+.sec-title{font-family:var(--fd);font-size:clamp(26px,3vw,42px);font-weight:700;line-height:1.05;letter-spacing:-.02em;color:var(--ink)}
+.sec-title em{font-style:italic;color:var(--t3)}
+.sec-sub{font-size:14px;color:var(--k4);line-height:1.82;font-weight:400}
+
+/* LOGO */
+.logo-trio{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--ln);border-radius:16px;overflow:hidden;margin-bottom:20px;box-shadow:var(--s1)}
+.lt{padding:52px 40px;display:flex;flex-direction:column;align-items:center;gap:18px}
+.lt.w{background:var(--card);border-right:1px solid var(--ln)}
+.lt.p{background:var(--sg2);border-right:1px solid var(--ln)}
+.lt.d{background:var(--t)}
+.lt-lbl{font-family:var(--fm);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--k5)}
+.lt-lbl.dk{color:rgba(42,143,143,.35)}
+.wm{font-family:var(--fd);font-weight:700;letter-spacing:-.02em;color:var(--ink);font-size:32px}
+.wm .acc{color:var(--a);font-style:normal}
+.wm.dk{color:var(--sg)}
+.wm.dk .acc{color:var(--a2)}
+.wm-sub{font-family:var(--fm);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--k5);margin-top:2px}
+.wm-sub.dk{color:rgba(42,143,143,.4)}
+
+.lmark-lg{width:64px;height:64px;border-radius:14px;background:linear-gradient(135deg,var(--t) 0%,var(--t3) 100%);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding-left:15px;gap:6px;position:relative;box-shadow:0 4px 16px rgba(10,61,61,.25);overflow:hidden}
+.lmark-lg::before{content:'';display:block;width:34px;height:4.5px;background:rgba(242,247,245,.85);border-radius:2.5px}
+.lmark-lg::after{content:'';display:block;width:27px;height:4.5px;background:rgba(242,247,245,.85);border-radius:2.5px}
+.lmark-lg-bar3{display:block;width:19px;height:4.5px;background:var(--a2);border-radius:2.5px}
+
+.anat{display:flex;align-items:center;gap:18px;padding:14px 22px;background:var(--card);border:1px solid var(--ln);border-radius:11px;box-shadow:var(--s1);margin-bottom:14px;flex-wrap:wrap}
+.anat-lbl{font-family:var(--fm);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--k5);flex-shrink:0}
+.anat-item{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--k2);font-weight:600}
+.anat-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+
+.size-row{display:flex;align-items:baseline;gap:32px;padding:16px 22px;background:var(--card);border:1px solid var(--ln);border-radius:11px;box-shadow:var(--s1);margin-bottom:14px;flex-wrap:wrap}
+.size-item{font-family:var(--fd);font-weight:700;color:var(--ink);letter-spacing:-.02em}
+.size-item .acc{color:var(--a)}
+.size-lbl{font-family:var(--fm);font-size:9px;color:var(--k5);letter-spacing:.1em;margin-top:2px}
+
+.no-go{background:var(--card);border:1px solid var(--ln);border-radius:12px;padding:22px;box-shadow:var(--s1)}
+.ng-lbl{font-family:var(--fm);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--k5);margin-bottom:18px}
+.ng-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.ng-item{text-align:center}
+.ng-box{min-height:70px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:8px;background:var(--sg2);border:1px solid var(--ln);position:relative;padding:10px}
+.ng-x{position:absolute;inset:0;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:28px;color:var(--er);background:rgba(254,240,240,.8)}
+.ng-t{font-size:10px;color:var(--er);font-weight:700}
+
+/* COLORS */
+.pal{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--ln);border-radius:16px;overflow:hidden;box-shadow:var(--s1);margin-bottom:16px}
+.pc{overflow:hidden;cursor:pointer}
+.pc:not(:last-child){border-right:1px solid var(--ln)}
+.pc:hover .pc-sw{filter:brightness(.91)}
+.pc-sw{height:110px;position:relative;transition:filter .15s}
+.pc-chip{position:absolute;bottom:8px;right:8px;padding:3px 8px;border-radius:4px;font-family:var(--fm);font-size:9px;font-weight:600;background:rgba(0,0,0,.25);color:white;opacity:0;transition:opacity .15s}
+.pc:hover .pc-chip{opacity:1}
+.pc-inf{padding:12px 14px;background:var(--card);border-top:1px solid var(--ln)}
+.pc-nm{font-size:12px;font-weight:700;color:var(--ink);margin-bottom:1px}
+.pc-hx{font-family:var(--fm);font-size:10px;color:var(--k4)}
+.pc-rl{font-size:10px;color:var(--k5);margin-top:1px}
+
+.pal-sub{display:grid;grid-template-columns:repeat(6,1fr);gap:0;border:1px solid var(--ln);border-radius:12px;overflow:hidden;box-shadow:var(--s1);margin-bottom:20px}
+.pcs{overflow:hidden;cursor:pointer}
+.pcs:not(:last-child){border-right:1px solid var(--ln)}
+.pcs:hover .pcs-sw{filter:brightness(.91)}
+.pcs-sw{height:50px;transition:filter .15s}
+.pcs-inf{padding:9px 12px;background:var(--card);border-top:1px solid var(--ln)}
+.pcs-nm{font-size:10px;font-weight:700;color:var(--ink);margin-bottom:1px}
+.pcs-hx{font-family:var(--fm);font-size:9px;color:var(--k4)}
+
+.col-demo{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.cd{border-radius:12px;padding:22px;border:1px solid var(--ln)}
+
+/* TYPE */
+.type-hero{background:var(--t);border-radius:16px;padding:44px;margin-bottom:20px;box-shadow:var(--s2)}
+.type-pair{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.tp-lbl{font-family:var(--fm);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(42,143,143,.5);margin-bottom:14px}
+
+.type-scale{background:var(--card);border:1px solid var(--ln);border-radius:14px;overflow:hidden;box-shadow:var(--s1)}
+.ts-header{padding:12px 22px;background:var(--sg2);border-bottom:1px solid var(--ln);display:flex;justify-content:space-between}
+.ts-hl{font-family:var(--fm);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--k4)}
+.ts-body{padding:0 22px}
+.type-row{display:grid;grid-template-columns:200px 1fr;gap:28px;align-items:baseline;padding:22px 0;border-bottom:1px solid var(--ln)}
+.type-row:last-child{border:none}
+.tr-meta{font-family:var(--fm);font-size:9px;color:var(--k5);line-height:1.9}
+.tr-meta strong{display:block;font-family:var(--fb);font-size:10px;font-weight:700;color:var(--k3);margin-bottom:4px}
+
+/* COMPONENTS */
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.cbox{border-radius:14px;padding:26px;border:1px solid var(--ln);background:var(--card);box-shadow:var(--s1)}
+.cbox.alt{background:var(--sg2)}
+.cbox.dk{background:var(--t);border-color:rgba(42,143,143,.15)}
+.cb-lbl{font-family:var(--fm);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--k5);margin-bottom:18px}
+.cb-lbl.dk{color:rgba(42,143,143,.35)}
+
+.br{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:9px 20px;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;border:none;font-family:var(--fb);transition:all .15s}
+.btn.p{background:var(--t);color:var(--sg)}
+.btn.p:hover{background:var(--t2);transform:translateY(-1px);box-shadow:0 4px 16px rgba(10,61,61,.3)}
+.btn.s{background:transparent;color:var(--ink);border:1.5px solid var(--ln2)}
+.btn.s:hover{border-color:var(--t4);color:var(--t)}
+.btn.g{background:var(--tl);color:var(--t);border:1.5px solid rgba(10,61,61,.12)}
+.btn.g:hover{background:var(--tl2)}
+.btn.a{background:var(--a);color:#fff;border:none}
+.btn.a:hover{background:var(--a2);transform:translateY(-1px)}
+.btn.dp{background:var(--t3);color:var(--sg)}
+.btn.ds{background:transparent;color:var(--sg);border:1.5px solid rgba(235,245,245,.18)}
+.btn.ds:hover{background:rgba(255,255,255,.07)}
+.btn.sm{padding:6px 13px;font-size:12px}
+.btn.lg{padding:12px 26px;font-size:15px}
+.btn:disabled{opacity:.35;cursor:not-allowed}
+
+.brow{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:9px}
+.badge{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:5px;font-size:10px;font-weight:700}
+.badge.tl{background:var(--tl);border:1px solid rgba(10,61,61,.12);color:var(--t)}
+.badge.ink{background:var(--sg2);border:1px solid var(--ln2);color:var(--k2)}
+.badge.ok{background:var(--okl);border:1px solid var(--okb);color:var(--ok)}
+.badge.warn{background:var(--wnl);border:1px solid var(--wnb);color:var(--wn)}
+.badge.am{background:var(--al);border:1px solid var(--al2);color:var(--a)}
+.badge.pill{border-radius:100px}
+.bdot{width:5px;height:5px;border-radius:50%;background:currentColor}
+
+.inp{width:100%;padding:9px 13px;border-radius:7px;border:1.5px solid var(--ln2);background:var(--sg);color:var(--ink);font-size:13px;font-family:var(--fb);outline:none;transition:all .15s;margin-bottom:8px}
+.inp:focus,.inp.foc{border-color:var(--t4);box-shadow:0 0 0 3px rgba(10,61,61,.1)}
+.inp::placeholder{color:var(--k5)}
+
+/* review card */
+.rv-card{background:var(--card);border:1px solid var(--ln);border-radius:12px;overflow:hidden;box-shadow:var(--s1)}
+.rv-h{background:var(--sg2);padding:10px 14px;border-bottom:1px solid var(--ln);display:flex;align-items:center;justify-content:space-between}
+.rv-t{font-size:12px;font-weight:700;color:var(--ink)}
+.rv-b{padding:14px;font-size:11px;line-height:1.7;color:var(--k3)}
+.rv-b .h{display:block;font-weight:700;color:var(--ink);margin-bottom:4px;margin-top:10px}
+.rv-b .h:first-child{margin-top:0}
+.rv-b .ok{display:block;color:var(--ok);margin-bottom:4px}
+.rv-b .wn{display:block;color:var(--wn);margin-bottom:4px}
+.rv-b .er{display:block;color:var(--er);margin-bottom:4px}
+
+/* comment boxes */
+.cb-box{border-radius:8px;padding:10px 12px;margin-bottom:8px;display:flex;gap:8px;align-items:flex-start}
+.cb-box:last-child{margin:0}
+.cb-box.ok{background:var(--okl);border:1px solid var(--okb)}
+.cb-box.warn{background:var(--wnl);border:1px solid var(--wnb)}
+.cb-box.info{background:var(--tl);border:1px solid rgba(10,61,61,.12)}
+.cb-tt{font-family:var(--fm);font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px}
+.cb-box.ok .cb-tt{color:var(--ok)}
+.cb-box.warn .cb-tt{color:var(--wn)}
+.cb-box.info .cb-tt{color:var(--t)}
+.cb-tx{font-size:11px;color:var(--k3);line-height:1.65;font-weight:400}
+
+/* TAGLINES */
+.tg-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--ln);border-radius:16px;overflow:hidden;box-shadow:var(--s2);margin-bottom:24px}
+.tgc{background:var(--card);padding:26px 30px;border-right:1px solid var(--ln);border-bottom:1px solid var(--ln);transition:background .15s}
+.tgc:nth-child(even){border-right:none}
+.tgc:nth-child(5),.tgc:nth-child(6){border-bottom:none}
+.tgc:hover{background:var(--sg2)}
+.tgc.feat{background:var(--t)}
+.tgc.feat:hover{background:var(--t2)}
+.tgc-star{font-family:var(--fm);font-size:8px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:2px 9px;border-radius:3px;background:var(--a);color:#fff;display:inline-block;margin-bottom:10px}
+.tgc-q{font-family:var(--fd);font-size:17px;font-style:italic;color:var(--ink);line-height:1.35;margin-bottom:6px}
+.tgc.feat .tgc-q{color:var(--sg)}
+.tgc-d{font-size:11px;color:var(--k4);line-height:1.65;font-weight:400}
+.tgc.feat .tgc-d{color:rgba(235,245,245,.38)}
+.tgc-use{font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--k5);margin-top:11px}
+.tgc.feat .tgc-use{color:rgba(42,143,143,.4)}
+
+/* VOICE */
+.voice-chars{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:22px}
+.vc{background:var(--card);border:1px solid var(--ln);border-radius:12px;padding:18px;text-align:center;box-shadow:var(--s1)}
+.vc-em{font-size:26px;margin-bottom:9px}
+.vc-n{font-size:12px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.vc-d{font-size:11px;color:var(--k4);line-height:1.65;font-weight:400}
+
+.voice-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--ln);border-radius:14px;overflow:hidden;box-shadow:var(--s1)}
+.vg-col{background:var(--card)}
+.vg-col:first-child{border-right:1px solid var(--ln)}
+.vg-head{padding:12px 18px;border-bottom:1px solid var(--ln);font-size:12px;font-weight:700;display:flex;align-items:center;gap:7px;background:var(--sg2)}
+.vg-head.do{color:var(--ok)}
+.vg-head.dont{color:var(--er)}
+.vg-body{padding:14px 18px;display:flex;flex-direction:column}
+.vi{display:flex;align-items:flex-start;gap:7px;font-size:11px;color:var(--k3);line-height:1.7;font-weight:400;padding:9px 0;border-bottom:1px solid var(--ln)}
+.vi:last-child{border:none;padding-bottom:0}
+
+/* USAGE */
+.ug{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
+.uc{border-radius:14px;overflow:hidden;border:1px solid var(--ln);box-shadow:var(--s1)}
+.uc-h{padding:8px 14px;background:var(--sg2);border-bottom:1px solid var(--ln);font-family:var(--fm);font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--k5)}
+.uc-b{padding:20px;background:var(--card)}
+.uc-b.dk{background:var(--t)}
+
+.sp-row{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap}
+.sp-i{text-align:center}
+.sp-b{background:var(--t4);border-radius:3px;margin:0 auto 6px;opacity:.55}
+.rad-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.ri{text-align:center}
+.rb{background:var(--t4);margin:0 auto 6px;opacity:.55}
+
+/* toast */
+.tc-c{position:fixed;bottom:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:5px;pointer-events:none}
+.tst{background:var(--t);color:var(--sg);border-radius:8px;padding:9px 15px;font-size:11px;font-family:var(--fb);transform:translateX(110%);transition:transform .3s cubic-bezier(.22,.61,.36,1);min-width:200px;pointer-events:auto;box-shadow:var(--s2);display:flex;align-items:center;gap:7px;font-weight:500}
+.tst.sh{transform:none}
+
+/* footer */
+.bk-foot{background:var(--t);padding:36px 56px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center}
+
+.div{height:1px;background:var(--ln);margin:24px 0}
+.pill{display:inline-flex;align-items:center;gap:5px;padding:4px 11px;border-radius:100px;border:1px solid var(--ln2);font-size:11px;color:var(--k4)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-in">
+    <div class="nav-logo">Pre<span class="acc">sub</span>ly</div>
+    <div class="nav-links">
+      <a class="nl on" href="#logo">01 Logo</a>
+      <a class="nl" href="#colors">02 Renkler</a>
+      <a class="nl" href="#type">03 Tipografi</a>
+      <a class="nl" href="#comp">04 Bilesenler</a>
+      <a class="nl" href="#taglines">05 Tagline</a>
+      <a class="nl" href="#voice">06 Ses & Ton</a>
+      <a class="nl" href="#usage">07 Kullanim</a>
+    </div>
+    <div class="nav-tag">v1.0 &middot; Brand Kit</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tex"></div>
+  <div class="hero-rule"></div>
+  <div class="hero-ring"></div>
+  <div class="hero-in">
+    <div class="hero-ey">Brand Identity Guidelines</div>
+    <div class="hero-wm">Pre<span class="acc">sub</span>ly</div>
+    <div class="hero-tag">AI Pre-Submission Review Platform</div>
+    <div class="hero-stats">
+      <div class="hs"><div class="hs-n">3</div><div class="hs-l">Logo Varyasyonu</div></div>
+      <div class="hs"><div class="hs-n">10</div><div class="hs-l">Renk</div></div>
+      <div class="hs"><div class="hs-n">3</div><div class="hs-l">Font Ailesi</div></div>
+      <div class="hs"><div class="hs-n">6</div><div class="hs-l">Tagline</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 01 LOGO -->
+<section class="sec" id="logo">
+  <div class="sec-in">
+    <div class="sh">
+      <div><div class="sec-no">01 Logo</div><div class="sec-title">Logo Sistemi &<br><em>Kullanim Kurallari</em></div></div>
+      <div class="sec-sub">Presubly logosu, akademik ciddiyeti ve yapay zeka yeniligini bir arada tasir. "sub" vurgusu, submission (gonderim) kavramina referans verir.</div>
+    </div>
+
+    <!-- 3 variants -->
+    <div class="logo-trio">
+      <div class="lt w">
+        <div class="lt-lbl">ACIK ZEMIN</div>
+        <div class="wm" style="font-size:36px">Pre<span class="acc">sub</span>ly</div>
+        <div class="wm-sub">AI Pre-Submission Review</div>
+      </div>
+      <div class="lt p">
+        <div class="lt-lbl">SAGE ZEMIN</div>
+        <div class="wm" style="font-size:36px">Pre<span class="acc">sub</span>ly</div>
+        <div class="wm-sub">AI Pre-Submission Review</div>
+      </div>
+      <div class="lt d">
+        <div class="lt-lbl dk">KOYU ZEMIN</div>
+        <div class="wm dk" style="font-size:36px">Pre<span class="acc">sub</span>ly</div>
+        <div class="wm-sub dk">AI Pre-Submission Review</div>
+      </div>
+    </div>
+
+    <!-- Wordmark only -->
+    <div class="comp-grid">
+      <div class="cbox" style="display:flex;align-items:center;gap:24px">
+        <div class="wm" style="font-size:42px">Pre<span class="acc">sub</span>ly</div>
+        <div>
+          <div class="cb-lbl">WORDMARK</div>
+          <div style="font-size:13px;color:var(--k3);line-height:1.7">Tek wordmark logo. Playfair/Fraunces serif. <strong style="color:var(--a)">sub</strong> bolumu amber renkle vurgulanir &mdash; submission kavramina dogrudan referans. Her boyutta okunabilir, ikon kullanilmaz.</div>
+        </div>
+      </div>
+      <div class="cbox" style="display:flex;flex-direction:column;justify-content:center">
+        <div class="cb-lbl">LOGO ANATOMISI</div>
+        <div class="anat" style="margin:0">
+          <div class="anat-lbl">YAPILAR</div>
+          <div class="anat-item"><div class="anat-dot" style="background:var(--ink)"></div>Pre (Ink, dik)</div>
+          <div class="anat-item"><div class="anat-dot" style="background:var(--a)"></div>sub (Amber, vurgu)</div>
+          <div class="anat-item"><div class="anat-dot" style="background:var(--ink)"></div>ly (Ink, dik)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sizes -->
+    <div class="size-row">
+      <div class="size-item" style="font-size:48px">Pre<span class="acc">sub</span>ly<div class="size-lbl">48px</div></div>
+      <div class="size-item" style="font-size:32px">Pre<span class="acc">sub</span>ly<div class="size-lbl">32px</div></div>
+      <div class="size-item" style="font-size:22px">Pre<span class="acc">sub</span>ly<div class="size-lbl">22px</div></div>
+      <div class="size-item" style="font-size:16px">Pre<span class="acc">sub</span>ly<div class="size-lbl">16px &middot; Min</div></div>
+    </div>
+
+    <!-- No-go -->
+    <div class="no-go">
+      <div class="ng-lbl">KULLANILMAZ</div>
+      <div class="ng-grid">
+        <div class="ng-item">
+          <div class="ng-box"><span style="font-family:var(--fd);font-size:18px;font-weight:700;color:var(--ink)">presubly</span><div class="ng-x">&times;</div></div>
+          <div class="ng-t">Tumu kucuk harf</div>
+        </div>
+        <div class="ng-item">
+          <div class="ng-box"><span style="font-family:var(--fd);font-size:18px;font-weight:700;color:var(--ink)">PRESUBLY</span><div class="ng-x">&times;</div></div>
+          <div class="ng-t">Tumu buyuk harf</div>
+        </div>
+        <div class="ng-item">
+          <div class="ng-box"><span style="font-family:var(--fd);font-size:18px;font-weight:700;color:var(--a)">Presubly</span><div class="ng-x">&times;</div></div>
+          <div class="ng-t">Tumu amber renk</div>
+        </div>
+        <div class="ng-item">
+          <div class="ng-box"><span style="font-family:var(--fd);font-size:18px;font-weight:700;background:linear-gradient(90deg,#f06,#0af,#0c6);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Presubly</span><div class="ng-x">&times;</div></div>
+          <div class="ng-t">Gradyan / renkli</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 COLORS -->
+<section class="sec sec-alt" id="colors">
+  <div class="sec-in">
+    <div class="sh">
+      <div><div class="sec-no">02 Renkler</div><div class="sec-title">Renk Paleti &<br><em>Kullanim Alanlari</em></div></div>
+      <div class="sec-sub">Teal tonlari guvenilirlik ve akademik ciddiyet; amber aksanlar enerji ve dikkat cekicilik saglar. Sage arka planlar dinlendirici bir okuma deneyimi sunar.</div>
+    </div>
+
+    <!-- Primary -->
+    <div class="pal">
+      <div class="pc" onclick="cp('#0A3D3D')"><div class="pc-sw" style="background:#0A3D3D"><div class="pc-chip">Kopyala</div></div><div class="pc-inf"><div class="pc-nm">Deep Teal</div><div class="pc-hx">#0A3D3D</div><div class="pc-rl">Ana marka rengi</div></div></div>
+      <div class="pc" onclick="cp('#115E5E')"><div class="pc-sw" style="background:#115E5E"><div class="pc-chip">Kopyala</div></div><div class="pc-inf"><div class="pc-nm">Teal Mid</div><div class="pc-hx">#115E5E</div><div class="pc-rl">Aksanlar & hover</div></div></div>
+      <div class="pc" onclick="cp('#E8970A')"><div class="pc-sw" style="background:#E8970A"><div class="pc-chip">Kopyala</div></div><div class="pc-inf"><div class="pc-nm">Amber</div><div class="pc-hx">#E8970A</div><div class="pc-rl">CTA & vurgu</div></div></div>
+      <div class="pc" onclick="cp('#F4F7F5')"><div class="pc-sw" style="background:#F4F7F5"><div class="pc-chip">Kopyala</div></div><div class="pc-inf"><div class="pc-nm">Sage White</div><div class="pc-hx">#F4F7F5</div><div class="pc-rl">Sayfa arka plani</div></div></div>
+      <div class="pc" onclick="cp('#0A1A14')"><div class="pc-sw" style="background:#0A1A14"><div class="pc-chip">Kopyala</div></div><div class="pc-inf"><div class="pc-nm">Ink</div><div class="pc-hx">#0A1A14</div><div class="pc-rl">Birincil metin</div></div></div>
+    </div>
+
+    <!-- Extended -->
+    <div class="pal-sub">
+      <div class="pcs" onclick="cp('#1A7272')"><div class="pcs-sw" style="background:#1A7272"></div><div class="pcs-inf"><div class="pcs-nm">Teal Light</div><div class="pcs-hx">#1A7272</div></div></div>
+      <div class="pcs" onclick="cp('#2A8F8F')"><div class="pcs-sw" style="background:#2A8F8F"></div><div class="pcs-inf"><div class="pcs-nm">Teal Bright</div><div class="pcs-hx">#2A8F8F</div></div></div>
+      <div class="pcs" onclick="cp('#F5AA1C')"><div class="pcs-sw" style="background:#F5AA1C"></div><div class="pcs-inf"><div class="pcs-nm">Amber Mid</div><div class="pcs-hx">#F5AA1C</div></div></div>
+      <div class="pcs" onclick="cp('#FBCA5C')"><div class="pcs-sw" style="background:#FBCA5C"></div><div class="pcs-inf"><div class="pcs-nm">Amber Light</div><div class="pcs-hx">#FBCA5C</div></div></div>
+      <div class="pcs" onclick="cp('#E8F0EC')"><div class="pcs-sw" style="background:#E8F0EC"></div><div class="pcs-inf"><div class="pcs-nm">Sage Mid</div><div class="pcs-hx">#E8F0EC</div></div></div>
+      <div class="pcs" onclick="cp('#D8E8E0')"><div class="pcs-sw" style="background:#D8E8E0"></div><div class="pcs-inf"><div class="pcs-nm">Sage Deep</div><div class="pcs-hx">#D8E8E0</div></div></div>
+    </div>
+
+    <!-- Status colors -->
+    <div style="font-family:var(--fm);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--k5);margin-bottom:12px">DURUM RENKLERI</div>
+    <div class="col-demo">
+      <div class="cd" style="background:var(--okl)">
+        <div style="font-size:12px;font-weight:700;color:var(--ok);margin-bottom:4px">Success &middot; #0A7A3A</div>
+        <div style="font-size:11px;color:var(--k3)">Kabul, basarili islem, uyumlu maddeler</div>
+      </div>
+      <div class="cd" style="background:var(--wnl)">
+        <div style="font-size:12px;font-weight:700;color:var(--wn);margin-bottom:4px">Warning &middot; #8A5A00</div>
+        <div style="font-size:11px;color:var(--k3)">Minor revizyon, dikkat gerektiren maddeler</div>
+      </div>
+      <div class="cd" style="background:var(--erl)">
+        <div style="font-size:12px;font-weight:700;color:var(--er);margin-bottom:4px">Error &middot; #8A1A1A</div>
+        <div style="font-size:11px;color:var(--k3)">Major sorun, red, kritik eksik</div>
+      </div>
+      <div class="cd" style="background:var(--tl)">
+        <div style="font-size:12px;font-weight:700;color:var(--t);margin-bottom:4px">Info &middot; #0A3D3D</div>
+        <div style="font-size:11px;color:var(--k3)">Bilgilendirme, oneri, notlar</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 TYPE -->
+<section class="sec" id="type">
+  <div class="sec-in">
+    <div class="sh">
+      <div><div class="sec-no">03 Tipografi</div><div class="sec-title">Font Sistemi &<br><em>Hiyerarsi</em></div></div>
+      <div class="sec-sub">Playfair Display basliklar icin akademik ciddiyet, DM Sans govde metni icin modern okunabilirlik, DM Mono etiket ve kodlar icin teknik hassasiyet saglar.</div>
+    </div>
+
+    <div class="type-hero">
+      <div class="type-pair">
+        <div>
+          <div class="tp-lbl">DISPLAY &mdash; PLAYFAIR DISPLAY</div>
+          <div style="font-family:var(--fd);font-size:52px;font-weight:700;color:var(--sg);line-height:.95;letter-spacing:-.03em">Gondermeden<br>once <em style="color:var(--a2)">hazir ol.</em></div>
+        </div>
+        <div>
+          <div class="tp-lbl">BODY &mdash; DM SANS</div>
+          <div style="font-family:var(--fb);font-size:15px;color:rgba(235,245,245,.55);line-height:1.75;margin-bottom:18px">Makaleniz dergiye gitmeden, yapay zeka gercek bir hakem gibi degerlendirir. 7 kriter, 100 puanlik olcek, Major/Minor/Oneri etiketleri.</div>
+          <div class="tp-lbl">CODE &mdash; DM MONO</div>
+          <div style="font-family:var(--fm);font-size:12px;color:rgba(42,143,143,.5);letter-spacing:.06em">PSB-2025-0142 &middot; BIYOMEDIKAL &middot; 91/100</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="type-scale">
+      <div class="ts-header"><div class="ts-hl">YAZI OLCEGI</div><div class="ts-hl">FONT / AGIRLIK / BOYUT</div></div>
+      <div class="ts-body">
+        <div class="type-row">
+          <div class="tr-meta"><strong>Display / H1</strong>Playfair Display<br>700 &middot; 72px &middot; LS -0.03em</div>
+          <div style="font-family:var(--fd);font-size:48px;font-weight:700;letter-spacing:-.03em;line-height:1;color:var(--ink)">Manuscript <em style="color:var(--t3)">Review</em></div>
+        </div>
+        <div class="type-row">
+          <div class="tr-meta"><strong>H2 / Section</strong>Playfair Display<br>700 &middot; 40px &middot; LS -0.02em</div>
+          <div style="font-family:var(--fd);font-size:32px;font-weight:700;letter-spacing:-.02em;color:var(--ink)">Uc adimda <em style="color:var(--t3)">hazir.</em></div>
+        </div>
+        <div class="type-row">
+          <div class="tr-meta"><strong>H3 / Card</strong>DM Sans<br>700 &middot; 18px</div>
+          <div style="font-family:var(--fb);font-size:18px;font-weight:700;color:var(--ink)">Bilimsel Hakem Incelemesi</div>
+        </div>
+        <div class="type-row">
+          <div class="tr-meta"><strong>Body Large</strong>DM Sans<br>400 &middot; 15px &middot; LH 1.75</div>
+          <div style="font-family:var(--fb);font-size:15px;color:var(--k3);line-height:1.75">Makaleniz 7 akademik kriter uzerinden 100 puanlik olcekte degerlendirilir. Her sorun icin ciddiyet duzeyi uretilir.</div>
+        </div>
+        <div class="type-row">
+          <div class="tr-meta"><strong>Eyebrow</strong>DM Mono<br>600 &middot; 9px &middot; LS +0.24em</div>
+          <div style="font-family:var(--fm);font-size:9px;font-weight:600;letter-spacing:.24em;color:var(--t4)">ARAC 01 &mdash; BILIMSEL HAKEM INCELEMESI</div>
+        </div>
+        <div class="type-row">
+          <div class="tr-meta"><strong>Code / Label</strong>DM Mono<br>400 &middot; 12px</div>
+          <div style="font-family:var(--fm);font-size:12px;color:var(--k4)">PSB-2025-0142 &middot; BIYOMEDIKAL &middot; Score: 91/100</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 COMPONENTS -->
+<section class="sec sec-alt" id="comp">
+  <div class="sec-in">
+    <div class="sh">
+      <div><div class="sec-no">04 Bilesenler</div><div class="sec-title">UI Bilesenleri &<br><em>Tasarim Dili</em></div></div>
+      <div class="sec-sub">Butonlar, badge'ler, form alanlari, rapor kartlari ve geri bildirim kutulari. Platformun tum arayuz yapitaslari.</div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="comp-grid">
+      <div class="cbox">
+        <div class="cb-lbl">BUTONLAR &mdash; ACIK ZEMIN</div>
+        <div class="br"><button class="btn p">Primary</button><button class="btn s">Secondary</button><button class="btn g">Ghost</button><button class="btn a">Amber CTA</button></div>
+        <div class="br"><button class="btn p sm">Small</button><button class="btn p">Normal</button><button class="btn p lg">Large</button></div>
+        <div class="br"><button class="btn p" disabled>Disabled</button></div>
+      </div>
+      <div class="cbox dk">
+        <div class="cb-lbl dk">BUTONLAR &mdash; KOYU ZEMIN</div>
+        <div class="br"><button class="btn dp">Primary Dark</button><button class="btn ds">Secondary Dark</button></div>
+        <div class="br"><button class="btn a">Amber CTA</button><button class="btn dp" disabled>Disabled</button></div>
+      </div>
+    </div>
+
+    <!-- Badges -->
+    <div class="comp-grid">
+      <div class="cbox">
+        <div class="cb-lbl">BADGE & ETIKETLER</div>
+        <div class="brow"><span class="badge tl"><span class="bdot"></span>Teal</span><span class="badge ink"><span class="bdot"></span>Ink</span><span class="badge ok"><span class="bdot"></span>Success</span><span class="badge warn"><span class="bdot"></span>Warning</span><span class="badge am"><span class="bdot"></span>Amber</span></div>
+        <div class="brow"><span class="badge tl pill">13 Disiplin</span><span class="badge ok pill">Kabul</span><span class="badge warn pill">Minor</span><span class="badge" style="background:var(--erl);border:1px solid var(--erb);color:var(--er);border-radius:100px"><span class="bdot"></span>Major</span></div>
+      </div>
+      <div class="cbox">
+        <div class="cb-lbl">FORM ALANLARI</div>
+        <input class="inp" placeholder="Dergi adi girin...">
+        <input class="inp foc" value="Nature Medicine" readonly>
+        <div class="pill" style="margin-top:4px">PDF &middot; DOCX &middot; TXT</div>
+      </div>
+    </div>
+
+    <!-- Review Card -->
+    <div class="comp-grid">
+      <div class="cbox" style="padding:14px">
+        <div class="cb-lbl" style="padding:0 12px">HAKEM RAPORU KARTI</div>
+        <div class="rv-card">
+          <div class="rv-h"><div class="rv-t">Metodoloji Bolumu</div><span class="badge ok" style="font-size:9px">8.8/10</span></div>
+          <div class="rv-b">
+            <span class="h">Metodoloji Degerlendirmesi</span>
+            <span class="ok">&#10003; Arastirma tasarimi saglam; RKC kriterleri karsilanmis.</span>
+            <span class="wn">&#9888; [Minor] Kor randomizasyon yetersiz tanimlanmis.</span>
+            <span class="er">&#10007; [Major] Istatistik guc analizi raporda yok.</span>
+          </div>
+        </div>
+      </div>
+      <div class="cbox" style="padding:14px">
+        <div class="cb-lbl" style="padding:0 12px">GERI BILDIRIM KUTULARI</div>
+        <div class="cb-box ok"><div><div class="cb-tt">BASARILI</div><div class="cb-tx">CONSORT standartlari karsilaniyor. Randomizasyon yontemi tanimlanmis.</div></div></div>
+        <div class="cb-box warn"><div><div class="cb-tt">UYARI</div><div class="cb-tx">Allocation concealment eksik (M.9) &mdash; Minor revizyon gerekiyor.</div></div></div>
+        <div class="cb-box info"><div><div class="cb-tt">BILGI</div><div class="cb-tx">Tablo 3'te odds ratio ve %95 GA eklenmesi onerilir.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 TAGLINES -->
+<section class="sec" id="taglines">
+  <div class="sec-in">
+    <div class="sh full">
+      <div class="sec-no">05 Tagline & Slogan</div>
+      <div class="sec-title" style="margin-bottom:12px">Marka <em>Mesajlari</em></div>
+      <div class="sec-sub" style="max-width:640px">Her kanal icin uygun mesaj. Tutarli, guclu, akademik.</div>
+    </div>
+
+    <div class="tg-grid">
+      <div class="tgc feat">
+        <div class="tgc-star">BIRINCIL</div>
+        <div class="tgc-q">"Review before rejection."</div>
+        <div class="tgc-d">Ana slogan. Tum kanallarda tutarli kullanim. Kisaca: red almadan degerlendir.</div>
+        <div class="tgc-use">TUM KANALLAR</div>
+      </div>
+      <div class="tgc">
+        <div class="tgc-q">"Gondermeden once, hazir ol."</div>
+        <div class="tgc-d">Turkce kampanya slogani. Landing page hero ve sosyal medya icin.</div>
+        <div class="tgc-use">TR KAMPANYA</div>
+      </div>
+      <div class="tgc">
+        <div class="tgc-q">"Your manuscript, reviewed by AI before the journal."</div>
+        <div class="tgc-d">Platformun ne yaptigini tek cumlede anlatan aciklayici tagline.</div>
+        <div class="tgc-use">LANDING PAGE</div>
+      </div>
+      <div class="tgc">
+        <div class="tgc-q">"Predict rejection. Revise. Succeed."</div>
+        <div class="tgc-d">Uc adimli deger onerisi. Kisa, aksiyona yonelik.</div>
+        <div class="tgc-use">REKLAM & KONFERANS</div>
+      </div>
+      <div class="tgc">
+        <div class="tgc-q">"Reddi ongor, duzelt, kazan."</div>
+        <div class="tgc-d">Turkce uc adimli deger onerisi. Sosyal medya ve sunum icin ideal.</div>
+        <div class="tgc-use">TR SOSYAL MEDYA</div>
+      </div>
+      <div class="tgc">
+        <div class="tgc-q">"Every criterion. Every standard. Ready."</div>
+        <div class="tgc-d">Ozellik vurgulayan tagline. 7 kriter, uluslararasi standartlar, hazirlik.</div>
+        <div class="tgc-use">OZELLIK VURGUSU</div>
+      </div>
+    </div>
+
+    <!-- Channel variants -->
+    <div style="font-family:var(--fm);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--k5);margin-bottom:12px">KANAL VARYANTLARI</div>
+    <div class="comp-grid" style="grid-template-columns:repeat(3,1fr)">
+      <div class="cbox" style="text-align:center">
+        <div class="cb-lbl">LOGO ALTCIZGISI</div>
+        <div style="font-family:var(--fd);font-size:22px;font-weight:700;margin-bottom:4px">Pre<span style="color:var(--a)">sub</span>ly</div>
+        <div style="font-family:var(--fm);font-size:9px;color:var(--k5);letter-spacing:.1em">AI PRE-SUBMISSION REVIEW</div>
+      </div>
+      <div class="cbox" style="text-align:center">
+        <div class="cb-lbl">HERO</div>
+        <div style="font-family:var(--fd);font-size:18px;font-weight:700;font-style:italic;color:var(--t)">Review before rejection.</div>
+      </div>
+      <div class="cbox" style="text-align:center">
+        <div class="cb-lbl">TWITTER / X</div>
+        <div style="font-size:12px;color:var(--k3);line-height:1.6">AI Pre-Submission Review Platform | Predict rejection before submission | #AcademicWriting #PeerReview</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 VOICE & TONE -->
+<section class="sec sec-alt" id="voice">
+  <div class="sec-in">
+    <div class="sh">
+      <div><div class="sec-no">06 Ses & Ton</div><div class="sec-title">Marka Sesi &<br><em>Iletisim Tonu</em></div></div>
+      <div class="sec-sub">Presubly, akademisyenlerle ayni dilde konusur. Ne patron gibi emreder ne de asiri samimi olur. Yanindaki uzman gibi konusur.</div>
+    </div>
+
+    <div class="voice-chars">
+      <div class="vc"><div class="vc-em">&#127891;</div><div class="vc-n">Akademik</div><div class="vc-d">Akademik terminolojiyi dogal kullanir. CONSORT, STROBE, etik — tanidik kavramlar.</div></div>
+      <div class="vc"><div class="vc-em">&#9889;</div><div class="vc-n">Verimli</div><div class="vc-d">Arastirmacinin zamani degerlidir. Kisa, aksiyona yonelik, gereksiz soz yok.</div></div>
+      <div class="vc"><div class="vc-em">&#127919;</div><div class="vc-n">Hassas</div><div class="vc-d">Her kelime dogru yerde. Belirsizlik yok, net ifadeler.</div></div>
+      <div class="vc"><div class="vc-em">&#129309;</div><div class="vc-n">Destekleyici</div><div class="vc-d">Yanindaki uzman. Elestirmez, yonlendirir. Basariyi birlikte kutlar.</div></div>
+    </div>
+
+    <div class="voice-grid">
+      <div class="vg-col">
+        <div class="vg-head do">&#10003; Boyle Yaz</div>
+        <div class="vg-body">
+          <div class="vi">&#10003; "Metodoloji bolumunde CONSORT Madde 9 (allocation concealment) eksik."</div>
+          <div class="vi">&#10003; "3 major sorun tespit edildi. Oncelikli duzeltme listesi hazir."</div>
+          <div class="vi">&#10003; "Makaleniz minor revizyondan sonra kabul edilebilir."</div>
+          <div class="vi">&#10003; "Hakemin 2. yorumuna kanit destekli yanit olusturuldu."</div>
+          <div class="vi">&#10003; "91/100 — Gonderime hazir. 2 minor oneri mevcut."</div>
+        </div>
+      </div>
+      <div class="vg-col">
+        <div class="vg-head dont">&times; Boyle Yazma</div>
+        <div class="vg-body">
+          <div class="vi">&times; "Makalenizde bazi sorunlar olabilir gibi gorunuyor."</div>
+          <div class="vi">&times; "Harika bir makale! Sadece birkas kucuk sey var."</div>
+          <div class="vi">&times; "Bu makale kesinlikle reddedilecek."</div>
+          <div class="vi">&times; "Lutfen metodoloji bolumunuzu tekrar gozden gecirmenizi rica ederim."</div>
+          <div class="vi">&times; "AI'miz super zeki, her seyi bulur!"</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 USAGE & SYSTEM -->
+<section class="sec" id="usage">
+  <div class="sec-in">
+    <div class="sh">
+      <div><div class="sec-no">07 Kullanim & Sistem</div><div class="sec-title">Uygulama Alanlari &<br><em>Tasarim Tokenlari</em></div></div>
+      <div class="sec-sub">E-posta imzasindan sosyal medya profiline, katvizitden uygulama arayuzune kadar tutarli marka deneyimi.</div>
+    </div>
+
+    <!-- Usage examples -->
+    <div class="ug">
+      <div class="uc">
+        <div class="uc-h">E-POSTA IMZASI</div>
+        <div class="uc-b dk" style="color:var(--sg)">
+          <div style="font-family:var(--fd);font-size:17px;font-weight:700;margin-bottom:2px">Pre<span style="color:var(--a2)">sub</span>ly</div>
+          <div style="font-size:10px;color:rgba(235,245,245,.4);margin-bottom:10px">AI Pre-Submission Review Platform</div>
+          <div style="height:1px;background:rgba(42,143,143,.15);margin-bottom:10px"></div>
+          <div style="font-size:11px;color:rgba(235,245,245,.6)">Dr. Erhan Yaylak</div>
+          <div style="font-size:10px;color:rgba(235,245,245,.35)">Founder &middot; presubly.com</div>
+        </div>
+      </div>
+      <div class="uc">
+        <div class="uc-h">KARTVIZIT</div>
+        <div class="uc-b dk" style="color:var(--sg);text-align:center">
+          <div style="font-family:var(--fd);font-size:20px;font-weight:700;margin-bottom:4px">Pre<span style="color:var(--a2)">sub</span>ly</div>
+          <div style="font-family:var(--fm);font-size:8px;letter-spacing:.18em;color:rgba(42,143,143,.4);margin-bottom:14px">AI PRE-SUBMISSION REVIEW</div>
+          <div style="font-size:11px;color:rgba(235,245,245,.6)">presubly.com</div>
+        </div>
+      </div>
+      <div class="uc">
+        <div class="uc-h">SOSYAL MEDYA</div>
+        <div class="uc-b" style="text-align:center">
+          <div style="font-family:var(--fd);font-size:20px;font-weight:700;margin-bottom:4px">Pre<span style="color:var(--a)">sub</span>ly</div>
+          <div style="font-size:10px;color:var(--k4);margin-bottom:10px">Review before rejection.</div>
+          <div style="font-family:var(--fm);font-size:9px;color:var(--k5)">#AcademicAI #PeerReview #Presubly</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spacing -->
+    <div style="font-family:var(--fm);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--k5);margin-bottom:14px">ARALIK SISTEMI &mdash; 4pt TEMEL BIRIM</div>
+    <div class="cbox" style="margin-bottom:14px">
+      <div class="sp-row">
+        <div class="sp-i"><div class="sp-b" style="width:4px;height:4px"></div><div style="font-family:var(--fm);font-size:9px;color:var(--k5)">4</div></div>
+        <div class="sp-i"><div class="sp-b" style="width:8px;height:8px"></div><div style="font-family:var(--fm);font-size:9px;color:var(--k5)">8</div></div>
+        <div class="sp-i"><div class="sp-b" style="width:12px;height:12px"></div><div style="font-family:var(--fm);font-size:9px;color:var(--k5)">12</div></div>
+        <div class="sp-i"><div class="sp-b" style="width:16px;height:16px"></div><div style="font-family:var(--fm);font-size:9px;color:var(--k5)">16</div></div>
+        <div class="sp-i"><div class="sp-b" style="width:24px;height:24px"></div><div style="font-family:var(--fm);font-size:9px;color:var(--k5)">24</div></div>
+        <div class="sp-i"><div class="sp-b" style="width:32px;height:32px"></div><div style="font-family:var(--fm);font-size:9px;color:var(--k5)">32</div></div>
+        <div class="sp-i"><div class="sp-b" style="width:48px;height:48px"></div><div style="font-family:var(--fm);font-size:9px;color:var(--k5)">48</div></div>
+        <div class="sp-i"><div class="sp-b" style="width:64px;height:64px"></div><div style="font-family:var(--fm);font-size:9px;color:var(--k5)">64</div></div>
+      </div>
+    </div>
+
+    <!-- Border radius -->
+    <div style="font-family:var(--fm);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--k5);margin-bottom:14px">KENAR YUVARLATMA</div>
+    <div class="cbox">
+      <div class="rad-row">
+        <div class="ri"><div class="rb" style="width:40px;height:40px;border-radius:4px"></div><div style="font-family:var(--fm);font-size:9px;color:var(--k5)">4px<br>Micro</div></div>
+        <div class="ri"><div class="rb" style="width:40px;height:40px;border-radius:8px"></div><div style="font-family:var(--fm);font-size:9px;color:var(--k5)">8px<br>Badge</div></div>
+        <div class="ri"><div class="rb" style="width:40px;height:40px;border-radius:9px"></div><div style="font-family:var(--fm);font-size:9px;color:var(--k5)">9px<br>Button</div></div>
+        <div class="ri"><div class="rb" style="width:40px;height:40px;border-radius:12px"></div><div style="font-family:var(--fm);font-size:9px;color:var(--k5)">12px<br>Card</div></div>
+        <div class="ri"><div class="rb" style="width:40px;height:40px;border-radius:16px"></div><div style="font-family:var(--fm);font-size:9px;color:var(--k5)">16px<br>Section</div></div>
+        <div class="ri"><div class="rb" style="width:40px;height:40px;border-radius:100px"></div><div style="font-family:var(--fm);font-size:9px;color:var(--k5)">100px<br>Pill</div></div>
+      </div>
+    </div>
+
+    <!-- Shadows -->
+    <div style="font-family:var(--fm);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--k5);margin:24px 0 14px">GOLGE KATMANLARI</div>
+    <div class="comp-grid" style="grid-template-columns:repeat(3,1fr)">
+      <div class="cbox" style="box-shadow:var(--s1);text-align:center"><div class="cb-lbl">S1 &mdash; CARD</div><div style="font-family:var(--fm);font-size:10px;color:var(--k4)">Kartlar, badge'ler</div></div>
+      <div class="cbox" style="box-shadow:var(--s2);text-align:center"><div class="cb-lbl">S2 &mdash; ELEVATED</div><div style="font-family:var(--fm);font-size:10px;color:var(--k4)">Modal, dropdown</div></div>
+      <div class="cbox" style="box-shadow:0 8px 32px rgba(10,61,61,.1),0 40px 80px rgba(10,61,61,.16);text-align:center"><div class="cb-lbl">S3 &mdash; HERO</div><div style="font-family:var(--fm);font-size:10px;color:var(--k4)">Hero card, CTA</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="bk-foot">
+  <div style="font-family:var(--fd);font-size:17px;font-weight:700;color:var(--sg)">Pre<span style="color:var(--a2)">sub</span>ly</div>
+  <div style="font-family:var(--fm);font-size:9px;letter-spacing:.14em;color:rgba(42,143,143,.35)">BRAND KIT v1.0 &middot; 2025</div>
+  <div style="display:flex;gap:6px;justify-content:flex-end">
+    <div style="width:22px;height:22px;border-radius:4px;background:#0A3D3D;cursor:pointer;border:1px solid rgba(42,143,143,.2)" onclick="cp('#0A3D3D')"></div>
+    <div style="width:22px;height:22px;border-radius:4px;background:#115E5E;cursor:pointer;border:1px solid rgba(42,143,143,.2)" onclick="cp('#115E5E')"></div>
+    <div style="width:22px;height:22px;border-radius:4px;background:#E8970A;cursor:pointer;border:1px solid rgba(232,151,10,.3)" onclick="cp('#E8970A')"></div>
+    <div style="width:22px;height:22px;border-radius:4px;background:#F4F7F5;cursor:pointer;border:1px solid var(--ln)" onclick="cp('#F4F7F5')"></div>
+    <div style="width:22px;height:22px;border-radius:4px;background:#0A1A14;cursor:pointer;border:1px solid rgba(42,143,143,.2)" onclick="cp('#0A1A14')"></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="tc-c" id="tcC"></div>
+
+<script>
+function cp(val){
+  navigator.clipboard?.writeText(val).catch(()=>{});
+  const c=document.getElementById('tcC');
+  const t=document.createElement('div');
+  t.className='tst';
+  t.innerHTML='&#10003; Kopyalandi: <strong>'+val+'</strong>';
+  c.appendChild(t);
+  requestAnimationFrame(()=>requestAnimationFrame(()=>t.classList.add('sh')));
+  setTimeout(()=>{t.classList.remove('sh');setTimeout(()=>t.remove(),350)},2400);
+}
+
+// Nav scroll tracking
+const secs=document.querySelectorAll('section[id]');
+const nls=document.querySelectorAll('.nl[href]');
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting) return;
+    const id=e.target.id;
+    nls.forEach(n=>{
+      n.classList.toggle('on',n.getAttribute('href')==='#'+id);
+    });
+  });
+},{threshold:.35});
+secs.forEach(s=>io.observe(s));
+</script>
+</body>
+</html>

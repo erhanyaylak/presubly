@@ -1,0 +1,25 @@
+---
+import type { Locale } from '../../i18n/config';
+import { t } from '../../i18n/utils';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+
+const stats = [
+  { count: 80, key: 'stat.l1' },
+  { count: 70, key: 'stat.l2' },
+  { count: 13, key: 'stat.l3' },
+  { count: 4, key: 'stat.l4' },
+];
+---
+
+<div class="sband">
+  <div class="sbin">
+    {stats.map(s => (
+      <div class="si">
+        <div class="sn" data-count={s.count}>0</div>
+        <div class="sl">{t(locale, s.key)}</div>
+      </div>
+    ))}
+  </div>
+</div>

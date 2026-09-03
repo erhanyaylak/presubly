@@ -1,0 +1,24 @@
+---
+import type { Locale } from '../../i18n/config';
+import { t } from '../../i18n/utils';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+---
+
+<section class="ctasec">
+  <div class="ctain reveal">
+    <div class="ctatag">{t(locale, 'cta.tag')}</div>
+    <h2 class="ctattl" set:html={t(locale, 'cta.h')} />
+    <p class="ctasub">{t(locale, 'cta.sub')}</p>
+    <div class="ctabtns">
+      <button class="cb1">{t(locale, 'cta.btn1')}</button>
+      <button class="cb2">{t(locale, 'cta.btn2')}</button>
+    </div>
+    <div class="cta-trust">
+      <span>{t(locale, 'cta.tr1')}</span>
+      <span>{t(locale, 'cta.tr2')}</span>
+      <span>Anthropic DPA</span>
+    </div>
+  </div>
+</section>
