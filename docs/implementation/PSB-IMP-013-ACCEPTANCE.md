@@ -2,15 +2,14 @@
 
 ## Sonuç
 
-**Koşullu kabul — kaynak doğrulaması geçti, ortam doğrulaması bekliyor.**
+**Kaynak ve veritabanı kabulü geçti — kimliği doğrulanmış uçtan uca test ve yayın bekliyor.**
 
 Gönderim Operasyon Merkezi'nin kullanıcı arayüzü, Pages Function uç noktası ve
-veritabanı göçü kaynak düzeyinde doğrulandı. Üretim Supabase projesinde
-`public.manuscript_operations` tablosu henüz bulunmadığı için özellik canlıya
-alınmaya hazır kabul edilmemiştir.
+veritabanı göçü kaynak düzeyinde doğrulandı. Göç üretim Supabase projesine
+uygulandı; tablo yapısı, kısıtlar, indeks, RLS ve en az yetkili rol erişimleri
+doğrudan veritabanından doğrulandı.
 
-Bu doğrulama sırasında canlı Sites dağıtımı yapılmamış ve üretim veritabanında
-DDL değişikliği uygulanmamıştır.
+Bu doğrulama sırasında canlı Sites dağıtımı yapılmamıştır.
 
 ## Kapsam
 
@@ -35,8 +34,10 @@ DDL değişikliği uygulanmamıştır.
 | Plan yetkisi | Geçti | `history` yetkisi yoksa `402 / UPGRADE` |
 | Kullanıcı izolasyonu — kaynak | Geçti | GET, upsert araması ve UPDATE sorgularının tamamı `user_id` ile sınırlandırılmış |
 | Mobil/boş/yükleniyor/filtre/düzenleme durumları | Geçti | İlgili görünüm ve duyarlı CSS kuralları mevcut |
-| Üretim tablosu | **Kaldı** | Supabase `public` tablo envanterinde `manuscript_operations` yok |
-| Kimliği doğrulanmış uçtan uca veri akışı | Bekliyor | Tablo uygulanmadan GET/PUT ve iki kullanıcılı izolasyon testi yapılamaz |
+| Üretim tablosu | Geçti | `public.manuscript_operations` oluşturuldu; 10 sütun, PK, kullanıcı FK'sı, durum kontrolü ve kullanıcı+başlık benzersizliği doğrulandı |
+| RLS ve rol yetkileri | Geçti | RLS açık; `anon`/`authenticated` yetkisi yok; `service_role` yalnızca `SELECT`, `INSERT`, `UPDATE` |
+| İndeks | Geçti | `manuscript_operations_user_updated_idx` mevcut |
+| Kimliği doğrulanmış uçtan uca veri akışı | Bekliyor | Gerçek kullanıcı oturumu olmadan GET/PUT ve iki kullanıcılı izolasyon testi yapılmadı |
 
 ## Güvenlik doğrulaması
 
@@ -60,11 +61,16 @@ ilişkin güncel davranış değişikliğine karşı göçü belirgin ve tekrarl
 ## Ortam gözlemi
 
 10 Eylül 2026 tarihinde Supabase projesi `presubly.com`
-(`ufdtfspvlapazaszbgpr`) salt okunur olarak denetlendi:
+(`ufdtfspvlapazaszbgpr`) üzerinde göç uygulanıp doğrulandı:
 
 - Proje durumu: `ACTIVE_HEALTHY`.
-- `public.manuscript_operations`: bulunamadı.
-- Dolayısıyla göçün üretim ortamına uygulanmış olduğuna dair kanıt yok.
+- `20260910201513_psb_imp_013_submission_operations`: uygulandı.
+- `20260910201608_psb_imp_013_least_privilege`: uygulandı.
+- `public.manuscript_operations`: mevcut, RLS etkin ve boş (`0` satır).
+- `anon` ve `authenticated`: tablo yetkisi yok.
+- `service_role`: yalnızca `INSERT`, `SELECT`, `UPDATE`.
+- PSB-IMP-013 için danışman sonuçları yalnızca beklenen bilgi düzeyindeki
+  `RLS açık, politika yok` ve yeni indeks henüz kullanılmadı bildirimleridir.
 - Proje genelindeki danışman taramasında PSB-IMP-013 dışındaki mevcut tablolar ve
   `SECURITY DEFINER` işlevler için önceden var olan güvenlik uyarıları görüldü.
   Bunlar bu fazın kaynak kabulünü değiştirmez; ancak canlıya alma öncesinde ayrı
@@ -76,22 +82,19 @@ ilişkin güncel davranış değişikliğine karşı göçü belirgin ve tekrarl
   başlatılamadı (`uv_interface_addresses`). İstemci ve Worker derlemeleri bu
   ortam hatasından bağımsız olarak geçti.
 - Gerçek kullanıcı oturumuyla tarayıcı testi yapılmadı.
-- Üretim veritabanına yazma veya şema değişikliği yapılmadı.
 - Canlı dağıtım yapılmadı.
 
 ## Tam kabul ve yayın kapıları
 
-PSB-IMP-013'ün **tam kabul** durumuna geçmesi için:
+PSB-IMP-013'ün kalan **uçtan uca kabul ve yayın** kapıları:
 
-1. Güncel tekil göç, yetkili onayından sonra Supabase projesine uygulanmalı.
-2. Tablo sütunları, benzersiz kısıt, indeks, RLS ve rol yetkileri SQL ile yeniden
-   doğrulanmalı.
-3. İki ayrı test kullanıcısıyla veri izolasyonu doğrulanmalı: A kullanıcısının
+1. İki ayrı test kullanıcısıyla veri izolasyonu doğrulanmalı: A kullanıcısının
    kaydı B kullanıcısının GET sonucunda görünmemeli ve B tarafından
    güncellenememeli.
-4. Yetkili kullanıcı için GET, ilk PUT (`201`) ve sonraki PUT (`200`) akışları;
+2. Yetkili kullanıcı için GET, ilk PUT (`201`) ve sonraki PUT (`200`) akışları;
    geçersiz durum/tarih ve plan kapısı sınanmalı.
-5. Supabase güvenlik ve performans danışmanları yeniden çalıştırılmalı.
-6. Canlı Sites dağıtımı yalnızca açık yayın onayından sonra yapılmalı.
+3. Proje genelinde önceden var olan Supabase güvenlik uyarıları ayrı bir
+   iyileştirme çalışmasında ele alınmalı.
+4. Canlı Sites dağıtımı yalnızca açık yayın onayından sonra yapılmalı.
 
-Bu kapılar tamamlanana kadar durum: **canlıya hazır değil**.
+Mevcut durum: **veritabanı hazır; canlı yayın yapılmadı**.

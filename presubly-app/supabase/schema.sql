@@ -107,7 +107,7 @@ alter table public.usage_logs     enable row level security;
 alter table public.journals       enable row level security;
 alter table public.saved_reports  enable row level security;
 alter table public.manuscript_operations enable row level security;
-revoke all privileges on table public.manuscript_operations from anon, authenticated;
+revoke all privileges on table public.manuscript_operations from anon, authenticated, service_role;
 grant select, insert, update on table public.manuscript_operations to service_role;
 alter table public.shared_reports enable row level security;
 alter table public.api_keys       enable row level security;

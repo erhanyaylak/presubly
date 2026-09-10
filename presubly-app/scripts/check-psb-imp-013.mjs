@@ -27,9 +27,9 @@ const checks = [
   ["Migration creates the user-owned table", /create table if not exists public\.manuscript_operations/.test(migration) && /references auth\.users \(id\)/.test(migration)],
   ["Migration enforces one record per user and title", /unique \(user_id, manuscript_title\)/.test(migration)],
   ["Migration enables RLS", /enable row level security/.test(migration)],
-  ["Public database roles are explicitly revoked", /revoke all privileges on table public\.manuscript_operations from anon, authenticated/.test(migration)],
+  ["Default database privileges are explicitly revoked", /revoke all privileges on table public\.manuscript_operations from anon, authenticated, service_role/.test(migration)],
   ["Server role receives only required table operations", /grant select, insert, update on table public\.manuscript_operations to service_role/.test(migration)],
-  ["Canonical schema mirrors the migration", schema.includes("revoke all privileges on table public.manuscript_operations from anon, authenticated") && schema.includes("grant select, insert, update on table public.manuscript_operations to service_role")],
+  ["Canonical schema mirrors the migration", schema.includes("revoke all privileges on table public.manuscript_operations from anon, authenticated, service_role") && schema.includes("grant select, insert, update on table public.manuscript_operations to service_role")],
 ];
 
 for (const [label, passed] of checks) {
