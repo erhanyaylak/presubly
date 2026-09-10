@@ -5,6 +5,7 @@ import {
   UserRound, ShieldCheck, LogOut, ChevronDown, Settings2, Users, MessageSquare, Send, Trash2,
   Menu, Highlighter, Lock, X, Gauge, PenLine, ListChecks, Mail, Quote, ArrowRight, BarChart3, ChevronRight, Check,
   Download, FileType2, Building2, RefreshCw, ThumbsUp, ThumbsDown,
+  ClipboardList, CalendarDays, CircleAlert, Save,
 } from "lucide-react";
 
 /* Manuscript uzunluk sınırı — sunucudaki MAX_MESSAGE (claude.ts) ile eşleşir. */
@@ -80,7 +81,7 @@ import {
 
 const ACTION_LABEL = Object.fromEntries(TOOLS.map((t) => [t.action, t.short]));
 const TITLES = {
-  dash: "Panel", history: "Raporlarım", api: "API Erişimi", team: "Ekip",
+  dash: "Panel", history: "Raporlarım", operations: "Gönderim Operasyon Merkezi", api: "API Erişimi", team: "Ekip",
   billing: "Plan & Faturalama", settings: "Hesabım", admin: "Yönetim",
   ...Object.fromEntries(TOOLS.map((t) => [t.id, t.title])),
 };
@@ -134,6 +135,7 @@ export default function Presubly() {
           {isWs && <button className="hamburger topnav-burger" onClick={() => setSbOpen(true)} title={t("Araçlar", "Tools")}><Menu size={19} /></button>}
           <div className="topnav-logo" onClick={() => setShowLanding(true)} title={t("Anasayfa", "Home")}><Wordmark size={19} variant="dark" /></div>
           <div className="topnav-r">
+            <button className="tn-pill tn-ws tb-hide" onClick={() => nav("operations")} title={t("Gönderim hazırlığını yönet", "Manage submission readiness")}><ClipboardList size={14} />{t("Gönderim Merkezi", "Submission Center")}</button>
             <button className="tn-pill tn-ws tb-hide" onClick={() => nav("team")} title={t("Çalışma alanı / ekip", "Workspace / team")}><Building2 size={14} />{t("Çalışma Alanı", "Workspace")}<ChevronDown size={12} style={{ opacity: 0.7 }} /></button>
             <button className="tn-pill" onClick={() => nav("billing")} title={t("Kredi bakiyesi", "Credit balance")}><Coins size={14} color="var(--a3)" />{isAdmin ? "∞" : credits}</button>
             <span className={`tn-badge ${isAdmin ? "adm" : isPro ? "pro" : "free"}`}>{isAdmin ? <><Crown size={12} />ADMIN</> : isPro ? <><Crown size={12} />PRO</> : "FREE"}</span>
@@ -213,6 +215,7 @@ export default function Presubly() {
           <div className="dkfull">
             <button className="mini-btn" style={{ alignSelf: "flex-start", marginBottom: 4 }} onClick={() => nav("sim")}>← {t("Araçlar", "Tools")}</button>
             {view === "history" && <HistoryView auth={auth} nav={nav} flash={flash} startRevision={startRevision} />}
+            {view === "operations" && <SubmissionOperationsView auth={auth} nav={nav} flash={flash} startRevision={startRevision} />}
             {view === "team" && <TeamView auth={auth} nav={nav} flash={flash} />}
             {view === "api" && <ApiView auth={auth} nav={nav} flash={flash} />}
             {view === "billing" && <BillingView auth={auth} flash={flash} />}
@@ -1148,6 +1151,7 @@ function UserMenu({ auth, nav, flash, close }) {
         <div className="um-menu">
         <div className="um-list">
           <button className="um-row" onClick={() => nav("history")}><FileText size={17} className="um-i" /><span className="um-lbl">{t("Raporlarım", "My Reports")}</span></button>
+          <button className="um-row" onClick={() => nav("operations")}><ClipboardList size={17} className="um-i" /><span className="um-lbl">{t("Gönderim Merkezi", "Submission Center")}</span></button>
           <button className="um-row" onClick={() => nav("billing")}><CreditCard size={17} className="um-i" /><span className="um-lbl">{t("Plan & Faturalama", "Plan & Billing")}</span></button>
           {canTeam && <button className="um-row" onClick={() => nav("team")}><Users size={17} className="um-i" /><span className="um-lbl">{t("Ekip", "Team")}</span></button>}
           {canApi && <button className="um-row" onClick={() => nav("api")}><SquareTerminal size={17} className="um-i" /><span className="um-lbl">{t("API Erişimi", "API Access")}</span></button>}
@@ -1337,6 +1341,190 @@ function reportMd(row) {
   if (isResponseD(d)) return responseToMarkdown(d);
   if (isCoverD(d)) return coverletterToMarkdown(d);
   return (d && d.text) || row.data || "";
+}
+
+/* ───────────────────────── PSB-IMP-013 — Gönderim Operasyon Merkezi ─────────────────────────
+   Saved analyses remain the evidence source. Operational fields are stored separately,
+   so changing a deadline or target journal never mutates an immutable report snapshot. */
+const OPS_STATUSES = ["preparing", "ready", "submitted", "revision", "accepted", "closed"];
+function operationStatusLabel(status, lang) {
+  const tr = { preparing: "Hazırlanıyor", ready: "Gönderime hazır", submitted: "Gönderildi", revision: "Revizyonda", accepted: "Kabul edildi", closed: "Kapandı" };
+  const en = { preparing: "Preparing", ready: "Ready to submit", submitted: "Submitted", revision: "In revision", accepted: "Accepted", closed: "Closed" };
+  return (lang === "en" ? en : tr)[status] || status;
+}
+function reportBlockers(row) {
+  const d = parseData(row);
+  if (!d) return 0;
+  let n = 0;
+  (d.categories || []).forEach((cat) => (cat.checks || []).forEach((x) => { if (x.status === "fail") n += 1; }));
+  (d.comments || []).forEach((x) => { if (["critical", "major", "high"].includes(String(x.severity || "").toLowerCase())) n += 1; });
+  return n;
+}
+function daysUntil(date) {
+  if (!date) return null;
+  const end = new Date(`${date}T23:59:59`);
+  if (Number.isNaN(end.getTime())) return null;
+  return Math.ceil((end.getTime() - Date.now()) / 86400000);
+}
+
+function SubmissionOperationsView({ auth, nav, flash, startRevision }) {
+  const { t, lang } = useLang();
+  const isAdmin = !!auth?.isAdmin;
+  const canHistory = can(auth.plan, isAdmin, "history");
+  const [reports, setReports] = useState(null);
+  const [operations, setOperations] = useState([]);
+  const [query, setQuery] = useState("");
+  const [statusFilter, setStatusFilter] = useState("active");
+  const [selected, setSelected] = useState(null);
+  const [draft, setDraft] = useState(null);
+  const [saving, setSaving] = useState(false);
+
+  const load = useCallback(async () => {
+    if (!canHistory) { setReports([]); return; }
+    try {
+      const token = await auth.getToken();
+      const headers = { Authorization: `Bearer ${token}` };
+      const [rr, ro] = await Promise.all([fetch("/api/reports", { headers }), fetch("/api/operations", { headers })]);
+      const rd = rr.ok ? await rr.json() : { reports: [] };
+      const od = ro.ok ? await ro.json() : { operations: [] };
+      setReports(rd.reports || []);
+      setOperations(od.operations || []);
+    } catch {
+      setReports([]); setOperations([]);
+      flash(t("Gönderim verileri alınamadı.", "Submission data couldn't be loaded."));
+    }
+  }, [auth, canHistory, flash, t]);
+  useEffect(() => { load(); }, [load]);
+
+  if (!canHistory) return <UpgradeCard feature="history" nav={nav} title={t("Gönderim Operasyon Merkezi", "Submission Operations Center")} desc={t("Makalelerini hedef dergi, son tarih, kritik engel ve sıradaki eylem bilgileriyle tek ekranda yönet.", "Manage manuscripts, target journals, deadlines, blockers and next actions in one place.")} />;
+  if (reports === null) return <div className="view on"><div className="card"><div className="empty">{t("Gönderim merkezi hazırlanıyor…", "Preparing submission center…")}</div></div></div>;
+
+  const opByTitle = new Map(operations.map((x) => [x.manuscript_title, x]));
+  const reportGroups = groupByManuscript(reports);
+  const known = new Set(reportGroups.map((g) => g.title));
+  const groups = [
+    ...reportGroups,
+    ...operations.filter((o) => !known.has(o.manuscript_title)).map((o) => ({ title: o.manuscript_title, items: [], latest: o.updated_at, lastScore: null })),
+  ];
+  const rows = groups.map((g) => {
+    const op = opByTitle.get(g.title) || {};
+    const latestRow = g.items?.slice().sort((a, b) => (a.created_at < b.created_at ? 1 : -1))[0];
+    const blockers = latestRow ? reportBlockers(latestRow) : 0;
+    const suggested = blockers === 0 && (g.lastScore ?? 0) >= 80 ? "ready" : "preparing";
+    return { ...g, ...op, manuscript_title: g.title, blockers, status: op.status || suggested, deadlineDays: daysUntil(op.deadline), latestRow };
+  });
+  const activeStatuses = new Set(["preparing", "ready", "submitted", "revision"]);
+  const filtered = rows.filter((r) => {
+    const matchesText = !query || `${r.manuscript_title} ${r.target_journal || ""} ${r.next_action || ""}`.toLocaleLowerCase(lang === "tr" ? "tr" : "en").includes(query.toLocaleLowerCase(lang === "tr" ? "tr" : "en"));
+    const matchesStatus = statusFilter === "all" || (statusFilter === "active" ? activeStatuses.has(r.status) : r.status === statusFilter);
+    return matchesText && matchesStatus;
+  });
+  const ready = rows.filter((r) => r.status === "ready").length;
+  const blocked = rows.filter((r) => r.blockers > 0 && activeStatuses.has(r.status)).length;
+  const approaching = rows.filter((r) => r.deadlineDays != null && r.deadlineDays >= 0 && r.deadlineDays <= 7 && activeStatuses.has(r.status)).length;
+
+  function selectRow(row) {
+    setSelected(row.manuscript_title);
+    setDraft({
+      id: row.id || null,
+      manuscript_title: row.manuscript_title,
+      target_journal: row.target_journal || "",
+      status: row.status || "preparing",
+      deadline: row.deadline || "",
+      next_action: row.next_action || "",
+      notes: row.notes || "",
+    });
+  }
+  async function saveOperation() {
+    if (!draft) return;
+    setSaving(true);
+    try {
+      const token = await auth.getToken();
+      const res = await fetch("/api/operations", { method: "PUT", headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` }, body: JSON.stringify(draft) });
+      if (!res.ok) throw new Error("save");
+      flash(t("Gönderim planı kaydedildi.", "Submission plan saved."));
+      await load();
+      setSelected(null); setDraft(null);
+    } catch { flash(t("Gönderim planı kaydedilemedi.", "Submission plan couldn't be saved.")); }
+    setSaving(false);
+  }
+
+  return (
+    <div className="view on ops-view">
+      <div className="ops-head">
+        <div>
+          <div className="ops-ey">PSB-IMP-013</div>
+          <h2><ClipboardList size={24} />{t("Gönderim Operasyon Merkezi", "Submission Operations Center")}</h2>
+          <p>{t("Analiz bulgularını gönderim planına dönüştür; engelleri, tarihleri ve sıradaki eylemi tek yerden izle.", "Turn analysis findings into a submission plan; track blockers, deadlines and the next action in one place.")}</p>
+        </div>
+        <button className="btn btn-a ops-primary" onClick={() => nav("sim")}>{t("Yeni analiz", "New analysis")}<ArrowRight size={15} /></button>
+      </div>
+
+      <div className="ops-kpis">
+        <div className="ops-kpi"><span>{t("AKTİF DOSYA", "ACTIVE FILES")}</span><b>{rows.filter((r) => activeStatuses.has(r.status)).length}</b><small>{t("gönderim hattında", "in the pipeline")}</small></div>
+        <div className="ops-kpi ready"><span>{t("GÖNDERİME HAZIR", "READY")}</span><b>{ready}</b><small>{t("son kontrol tamam", "final check complete")}</small></div>
+        <div className="ops-kpi blocked"><span>{t("KRİTİK ENGEL", "BLOCKED")}</span><b>{blocked}</b><small>{t("eylem gerekiyor", "needs action")}</small></div>
+        <div className="ops-kpi due"><span>{t("7 GÜN İÇİNDE", "DUE IN 7 DAYS")}</span><b>{approaching}</b><small>{t("yaklaşan tarih", "approaching deadline")}</small></div>
+      </div>
+
+      <div className="ops-toolbar card">
+        <label className="ops-search"><Search size={16} /><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder={t("Makale, dergi veya eylem ara…", "Search manuscript, journal or action…")} /></label>
+        <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)} aria-label={t("Duruma göre filtrele", "Filter by status")}>
+          <option value="active">{t("Aktif dosyalar", "Active files")}</option><option value="all">{t("Tüm durumlar", "All statuses")}</option>
+          {OPS_STATUSES.map((s) => <option value={s} key={s}>{operationStatusLabel(s, lang)}</option>)}
+        </select>
+        <button className="mini-btn" onClick={load}><RefreshCw size={13} />{t("Yenile", "Refresh")}</button>
+      </div>
+
+      {rows.length === 0 ? (
+        <div className="ops-empty card"><ClipboardList size={28} /><b>{t("Gönderim hattın henüz boş", "Your submission pipeline is empty")}</b><p>{t("Bir analizi kaydettiğinde makalen burada otomatik görünür.", "A manuscript appears here automatically after you save an analysis.")}</p><button className="btn btn-a" onClick={() => nav("sim")}>{t("İlk analizi başlat", "Start first analysis")}</button></div>
+      ) : (
+        <div className={`ops-layout${selected ? " editing" : ""}`}>
+          <div className="card ops-table-wrap">
+            <div className="ops-table-head"><b>{t("Gönderim hattı", "Submission pipeline")}</b><span>{filtered.length} / {rows.length}</span></div>
+            <div className="ops-table" role="table" aria-label={t("Gönderim operasyonları", "Submission operations")}>
+              <div className="ops-tr ops-th" role="row"><span>{t("Makale", "Manuscript")}</span><span>{t("Durum", "Status")}</span><span>{t("Hazırlık", "Readiness")}</span><span>{t("Son tarih", "Deadline")}</span><span></span></div>
+              {filtered.map((row) => (
+                <button className={`ops-tr${selected === row.manuscript_title ? " on" : ""}`} role="row" key={row.manuscript_title} onClick={() => selectRow(row)}>
+                  <span className="ops-manuscript"><b>{row.manuscript_title}</b><small>{row.target_journal || t("Hedef dergi belirlenmedi", "Target journal not set")}</small></span>
+                  <span><i className={`ops-status ${row.status}`}>{operationStatusLabel(row.status, lang)}</i></span>
+                  <span className="ops-readiness">{row.lastScore != null ? <><b style={{ color: scoreColor(row.lastScore) }}>{row.lastScore}</b><small>/100</small></> : <small>—</small>}{row.blockers > 0 && <em><CircleAlert size={12} />{row.blockers}</em>}</span>
+                  <span className={`ops-deadline${row.deadlineDays != null && row.deadlineDays <= 7 ? " urgent" : ""}`}>{row.deadline ? <><CalendarDays size={13} />{new Date(`${row.deadline}T12:00:00`).toLocaleDateString(lang === "en" ? "en-US" : "tr-TR", { day: "2-digit", month: "short" })}</> : "—"}</span>
+                  <ChevronRight size={16} />
+                </button>
+              ))}
+              {filtered.length === 0 && <div className="empty">{t("Bu filtreyle eşleşen dosya yok.", "No files match this filter.")}</div>}
+            </div>
+          </div>
+
+          {draft && (
+            <aside className="card ops-editor" aria-label={t("Gönderim planını düzenle", "Edit submission plan")}>
+              <div className="ops-editor-head"><div><span>{t("GÖNDERİM PLANI", "SUBMISSION PLAN")}</span><b>{draft.manuscript_title}</b></div><button onClick={() => { setSelected(null); setDraft(null); }} aria-label={t("Kapat", "Close")}><X size={17} /></button></div>
+              <div className="ops-form">
+                <label><span>{t("Hedef dergi", "Target journal")}</span><input value={draft.target_journal} onChange={(e) => setDraft({ ...draft, target_journal: e.target.value })} placeholder={t("Dergi adını yazın", "Enter journal name")} /></label>
+                <div className="ops-form-row">
+                  <label><span>{t("Durum", "Status")}</span><select value={draft.status} onChange={(e) => setDraft({ ...draft, status: e.target.value })}>{OPS_STATUSES.map((s) => <option value={s} key={s}>{operationStatusLabel(s, lang)}</option>)}</select></label>
+                  <label><span>{t("Son tarih", "Deadline")}</span><input type="date" value={draft.deadline} onChange={(e) => setDraft({ ...draft, deadline: e.target.value })} /></label>
+                </div>
+                <label><span>{t("Sıradaki eylem", "Next action")}</span><input value={draft.next_action} onChange={(e) => setDraft({ ...draft, next_action: e.target.value })} placeholder={t("Örn. yöntem bölümünü düzelt", "e.g. revise Methods section")} /></label>
+                <label><span>{t("Operasyon notu", "Operations note")}</span><textarea rows="4" value={draft.notes} onChange={(e) => setDraft({ ...draft, notes: e.target.value })} placeholder={t("Editör, dosya veya süreç notları…", "Editor, file or process notes…")} /></label>
+              </div>
+              <div className="ops-evidence">
+                <b>{t("Analiz kanıtı", "Analysis evidence")}</b>
+                <div><span>{t("Son puan", "Latest score")}</span><strong>{rows.find((r) => r.manuscript_title === selected)?.lastScore ?? "—"}</strong></div>
+                <div><span>{t("Kritik engel", "Critical blockers")}</span><strong>{rows.find((r) => r.manuscript_title === selected)?.blockers ?? 0}</strong></div>
+                <div><span>{t("Kayıtlı analiz", "Saved analyses")}</span><strong>{rows.find((r) => r.manuscript_title === selected)?.items?.length ?? 0}</strong></div>
+              </div>
+              <div className="ops-editor-actions">
+                {rows.find((r) => r.manuscript_title === selected)?.latestRow && startRevision && <button className="btn btn-ghost" onClick={() => { const d = parseData(rows.find((r) => r.manuscript_title === selected).latestRow); if (isSimD(d) || isReadinessD(d)) startRevision(revisionSeed(d)); else nav("revision"); }}>{t("Revizyonu doğrula", "Verify revision")}</button>}
+                <button className="btn btn-a" onClick={saveOperation} disabled={saving}><Save size={15} />{saving ? t("Kaydediliyor…", "Saving…") : t("Planı kaydet", "Save plan")}</button>
+              </div>
+            </aside>
+          )}
+        </div>
+      )}
+    </div>
+  );
 }
 
 function HistoryView({ auth, nav, flash, startRevision }) {

@@ -18,6 +18,15 @@ editöryal değerlendirme, istatistik denetimi, atıf–kaynakça kontrolü ve k
 
 Yeni geliştirme **yalnızca `presubly-app/`** içinde yapılır.
 
+## Uygulama modülleri
+
+- Analiz araçları: hakem simülasyonu, uyumluluk, editöryal değerlendirme, istatistik, kontrol listesi ve revizyon doğrulama.
+- Rapor arşivi: makale bazlı sürümleme, karşılaştırma, dışa aktarma ve ekip yorumları.
+- **Gönderim Operasyon Merkezi (PSB-IMP-013):** kayıtlı analizlerden otomatik makale hattı; hedef dergi, durum, son tarih, kritik engel ve sıradaki eylem yönetimi.
+
+PSB-IMP-013 veritabanı değişikliği için `presubly-app/supabase/psb-imp-013-submission-operations.sql`
+dosyasını Supabase SQL Editor'da bir kez çalıştırın. Bu işlem canlı dağıtımdan bağımsızdır.
+
 ## Çalıştırma (presubly-app)
 
 ```bash

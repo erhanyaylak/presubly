@@ -57,6 +57,25 @@ create table if not exists public.saved_reports (
 create index if not exists saved_reports_user_idx on public.saved_reports (user_id, created_at desc);
 create index if not exists saved_reports_title_idx on public.saved_reports (user_id, title);
 
+-- ── manuscript operations (PSB-IMP-013: submission workflow metadata) ──
+-- Saved reports remain immutable evidence. This table keeps the mutable plan.
+create table if not exists public.manuscript_operations (
+  id               text primary key,
+  user_id          uuid not null references auth.users (id) on delete cascade,
+  manuscript_title text not null,
+  target_journal   text,
+  status           text not null default 'preparing'
+                     check (status in ('preparing','ready','submitted','revision','accepted','closed')),
+  deadline         date,
+  next_action      text,
+  notes            text,
+  created_at       timestamptz not null default now(),
+  updated_at       timestamptz not null default now(),
+  unique (user_id, manuscript_title)
+);
+create index if not exists manuscript_operations_user_updated_idx
+  on public.manuscript_operations (user_id, updated_at desc);
+
 -- ── shared_reports (Enterprise tier: public links) ──────────────────────
 create table if not exists public.shared_reports (
   id         text primary key,                  -- used in #share-<id>
@@ -87,6 +106,7 @@ alter table public.profiles       enable row level security;
 alter table public.usage_logs     enable row level security;
 alter table public.journals       enable row level security;
 alter table public.saved_reports  enable row level security;
+alter table public.manuscript_operations enable row level security;
 alter table public.shared_reports enable row level security;
 alter table public.api_keys       enable row level security;
 
