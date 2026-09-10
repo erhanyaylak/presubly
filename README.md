@@ -27,6 +27,11 @@ Yeni geliştirme **yalnızca `presubly-app/`** içinde yapılır.
 PSB-IMP-013 veritabanı değişikliği için `presubly-app/supabase/psb-imp-013-submission-operations.sql`
 dosyasını Supabase SQL Editor'da bir kez çalıştırın. Bu işlem canlı dağıtımdan bağımsızdır.
 
+PSB-IMP-001–012'nin geriye dönük işlev eşleştirmesi için
+[`docs/implementation/PSB-IMP-001-012-BASELINE.md`](docs/implementation/PSB-IMP-001-012-BASELINE.md)
+belgesine bakın. Bu fazlar ayrı tarihsel commit'ler değil, ilk kaynak aktarımının
+konsolide başlangıç kaydıdır.
+
 ## Çalıştırma (presubly-app)
 
 ```bash
