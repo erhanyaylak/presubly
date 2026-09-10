@@ -23,3 +23,5 @@ alter table public.manuscript_operations enable row level security;
 
 -- The application accesses this table only through authenticated Cloudflare
 -- Pages Functions using the service role. No public RLS policy is intentional.
+revoke all privileges on table public.manuscript_operations from anon, authenticated;
+grant select, insert, update on table public.manuscript_operations to service_role;

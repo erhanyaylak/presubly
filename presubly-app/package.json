@@ -10,6 +10,7 @@
     "preview": "vite preview",
     "dev:full": "npm run build && wrangler pages dev dist",
     "deploy": "npm run build && wrangler pages deploy dist --project-name=presubly",
+    "check:psb-imp-013": "node scripts/check-psb-imp-013.mjs",
     "eval": "node scripts/eval-harness.mjs"
   },
   "dependencies": {
