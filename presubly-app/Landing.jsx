@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { LayoutList, Quote, ShieldCheck, Library, RefreshCw, Share2, BookOpen, BarChart3, BookMarked, Globe, ArrowRight,
-  Sparkles, MessageSquare, ListChecks, FileCheck2, Link2, ScrollText, PenLine, Gauge, Scale, CheckCircle2, AlertTriangle, XCircle, Search, ClipboardList, UploadCloud, SquareTerminal, Mail, Phone, MapPin, Menu, X, Send } from "lucide-react";
+  Sparkles, MessageSquare, ListChecks, FileCheck2, Link2, ScrollText, PenLine, Gauge, Scale, CheckCircle2, AlertTriangle, XCircle, Search, ClipboardList, UploadCloud, SquareTerminal, Mail, MapPin, Menu, X, Send } from "lucide-react";
 import { Logo, Wordmark } from "./Brand.jsx";
 import Auth from "./Auth.jsx";
 import Turnstile, { TURNSTILE_ENABLED } from "./Turnstile.jsx";
@@ -742,7 +742,6 @@ function GuidePage({ onStart }) {
 /* — İletişim sayfası (Deskly tarzı — Turnstile korumalı) — */
 const CONTACT_INFO = [
   { Ic: Mail, l: "E-posta", v: "info@scitera.net", href: "mailto:info@scitera.net" },
-  { Ic: Phone, l: "Telefon", v: "+90 543 717 3246", href: "tel:+905437173246" },
   { Ic: MapPin, l: "Adres", v: "Giresun Teknopark, Bulancak / Giresun" },
 ];
 const MAPS_URL = "https://www.google.com/maps/search/?api=1&query=Giresun+Teknopark+Bulancak";
@@ -1326,7 +1325,6 @@ export default function Landing({ onEnterApp }) {
             </form>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "10px 22px", marginBottom: 12 }}>
               <a href="mailto:info@scitera.net" className="pb-flink" style={{ display: "inline-flex", alignItems: "center", gap: 7, fontFamily: F.u, fontSize: 13 }}><Mail size={14} />info@scitera.net</a>
-              <a href="tel:+905437173246" className="pb-flink" style={{ display: "inline-flex", alignItems: "center", gap: 7, fontFamily: F.u, fontSize: 13 }}><Phone size={14} />+90 543 717 3246</a>
             </div>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 7, fontFamily: F.u, fontSize: 12.5, color: T.textFaint }}><MapPin size={14} />Giresun Teknopark, Bulancak / Giresun</div>
           </div>
